@@ -1,5 +1,25 @@
 # Progress
 
+## 2026-10-01 — full curriculum deployed (evening)
+
+**Live:** https://huangrui19910206.github.io/ml-interview-prep/
+
+- **32 pages / 18 companies / 160 questions / 61 flashcards**, all live.
+- Curriculum: transformers (deep, from-scratch impl + shape drills), ML fundamentals
+  (837 lines), deep learning, LLM systems (inference/training/evals with real
+  arithmetic), RAG/search, recsys, agent system design, coding (16 tested problems),
+  debugging (13 broken programs, hint→solution UI), AI-native coding (5 builds +
+  rubrics), behavioral (staff-level, Rui-mapped stories), ML system-design framework,
+  project deep-dive framework, 30-min cram.
+- Interactive: flashcards (deck filter/flip/shuffle), mock interview
+  (company × type × difficulty × duration), question bank (4 filters) — all live
+  with real data.
+- Renderer bugfix shipped: inline `$…$` regex was DOTALL and swallowed
+  `$200M`-style currency across newlines, eating `:::directive` blocks on 3 pages.
+  Fixed to single-line + no-digit-after-`$`.
+- Backlog: interview map matrix, Harvey page, resources page, Interview-Tomorrow /
+  7-day plans, mobile visual QA.
+
 ## 2026-10-01 — v1 deployed
 
 **Live:** https://huangrui19910206.github.io/ml-interview-prep/

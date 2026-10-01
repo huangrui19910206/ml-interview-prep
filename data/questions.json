@@ -1,0 +1,2938 @@
+[
+  {
+    "id": "q-system-design-001",
+    "question": "Design a real-time ETA prediction service for a ride-hailing platform: architecture, feature pipeline, training/serving skew handling, and a 50ms p99 latency budget.",
+    "companies": [
+      "uber"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-system-design-002",
+    "question": "Design a dispatch matching system that assigns couriers to orders at city scale: constraints, objective function, batching window, and how you would evaluate it offline.",
+    "companies": [
+      "doordash"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-system-design-003",
+    "question": "Design an ads click-through-rate prediction system from ad request to bid: training pipeline, feature store, model refresh cadence, and online serving path.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-004",
+    "question": "Design a fraud detection system for a payments platform: label latency, severe class imbalance, adversarial drift, and feedback loops from actions taken.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-005",
+    "question": "Design a large-scale LLM inference-serving platform across GPU clusters: request scheduling, autoscaling, multi-tenant isolation, and failure handling.",
+    "companies": [
+      "crusoe"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-system-design-006",
+    "question": "Design a search relevance stack (query rewriting, retrieval, multi-stage ranking): components, offline vs online evaluation, and where an LLM fits in the pipeline.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-007",
+    "question": "Design a feature store serving 10k features at under 10ms p99 with point-in-time correctness for training.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-008",
+    "question": "Design a model monitoring and drift detection system covering 200 production models: what you track, alerting thresholds, and the remediation loop.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-009",
+    "question": "Design an A/B testing platform for ML models: randomization unit, metric hierarchy, guardrails, and handling network interference.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-010",
+    "question": "Design enterprise search over 100M permissioned documents: indexing, retrieval, ranking, freshness, and access-control enforcement at query time.",
+    "companies": [
+      "glean"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-system-design-011",
+    "question": "Design a recommendation feed for 50M DAU: candidate generation, ranking, explore/exploit, cold start, and diversity controls.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-012",
+    "question": "Design a training platform for 100B-parameter models: job orchestration, checkpointing, elastic recovery from node failures, and observability.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-013",
+    "question": "Design a real-time bidding system with a 100ms auction deadline: where CTR/CVR models run and what happens on timeout.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-014",
+    "question": "Design a content-moderation pipeline combining classifiers and LLM judges at high throughput: routing, cost control, and appeal handling.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-015",
+    "question": "Design a data-labeling and active-learning loop for a vision model: sampling strategy, annotator quality control, and model-in-the-loop pre-labeling.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-016",
+    "question": "Design a code-search and code-understanding system over a large monorepo to power an AI coding assistant: indexing, retrieval, and freshness on every commit.",
+    "companies": [
+      "factory"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-system-design-017",
+    "question": "Design an anomaly detection system for operational metrics with strict alert-fatigue constraints: detection, alerting, and feedback from on-call.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-018",
+    "question": "Design a customer-support agent platform: orchestration, tool access, guardrails, evaluation harness, and human handoff criteria.",
+    "companies": [
+      "sierra"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-system-design-019",
+    "question": "Design a streaming feature pipeline with exactly-once semantics from Kafka to an online feature store: failure modes and backfill strategy.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-system-design-020",
+    "question": "Design a vector-search service for 1B embeddings: index structure, recall/latency trade-offs, filtering, and handling embedding-version updates.",
+    "companies": [],
+    "category": "system-design",
+    "difficulty": "medium",
+    "time_min": 30,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-system-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-001",
+    "question": "Derive scaled dot-product attention and explain precisely why dividing by sqrt(d_k) matters for training stability.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-002",
+    "question": "Compare pre-norm vs post-norm transformer blocks: gradient flow, training stability, and why modern LLMs converged on pre-norm.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-003",
+    "question": "Explain rotary positional embeddings (RoPE): the rotation construction, and why it extrapolates to longer sequences better than learned absolute embeddings.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-004",
+    "question": "Why do large models use grouped-query attention (GQA)? Quantify the KV-cache memory savings relative to full multi-head attention.",
+    "companies": [
+      "openai"
+    ],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-transformers-005",
+    "question": "Explain ALiBi positional bias: how it is constructed and what its length-extrapolation behavior looks like in practice.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-006",
+    "question": "What causes attention sinks in long-context models, and how do they affect KV-cache eviction policies?",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "hard",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-007",
+    "question": "Derive the time and memory complexity of self-attention as a function of sequence length n, hidden size d, and number of heads h.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-008",
+    "question": "Explain SwiGLU/GeGLU gated activations: the construction and why they outperform ReLU in large language models.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-009",
+    "question": "How does FlashAttention reduce HBM memory IO? Explain the tiling and recomputation idea without writing code.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-010",
+    "question": "Compare absolute, relative, and rotary positional encodings: what breaks for each when the test sequence is longer than training?",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-011",
+    "question": "Explain multi-head attention: why use multiple smaller heads instead of one large head of the same total dimension?",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-012",
+    "question": "Contrast encoder-only, decoder-only, and encoder-decoder architectures: the attention masking in each and when you would choose each.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "transformers",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-transformers-013",
+    "question": "Explain layer normalization in a transformer block: the formula, and why it is preferred over batch normalization here.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-014",
+    "question": "How do you extend a trained model's context length: NTK-aware RoPE scaling vs YaRN vs continued pretraining? Compare cost and quality.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "hard",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-015",
+    "question": "Explain mixture-of-experts routing: top-k gating, the auxiliary load-balancing loss, expert capacity, and what happens when routing collapses.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-016",
+    "question": "Why do transformers struggle with length generalization on algorithmic tasks (e.g., parity, addition)? What do the known fixes change?",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "hard",
+    "time_min": 15,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-017",
+    "question": "Explain the residual stream view of a transformer: what does it mean, mechanistically, for an attention head to 'write' to the residual stream?",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "hard",
+    "time_min": 15,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-transformers-018",
+    "question": "Contrast causal masking during training with KV-cached incremental decoding at inference: what is recomputed, what is reused, and where the complexity goes.",
+    "companies": [],
+    "category": "transformers",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-001",
+    "question": "Derive the bias-variance decomposition of expected squared error and explain how it guides model selection in practice.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-002",
+    "question": "L1 vs L2 regularization: give the geometric intuition for why L1 induces sparsity, and state when you would pick each.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-003",
+    "question": "Why does AdamW decouple weight decay from the adaptive update? Show exactly how it differs from Adam with L2 regularization added to the loss.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-004",
+    "question": "Explain gradient clipping: what failure mode does it fix, and when is it necessary versus papering over a bug?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-005",
+    "question": "Derive the gradient of logistic regression and explain why cross-entropy is preferred over MSE for classification.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-006",
+    "question": "Explain the vanishing/exploding gradient problem in deep networks and name three concrete mitigations with their mechanisms.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-007",
+    "question": "What is label smoothing, and how does it change the learned decision boundary and model calibration?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-008",
+    "question": "Compare bagging vs boosting: their effects on bias and variance, and give one failure mode of each.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-009",
+    "question": "Explain ROC-AUC vs PR-AUC: which would you report for a fraud model with 1% positive rate, and why?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-010",
+    "question": "What is the EM algorithm? Walk through the E-step and M-step for a Gaussian mixture model.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-011",
+    "question": "Explain dropout at train time vs test time: why the scaling factor, and what goes wrong if you forget it?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-012",
+    "question": "Derive why the unbiased sample variance estimator divides by n-1 instead of n.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-013",
+    "question": "Explain early stopping as implicit regularization: how do you choose the patience and what are you actually regularizing?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-014",
+    "question": "What is the curse of dimensionality, and how does it specifically degrade k-NN classifiers?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-015",
+    "question": "Explain classifier calibration: compare Platt scaling, isotonic regression, and temperature scaling, including data requirements.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-016",
+    "question": "Why do we standardize features for gradient-based optimization, and why is it largely unnecessary for tree-based models?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-017",
+    "question": "Explain the difference between MLE and MAP estimation, and give a concrete example where they disagree.",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-fundamentals-018",
+    "question": "What is a learning-rate schedule, and why does warmup followed by cosine annealing work well for large models?",
+    "companies": [],
+    "category": "ml-fundamentals",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/ml-fundamentals",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-001",
+    "question": "Explain the prefill vs decode phases of LLM serving: why their compute/memory profiles differ and what that implies for batching.",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-002",
+    "question": "What exactly is stored in the KV cache? Derive how its size scales with batch size, sequence length, layers, heads, and head dimension.",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-003",
+    "question": "Compare tensor parallelism, pipeline parallelism, and data parallelism for serving a 70B model: communication patterns and when each is the bottleneck.",
+    "companies": [
+      "crusoe"
+    ],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-llm-systems-004",
+    "question": "Explain continuous batching (vLLM-style): how does it improve throughput over static batching, and what scheduling problem remains?",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-005",
+    "question": "What is PagedAttention and what KV-cache fragmentation problem does it solve?",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-006",
+    "question": "Explain speculative decoding: the draft-model/verify loop, the acceptance criterion, and the conditions under which it actually speeds up generation.",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-007",
+    "question": "How would you serve a 1M-token-context model: what breaks first - KV-cache memory, attention compute, or interconnect bandwidth? Quantify each.",
+    "companies": [
+      "xai"
+    ],
+    "category": "llm-systems",
+    "difficulty": "hard",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-llm-systems-008",
+    "question": "Quantization for LLM serving: compare GPTQ/AWQ vs dynamic INT8 vs FP8 on accuracy, throughput, and hardware constraints.",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-009",
+    "question": "Explain disaggregated prefill/decode serving: the throughput benefits and the cost of transferring KV state between pools.",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "hard",
+    "time_min": 15,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-010",
+    "question": "How does beam search differ from stochastic sampling (temperature, top-k, top-p)? When is each decoding strategy appropriate?",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-011",
+    "question": "Explain the latency/throughput trade-off in LLM batching: define TTFT and TPOT and say which user experience each governs.",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "easy",
+    "time_min": 5,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-012",
+    "question": "What is FSDP/ZeRO-3 sharding during training? Contrast its communication pattern with tensor parallelism used at inference.",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-013",
+    "question": "Explain prefix caching and radix-tree-based KV reuse across requests: what workloads benefit most?",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-014",
+    "question": "How do you benchmark an LLM serving stack: which metrics, which workloads, and what are the common benchmarking pitfalls?",
+    "companies": [],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-llm-systems-015",
+    "question": "Design the rollout of a new model version behind a production API: canary strategy, shadow traffic, and evaluation gates before full cutover.",
+    "companies": [
+      "openai"
+    ],
+    "category": "llm-systems",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-rag-001",
+    "question": "Why rerank after the initial retrieval step? Compare bi-encoder recall with cross-encoder precision and the cost trade-off.",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-002",
+    "question": "Design a RAG pipeline over enterprise documents with access controls: chunking, indexing, retrieval, generation with citations, and permission enforcement.",
+    "companies": [
+      "glean"
+    ],
+    "category": "rag",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-rag-003",
+    "question": "Compare dense, sparse (BM25), and hybrid retrieval: the failure modes of each and when each wins.",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-004",
+    "question": "Explain query rewriting and HyDE: when does expanding the query help retrieval, and when does it hurt?",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-005",
+    "question": "How do you chunk long documents for RAG? Trade-offs of chunk size, overlap, and structure-aware splitting.",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-006",
+    "question": "How do you evaluate a RAG system: which metrics for the retrieval stage vs the generation stage, and how do you build a golden evaluation set?",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-007",
+    "question": "Explain the 'lost in the middle' problem in long-context RAG and give three concrete mitigations.",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-008",
+    "question": "How do you keep a RAG index fresh: incremental updates, deletions, and migrating to a new embedding model version?",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-009",
+    "question": "Compare RAG vs fine-tuning vs prompt engineering for injecting domain knowledge into an LLM product: cost, freshness, and failure modes.",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-010",
+    "question": "Design grounded answer generation where every factual claim carries a citation that an auditor can verify: pipeline and failure handling.",
+    "companies": [
+      "sierra"
+    ],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-rag-011",
+    "question": "Explain late-interaction retrieval (ColBERT): index-time storage cost vs query-time quality, and when it beats bi-encoders.",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "hard",
+    "time_min": 15,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-rag-012",
+    "question": "How do you handle multi-hop questions in RAG: iterative retrieval vs query decomposition? Compare the approaches.",
+    "companies": [],
+    "category": "rag",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-001",
+    "question": "Design a two-tower retrieval model for recommendations: training objective, negative sampling strategy, and how you serve it at scale.",
+    "companies": [
+      "uber"
+    ],
+    "category": "recsys",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-recsys-002",
+    "question": "How do you handle position bias in learning-to-rank: IPS weighting, two-tower click models, and randomization? Compare their assumptions.",
+    "companies": [
+      "doordash"
+    ],
+    "category": "recsys",
+    "difficulty": "hard",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-recsys-003",
+    "question": "Define Recall@K, NDCG, and MRR precisely, and say which you would optimize for a social feed vs a search box.",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-004",
+    "question": "Explain matrix factorization vs deep collaborative filtering, and how each handles the cold-start problem.",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-005",
+    "question": "How do you do exploration in production recommenders: epsilon-greedy, UCB, Thompson sampling? Trade-offs in a live system.",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-006",
+    "question": "Explain DIN/DIEN-style user interest modeling: why apply attention over the user's behavior sequence instead of pooling?",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-007",
+    "question": "How do you evaluate a ranking model offline: replay bias, and what does counterfactual evaluation buy you over naive replay?",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "hard",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-008",
+    "question": "Design a multi-task ranking model (MMoE/PLE): shared vs task-specific towers, loss weighting, and how you detect negative transfer.",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-009",
+    "question": "Explain session-based recommendation: what breaks in your modeling when user IDs are unreliable or missing?",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-recsys-010",
+    "question": "How do you detect and mitigate feedback loops and popularity bias in a production recommender?",
+    "companies": [],
+    "category": "recsys",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/recsys",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-001",
+    "question": "Implement an LRU cache with O(1) get and put operations. Explain your choice of underlying data structures.",
+    "companies": [
+      "uber"
+    ],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-coding-002",
+    "question": "Merge k sorted linked lists into one sorted list. Give the optimal algorithm and analyze its time complexity.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-003",
+    "question": "Find the top-k frequent elements in a data stream using limited memory. Discuss the exact vs approximate trade-off.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-004",
+    "question": "Implement a token-bucket rate limiter that is safe for concurrent use. How do you handle clock skew?",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-005",
+    "question": "Design a data structure supporting: add/update courier location, and query the nearest available couriers to a point. Analyze the complexity.",
+    "companies": [
+      "doordash"
+    ],
+    "category": "coding",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-coding-006",
+    "question": "Word ladder: find the shortest transformation sequence from beginWord to endWord. Explain why BFS gives the optimal answer.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-007",
+    "question": "Serialize and deserialize a binary tree to/from a string. Your format must handle arbitrary tree shapes.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-008",
+    "question": "Find the median of two sorted arrays in O(log(min(m,n))) time. Walk through the partition invariant.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "hard",
+    "time_min": 25,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-009",
+    "question": "Implement consistent hashing with virtual nodes. Show how keys redistribute when a node is added or removed.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 25,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-010",
+    "question": "Trapping rain water: derive the two-pointer O(1)-space solution from the DP formulation.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-011",
+    "question": "Design a time-based key-value store: set(key, value, timestamp) and get(key, timestamp) returning the latest value at or before the timestamp.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-012",
+    "question": "Longest substring without repeating characters: implement the sliding-window solution and prove it is O(n).",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "easy",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-013",
+    "question": "Implement a thread-safe bounded producer-consumer queue from primitives (locks/condition variables), no library queue.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-014",
+    "question": "Course schedule: detect whether all courses can be finished given prerequisites, and return one valid order. Handle cycles.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-coding-015",
+    "question": "Design an autocomplete system: a trie storing query frequencies that returns top-k suggestions for a prefix, with updates.",
+    "companies": [],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 25,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-001",
+    "question": "Implement scaled dot-product attention from scratch in NumPy, including the causal mask, without using any autograd.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "medium",
+    "time_min": 25,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-002",
+    "question": "Implement k-means clustering from scratch and explain why the result is sensitive to initialization; implement one mitigation.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "easy",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-003",
+    "question": "Implement logistic regression with batch gradient descent in NumPy, then add L2 regularization and show the gradient change.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "easy",
+    "time_min": 20,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-004",
+    "question": "Implement byte-pair encoding training on a toy corpus: the merge loop, tokenization, and handling of unseen text.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-005",
+    "question": "Implement beam search decoding for a toy language model given a next-token probability function; discuss the length-normalization issue.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "medium",
+    "time_min": 25,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-006",
+    "question": "Implement mini-batch gradient descent with momentum on a quadratic objective and empirically compare convergence to vanilla SGD.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-007",
+    "question": "Implement multi-head attention with causal masking in PyTorch, showing the exact tensor shapes at each step.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "medium",
+    "time_min": 25,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-008",
+    "question": "Implement a decision-tree split: compute the Gini impurity for candidate splits on one feature and grow a single level.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "medium",
+    "time_min": 25,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/coding",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-009",
+    "question": "Implement temperature scaling and nucleus (top-p) sampling from raw logits in NumPy; explain what each parameter controls.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "easy",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-010",
+    "question": "Implement batch normalization forward and backward passes from scratch; explain the train/test behavior difference.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/deep-learning",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-011",
+    "question": "Implement a toy IVF index probe in NumPy: k-means coarse quantizer, inverted lists, and top-k search with nprobe.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/rag-search",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-ml-coding-012",
+    "question": "Implement gradient accumulation to simulate a large effective batch size; explain where the equivalence with a true large batch breaks down.",
+    "companies": [],
+    "category": "ml-coding",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/deep-learning",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-001",
+    "question": "Your training loss diverges after 2000 steps of stable training: walk through your diagnosis checklist in order of likelihood.",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-002",
+    "question": "Training loss keeps dropping but validation loss plateaus: what do you check, in order, and what does each check tell you?",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "easy",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-003",
+    "question": "Your recommender's CTR drops 5% the day after a feature pipeline change: lay out your root-cause investigation plan.",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-004",
+    "question": "Loss is NaN on the very first training step: enumerate the possible causes and the fastest check for each.",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-005",
+    "question": "You suspect your LLM fine-tune memorized the evaluation set: how do you detect contamination and what do you do about it?",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-006",
+    "question": "Inference p99 latency spiked right after a model update: describe your debugging plan from metrics down to code.",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-007",
+    "question": "Embedding retrieval recall dropped after a re-index: what could have changed, and how do you bisect the regression?",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-008",
+    "question": "An A/B test reads neutral on the primary metric but revenue dipped: how do you investigate the metric divergence?",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-009",
+    "question": "Distributed training hangs at the same step on 64 GPUs every run: how do you find the straggler or the deadlock?",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "hard",
+    "time_min": 25,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-debugging-010",
+    "question": "Gradients are all zero in the first layer but nonzero in later layers: what does that signature tell you, and what do you check?",
+    "companies": [],
+    "category": "debugging",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/debugging",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-deep-dive-001",
+    "question": "Walk me through your most complex ML project end to end: problem framing, data, modeling choices, deployment, and measured impact.",
+    "companies": [
+      "uber"
+    ],
+    "category": "deep-dive",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-deep-dive-002",
+    "question": "Tell me about a time your model worked offline but failed online: what was the training-serving skew and how did you fix it?",
+    "companies": [],
+    "category": "deep-dive",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-deep-dive-003",
+    "question": "Describe a ranking system you built: how you designed the objective, engineered features, and evaluated before launch.",
+    "companies": [
+      "doordash"
+    ],
+    "category": "deep-dive",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-deep-dive-004",
+    "question": "What is the hardest technical trade-off you made on an ML project, what did you choose, and what would you do differently now?",
+    "companies": [],
+    "category": "deep-dive",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-deep-dive-005",
+    "question": "Describe a large-scale training or serving system you built: where were the bottlenecks and how did you remove them?",
+    "companies": [
+      "crusoe"
+    ],
+    "category": "deep-dive",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-deep-dive-006",
+    "question": "Tell me about a project where you had to simplify the model to ship on time: what did you cut and why was it safe to cut?",
+    "companies": [],
+    "category": "deep-dive",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-deep-dive-007",
+    "question": "Walk through an ML system where latency was the binding constraint: your full optimization stack from model to serving.",
+    "companies": [
+      "factory"
+    ],
+    "category": "deep-dive",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-deep-dive-008",
+    "question": "Describe a time you disagreed with a stakeholder about the right ML approach: how did you resolve it and what was the outcome?",
+    "companies": [],
+    "category": "deep-dive",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/project-deep-dive",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-001",
+    "question": "Tell me about a time you influenced a technical decision without having formal authority over it.",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-002",
+    "question": "Describe a real conflict with a teammate or manager: what happened, what you did, and the outcome.",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-003",
+    "question": "Tell me about your biggest failure as an ML engineer and what you concretely changed afterward.",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-004",
+    "question": "Why this company and this role? Tailor your answer to the interviewer's team and the problems they own.",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-005",
+    "question": "Tell me about a time you had to deliver under an unreasonable deadline: what did you scope down and how did you communicate it?",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-006",
+    "question": "Describe how you mentor junior engineers, with one concrete example and what changed for the mentee.",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-007",
+    "question": "Tell me about a time you pushed back on a product request because it was bad for ML quality: how did you make the case?",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-behavioral-008",
+    "question": "Where do you see your technical growth over the next two years, and what are you doing about it now?",
+    "companies": [],
+    "category": "behavioral",
+    "difficulty": "easy",
+    "time_min": 10,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/behavioral",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-agent-design-001",
+    "question": "Design an AI customer-support agent: tool use, guardrails, evaluation harness, escalation criteria for human handoff, and cost controls.",
+    "companies": [
+      "sierra"
+    ],
+    "category": "agent-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-agent-design-002",
+    "question": "Design a coding agent over a large repo: repository understanding, planning, sandboxed tool execution, and a verification loop before proposing changes.",
+    "companies": [
+      "factory"
+    ],
+    "category": "agent-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-agent-design-003",
+    "question": "Compare ReAct, plan-and-execute, and multi-agent orchestration: the failure mode of each and when each wins.",
+    "companies": [],
+    "category": "agent-design",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-agent-design-004",
+    "question": "How do you evaluate an AI agent: task success rate, trajectory-level metrics, and the pitfalls of LLM-as-judge?",
+    "companies": [],
+    "category": "agent-design",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-agent-design-005",
+    "question": "Explain tool-calling reliability in agents: schema validation, retries, idempotency, and recovery when a tool call fails mid-trajectory.",
+    "companies": [],
+    "category": "agent-design",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-agent-design-006",
+    "question": "How do you bound an agent's cost and latency in production: step limits, model routing across steps, and caching?",
+    "companies": [],
+    "category": "agent-design",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-agent-design-007",
+    "question": "Design memory for a long-running agent: short-term context management, long-term memory store, and retrieval into the prompt.",
+    "companies": [],
+    "category": "agent-design",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-agent-design-008",
+    "question": "What are the security risks of agents with tool access? Explain prompt-injection attack surfaces and concrete defenses.",
+    "companies": [],
+    "category": "agent-design",
+    "difficulty": "medium",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/agent-design",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-research-001",
+    "question": "Explain RLHF end to end: reward modeling from preferences, PPO vs DPO, and the known failure modes (reward hacking, mode collapse).",
+    "companies": [
+      "openai"
+    ],
+    "category": "research",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-research-002",
+    "question": "What is constitutional AI, and how does it differ from standard RLHF in practice - data, training loop, and limitations?",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "research",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-research-003",
+    "question": "Explain the key ideas behind AlphaFold 2's Evoformer: why pair representations, and what does the structure module add?",
+    "companies": [
+      "google-deepmind"
+    ],
+    "category": "research",
+    "difficulty": "hard",
+    "time_min": 30,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/deep-learning",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-research-004",
+    "question": "What do neural scaling laws (Chinchilla) say about compute-optimal training? Derive the parameter/token trade-off for a fixed FLOPs budget.",
+    "companies": [
+      "xai"
+    ],
+    "category": "research",
+    "difficulty": "medium",
+    "time_min": 20,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-research-005",
+    "question": "Explain direct preference optimization (DPO): derive it from the RLHF objective and state its assumptions and failure modes.",
+    "companies": [],
+    "category": "research",
+    "difficulty": "hard",
+    "time_min": 25,
+    "frequency": "medium",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/llm-systems",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": ""
+    }
+  },
+  {
+    "id": "q-research-006",
+    "question": "What is the superposition hypothesis in mechanistic interpretability, and why does it matter for AI safety work?",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "research",
+    "difficulty": "hard",
+    "time_min": 25,
+    "frequency": "low",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/transformers",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-01",
+      "note": "Representative practice question; not an actual candidate report."
+    }
+  }
+]

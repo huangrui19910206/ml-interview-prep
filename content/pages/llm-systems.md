@@ -497,7 +497,7 @@ print(f"70B FSDP 16 GPUs: {fsdp_fit(70, 16):.1f} GB/gpu, "
 ```
 
 Expected output: per token 128 KB, 128k total 17.2 GB; decode ceiling
-~209 tok/s at bs=1, ~13,376 tok/s at bs=64 (theoretical — scheduler and KV
+~209 tok/s at bs=1, ~13,400 tok/s at bs=64 (theoretical — scheduler and KV
 reads take their cut); speculative ~2.4×; 70B on 16 GPUs ≈ 75 GB/GPU (fits),
 on 8 GPUs ≈ 145 GB/GPU (doesn't).
 

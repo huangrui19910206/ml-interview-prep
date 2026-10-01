@@ -489,3 +489,149 @@ FC("transformers", "MoE routing: what is the load-balancing loss for?",
    "Top-k gating routes each token to a few experts, but without constraint the router collapses onto a few popular experts. The auxiliary load-balancing loss penalizes uneven expert utilization, keeping all experts trained. Too strong a weight hurts specialization; too weak causes collapse and wasted capacity.")
 FC("transformers", "Causal masking in training vs KV-cached decoding?",
    "In training, a lower-triangular mask lets all positions compute in parallel while preserving autoregressiveness. At inference, the KV cache stores past keys/values so each step only processes the new token - O(n) per step instead of O(n^2). The mask logic is equivalent; the compute pattern is incremental.")
+
+# ml-fundamentals deck (12)
+FC("ml-fundamentals", "BatchNorm vs LayerNorm: when is each used?",
+   "BatchNorm normalizes across the batch dimension per feature - great for vision/CNNs but breaks with small or variable batch sizes and leaks batch statistics. LayerNorm normalizes across features per token, independent of batch size, which is why transformers use it. Never use BatchNorm in a transformer.")
+FC("ml-fundamentals", "L1 vs L2 regularization: what is the practical difference?",
+   "L2 (ridge) shrinks all weights smoothly toward zero, keeping every feature but small - good for dense signals. L1 (lasso) drives many weights exactly to zero via its diamond-shaped constraint geometry, performing feature selection. Use L1 when you suspect few features matter; L2 as the default.")
+FC("ml-fundamentals", "Why does AdamW decouple weight decay?",
+   "In Adam with L2 added to the loss, the decay gradient gets scaled by the adaptive denominator, so large-gradient parameters are decayed less - weight decay becomes coupled to gradient history. AdamW applies decay directly to the weights after the adaptive step, restoring the intended regularization. It is the standard for transformer training.")
+FC("ml-fundamentals", "Bias-variance tradeoff in one paragraph?",
+   "Expected error decomposes into bias^2 (error from wrong model assumptions), variance (error from sensitivity to training data), and irreducible noise. Simple models underfit (high bias); complex models overfit (high variance). More data reduces variance; better model class or features reduce bias.")
+FC("ml-fundamentals", "ROC-AUC vs PR-AUC: which for imbalanced data?",
+   "ROC-AUC measures ranking quality across all thresholds but is dominated by the abundant negative class - it looks optimistic at 1% positives. PR-AUC focuses on the positive class (precision vs recall) and is far more informative for fraud/disease detection. Report PR-AUC (and calibrated thresholds) for imbalanced problems.")
+FC("ml-fundamentals", "Why cross-entropy instead of MSE for classification?",
+   "MSE with sigmoid/softmax saturates: when the model is confidently wrong, gradients vanish and learning stalls. Cross-entropy's gradient is proportional to (prediction - target), staying strong exactly when the model is wrong. It is also the negative log-likelihood, matching probabilistic modeling.")
+FC("ml-fundamentals", "What does dropout do at test time?",
+   "At training, dropout randomly zeroes activations with probability p, forcing redundancy. At test time dropout is off, so activations must be scaled by (1-p) - or equivalently use inverted dropout (scale by 1/(1-p) during training) - to keep expected magnitudes consistent. Forgetting the scaling silently shifts every downstream layer's input distribution.")
+FC("ml-fundamentals", "What is gradient clipping and when do you need it?",
+   "Clipping rescales the gradient norm to a max threshold when it exceeds it, preventing single explosive updates from destroying training. It is essential in RNNs and sometimes transformers with spikes; but if you clip constantly, you are masking a deeper bug (bad LR, data corruption, loss scale).")
+FC("ml-fundamentals", "MLE vs MAP: what is the difference?",
+   "MLE picks parameters maximizing the data likelihood P(data|theta). MAP maximizes P(theta|data), proportional to likelihood times prior P(theta) - equivalently MLE with a regularization term from the log-prior. They disagree whenever the prior is informative, e.g., L2-regularized logistic regression is MAP with a Gaussian prior.")
+FC("ml-fundamentals", "What is label smoothing and why use it?",
+   "Label smoothing replaces hard 0/1 targets with soft targets (e.g., 0.1/K for wrong classes), penalizing overconfident predictions. It improves calibration and generalization slightly, and is standard in machine translation and pretraining. Do not use it when you need well-calibrated probabilities for decision thresholds without recalibration.")
+FC("ml-fundamentals", "Why standardize features for gradient descent but not for trees?",
+   "Gradient descent converges slowly when features have wildly different scales because the loss surface becomes an elongated valley - one learning rate cannot suit all directions. Tree splits only compare values within a single feature, so monotonic rescaling changes nothing. Distance-based methods (k-NN, SVM, k-means) need scaling too.")
+FC("ml-fundamentals", "What is early stopping really regularizing?",
+   "Early stopping halts training when validation loss stops improving, which limits how far weights can travel from initialization - effectively constraining model complexity like a norm penalty. Choose patience from the noise level of your validation curve (larger patience for noisy small validation sets), and always keep the best checkpoint, not the last.")
+
+# llm-systems deck (12)
+FC("llm-systems", "Prefill vs decode: what is the difference?",
+   "Prefill processes the whole prompt in one parallel pass - compute-bound, like training. Decode generates one token at a time, each step loading the entire model weights and KV cache from HBM - memory-bandwidth-bound with tiny arithmetic intensity. This is why batching and KV-cache efficiency dominate serving optimization.")
+FC("llm-systems", "Tensor vs pipeline vs data parallelism?",
+   "Tensor parallelism shards individual layers across GPUs (needs fast NVLink, used within a node). Pipeline parallelism assigns whole layers to different GPUs (tolerates slower interconnect but suffers pipeline bubbles). Data parallelism replicates the model and splits the batch (needs the full model to fit on one GPU). 70B serving typically combines TP within a node and PP across nodes.")
+FC("llm-systems", "What is continuous batching?",
+   "Instead of waiting for a whole batch to finish, the server inserts new requests into the batch at each decoding step as soon as slots free up (vLLM/Orca style). This keeps the GPU saturated despite variable output lengths and raises throughput 3-10x over static batching. Scheduling policy (prefill vs decode priority) remains the hard part.")
+FC("llm-systems", "What problem does PagedAttention solve?",
+   "KV cache for variable-length sequences fragments GPU memory - naive contiguous allocation wastes space (internal fragmentation) and pre-allocation wastes more. PagedAttention stores KV cache in fixed-size blocks (pages) with a block table, like OS virtual memory, nearly eliminating waste and enabling larger batches.")
+FC("llm-systems", "How does speculative decoding work?",
+   "A small draft model generates k candidate tokens cheaply; the large target model verifies them in one parallel forward pass, accepting tokens that match its distribution. Accepted tokens are 'free' - speedup comes when the draft is accurate enough that most tokens are accepted. Gains are largest on easy, predictable text and small batch sizes.")
+FC("llm-systems", "What are TTFT and TPOT?",
+   "TTFT (time to first token) measures prefill + scheduling latency - what the user feels before streaming starts. TPOT (time per output token) measures decode speed - what governs streaming smoothness. Optimizing batching trades them off: bigger batches raise throughput but inflate both TTFT and TPOT.")
+FC("llm-systems", "GPTQ/AWQ vs FP8 quantization: the tradeoff?",
+   "GPTQ/AWQ are 4-bit weight-only methods: they shrink memory (so bigger batches fit) with small accuracy loss, but compute stays in FP16 - great for memory-bound decoding. FP8 quantizes weights and activations for actual faster math on Hopper GPUs, giving true compute speedups but needing hardware support and more careful calibration.")
+FC("llm-systems", "What is disaggregated prefill/decode serving?",
+   "Split the fleet into prefill-optimized pools (compute-heavy, high parallelism) and decode-optimized pools (memory-bandwidth-heavy), transferring KV cache between them per request. It raises utilization of both phases substantially, at the cost of KV-transfer latency over the network - worthwhile at scale (used by DistServe, Splitwise).")
+FC("llm-systems", "Temperature vs top-p vs top-k sampling?",
+   "Temperature rescales logits before softmax: <1 sharpens (greedy-like), >1 flattens (creative). Top-k keeps only the k most likely tokens. Top-p (nucleus) keeps the smallest set whose cumulative probability exceeds p, adapting to the distribution's entropy. In practice: temperature ~0.7 + top-p ~0.9 for chat; temperature 0 for factual/extraction tasks.")
+FC("llm-systems", "How does KV-cache size scale?",
+   "Per token: 2 (K and V) x layers x num_kv_heads x head_dim x bytes_per_element. For a 70B-class model (80 layers, 8 KV heads via GQA, 128 head dim, FP16): ~2*80*8*128*2 bytes = ~327KB per token. A 32k context is ~10GB per sequence - this is why GQA, quantization, and eviction policies exist.")
+FC("llm-systems", "What is FSDP / ZeRO-3?",
+   "Fully Sharded Data Parallel shards model parameters, gradients, and optimizer states across data-parallel workers, all-gathering parameters layer by layer just in time for compute. It lets you train models far larger than one GPU's memory with near-linear scaling, at the cost of extra all-gather communication per layer.")
+FC("llm-systems", "How do you benchmark LLM serving correctly?",
+   "Fix the workload first: realistic prompt-length and output-length distributions, Poisson arrivals at several QPS levels. Report throughput at a fixed latency SLO (e.g., p99 TPOT), not peak tokens/sec. Common pitfalls: benchmarking with fixed short prompts, ignoring TTFT, warming up improperly, and comparing across different quantization levels silently.")
+
+# rag-search deck (8)
+FC("rag-search", "Why rerank after retrieval?",
+   "Bi-encoder retrieval is fast but shallow: it compresses query and document into single vectors, losing token-level interactions. A cross-encoder reranker jointly encodes query+document pairs with full attention - far more accurate but 100x slower. The two-stage design gets cross-encoder quality at bi-encoder cost by reranking only the top 50-200 candidates.")
+FC("rag-search", "Recall@K vs NDCG: what do they measure?",
+   "Recall@K is the fraction of relevant documents appearing in the top K - pure coverage, ignores order. NDCG@K weights by position with logarithmic discount and handles graded relevance - it rewards putting the best documents first. Optimize recall@K for the retrieval stage (feed the reranker well) and NDCG for final ranking quality.")
+FC("rag-search", "Dense vs sparse (BM25) vs hybrid retrieval?",
+   "Dense embeddings capture semantics and paraphrase but miss exact rare terms and need training data. BM25 excels at exact keyword/identifier matches with zero training but fails on vocabulary mismatch. Hybrid (dense + BM25 fused via RRF or weighted sum) beats either alone on most real workloads - use hybrid as the default.")
+FC("rag-search", "How should you chunk documents for RAG?",
+   "Chunk size trades context completeness against retrieval precision: 200-500 tokens with small overlap is a common starting point. Structure-aware splitting (by headings, paragraphs, code blocks) beats fixed windows because it preserves semantic units. Always keep metadata (source, section, page) on each chunk for citations and filtering.")
+FC("rag-search", "What is the 'lost in the middle' problem?",
+   "LLMs attend best to the start and end of long contexts and underweight the middle - so relevant chunks placed mid-context get ignored. Mitigations: rerank so the best chunks sit at the edges, compress/deduplicate context, use smaller top-k, or switch to map-reduce summarization for very long inputs.")
+FC("rag-search", "How do you evaluate a RAG system?",
+   "Split evaluation: retrieval metrics (recall@K, MRR on a labeled query-doc set) and generation metrics (faithfulness/citation precision, answer correctness vs references). Build a golden set of real user questions with judged answers; add faithfulness checks (does every claim have a supporting chunk?) since fluency alone hides hallucinations.")
+FC("rag-search", "When does query rewriting / HyDE help vs hurt?",
+   "HyDE (generate a hypothetical answer, embed it) helps when the query is vague or vocabulary-mismatched with documents, since the hypothetical answer lives in document-space. It hurts when the LLM hallucinates misleading content that drags retrieval off-topic, and it adds latency - gate it to queries where plain retrieval demonstrably fails.")
+FC("rag-search", "RAG vs fine-tuning for domain knowledge?",
+   "RAG: cheap, fresh (update the index, not the model), cites sources; fails when knowledge needs deep reasoning integration or the retriever misses. Fine-tuning: bakes knowledge into weights for fluent use, but expensive, goes stale, and risks hallucination without citations. Default to RAG for factual knowledge; fine-tune for style, format, and behavior.")
+
+# system-design deck (8)
+FC("system-design", "Sketch the canonical ML system design answer structure.",
+   "1) Clarify: problem, scale, latency/throughput SLOs, offline vs online. 2) Data: sources, labels, feature pipeline. 3) Training: objective, model choice, evaluation. 4) Serving: architecture, caching, fallbacks. 5) Feedback loop: logging, monitoring, retraining triggers. 6) Trade-offs and failure modes. Hit all six and you cover what interviewers score.")
+FC("system-design", "Training-serving skew: what causes it and how do you detect it?",
+   "Causes: features computed differently offline vs online, label definitions drifting, data leakage in training, population shift. Detect with shadow serving (compare offline-replay predictions to live), feature-distribution monitors, and prediction-drift alerts. Fix by unifying feature code paths (one feature store, point-in-time correctness).")
+FC("system-design", "How do you design an ML A/B test correctly?",
+   "Randomize at the right unit (user, not request, to avoid interference), pre-register primary vs guardrail metrics, size the test from minimum detectable effect and variance, run long enough to cover weekly cycles, and watch for novelty effects and network interference. For models, also shadow-test before the live experiment.")
+FC("system-design", "Online vs offline evaluation for ranking models?",
+   "Offline (replay on logged data) is fast and cheap but suffers presentation bias - you only observe feedback on what was shown. Counterfactual/IPS estimators partially correct this. Online A/B tests measure true causal impact but are slow and risky. Mature teams gate launches on offline metrics, then confirm with online experiments.")
+FC("system-design", "What belongs in a feature store and why?",
+   "A feature store centralizes feature definitions so training and serving compute identical values (killing skew), provides point-in-time-correct historical values for training, and serves low-latency online lookups. Without one, every team reimplements pipelines and skew bugs multiply.")
+FC("system-design", "How do you handle cold start in recommenders?",
+   "New users: onboarding signals, popularity priors, explore-heavy bandits, demographic/contextual fallbacks. New items: content-based features, embedding via item metadata, exploration budgets to gather initial interactions. Measure time-to-first-good-recommendation as the key metric.")
+FC("system-design", "What do you monitor for a production ML model?",
+   "Four layers: (1) input feature distributions and null rates (data drift), (2) prediction distribution and calibration drift, (3) business metrics the model drives, (4) system health (latency, error rate, fallback rate). Alert on statistically significant shifts with enough volume to avoid noise, and always keep a human-readable dashboard per model.")
+FC("system-design", "Explore vs exploit in production: practical approaches?",
+   "Epsilon-greedy is the simple baseline (x% random traffic). UCB/Thompson sampling direct exploration toward uncertain items and converge faster. In practice: explore in a dedicated slice or via interleaving, measure with counterfactual estimators, and bound business risk with guardrails - never explore on revenue-critical surfaces without limits.")
+
+# misc deck (6)
+FC("misc", "What is RLHF in one minute?",
+   "Three stages: (1) supervised fine-tuning on demonstrations, (2) train a reward model on human preference comparisons, (3) optimize the policy against the reward model with PPO (KL-regularized to stay near the SFT model). DPO skips the explicit reward model by optimizing preferences directly. Failure modes: reward hacking, sycophancy, mode collapse.")
+FC("misc", "What are neural scaling laws (Chinchilla)?",
+   "For a fixed compute budget, loss is minimized by scaling parameters and training tokens together - roughly 20 tokens per parameter. Most earlier models were undertrained (too big, too few tokens). Practical takeaway: given FLOPs, do not just grow the model; grow the data proportionally, and prefer smaller models trained longer for inference efficiency.")
+FC("misc", "ReAct vs plan-and-execute agents?",
+   "ReAct interleaves reasoning and acting step by step - flexible and simple, but myopic on long tasks and prone to loops. Plan-and-execute first drafts a full plan, then executes steps - better for long horizons but brittle when the plan is wrong. Multi-agent splits roles (planner, worker, critic) - most capable but hardest to debug and most expensive.")
+FC("misc", "How do you evaluate an AI agent reliably?",
+   "Measure end-task success rate on realistic tasks first - it is the only metric that matters. Add trajectory metrics (steps taken, tool-call accuracy, cost) for diagnosis. LLM-as-judge is useful for open-ended tasks but biased (verbosity, position) - calibrate judges against human labels and never let the judge be the same model family unexamined.")
+FC("misc", "What is prompt injection and how do you defend?",
+   "Prompt injection smuggles instructions into data the agent reads (webpages, documents, tool outputs), hijacking its behavior. Defenses in depth: separate data from instructions (structured tool schemas, not free text), least-privilege tool access, human confirmation for irreversible actions, output validation, and monitoring for anomalous tool-use patterns. No single defense is sufficient.")
+FC("misc", "STAR format for behavioral questions?",
+   "Situation (one sentence of context), Task (your responsibility), Action (what YOU did - 70% of the answer, concrete verbs), Result (quantified outcome). Keep it under 2 minutes, end with what you learned. Prepare 6-8 stories covering leadership, conflict, failure, ambiguity, and technical depth - reuse them across questions.")
+
+# ---------------- write + validate ----------------
+import pathlib
+DATA = pathlib.Path(__file__).resolve().parent
+(DATA / "questions.json").write_text(json.dumps(questions, indent=2, ensure_ascii=False) + "\n")
+(DATA / "flashcards.json").write_text(json.dumps(flashcards, indent=2, ensure_ascii=False) + "\n")
+
+# validation
+CATEGORIES = {"coding","ml-coding","ml-fundamentals","transformers","llm-systems","system-design",
+              "agent-design","rag","recsys","debugging","deep-dive","behavioral","research"}
+DIFFS = {"easy","medium","hard"}
+FREQS = {"high","medium","low"}
+LABELS = {"VERIFIED","REPORTED","REPRESENTATIVE PRACTICE"}
+QREQ = {"id","question","companies","category","difficulty","time_min","frequency","label",
+        "coding","answer_available","answer_ref","source"}
+ids = set()
+for q in questions:
+    assert set(q) == QREQ, f"bad keys {q['id']}: {set(q)^QREQ}"
+    assert q["id"] not in ids, f"dup id {q['id']}"; ids.add(q["id"])
+    assert q["category"] in CATEGORIES, q["id"]
+    assert q["difficulty"] in DIFFS, q["id"]
+    assert q["frequency"] in FREQS, q["id"]
+    assert q["label"] in LABELS, q["id"]
+    assert isinstance(q["time_min"], int) and q["time_min"] > 0
+    assert isinstance(q["coding"], bool) and isinstance(q["answer_available"], bool)
+    assert q["answer_ref"].startswith("#/"), q["id"]
+    assert set(q["source"]) == {"url","accessed","note"}
+    assert len(q["question"]) > 40, q["id"]
+    if q["label"] == "VERIFIED":
+        assert q["source"]["url"], q["id"]
+
+fids = set()
+for f in flashcards:
+    assert set(f) == {"id","front","back","tags","deck"}, f["id"]
+    assert f["id"] not in fids; fids.add(f["id"])
+    assert len(f["back"].split(". ")) >= 2 or f["back"].count(".") >= 2, f["id"]
+    assert f["deck"] in f["tags"], f["id"]
+
+print("questions:", len(questions))
+print("per-category:", dict(sorted(Counter(q["category"] for q in questions).items())))
+print("company-tagged:", sum(1 for q in questions if q["companies"]))
+print("label counts:", dict(Counter(q["label"] for q in questions)))
+print("flashcards:", len(flashcards))
+print("per-deck:", dict(sorted(Counter(f["deck"] for f in flashcards).items())))

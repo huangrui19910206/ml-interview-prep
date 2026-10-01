@@ -1,43 +1,34 @@
 # TODO / Backlog
 
-Priority order. v1 (shipped 2026-10-01) at the bottom as done.
+## Remaining
 
-## P0 — before Rui's next interviews
-
-- [ ] DoorDash company page (Round 1 ML Domain Knowledge, Oct 7) — process, likely topics
-- [ ] Crusoe company page (Staff SWE, AI Model Lifecycle) — process, infra themes
-- [ ] Factory company page — debug + AI coding rounds prep
-- [ ] Debugging exercises page (NaN, shape bugs, masking, OOM, leakage...) with hint/solution UI
-- [ ] AI-native coding exercises (60–120 min builds + interviewer rubrics)
-
-## P1 — core curriculum depth
-
-- [ ] Transformers deep page (from-scratch implementations, shape reasoning drills)
-- [ ] ML fundamentals page (losses, optimization, regularization, metrics, bias/variance)
-- [ ] Deep learning foundations page
-- [ ] LLM systems page (inference: KV cache, batching, quantization; training: parallelism, RLHF/DPO)
-- [ ] RAG / search / retrieval page (major focus: BM25→HNSW→rerank→eval)
-- [ ] Recommendation systems page
-- [ ] LLM/agent system design page + framework
-- [ ] Coding exercises (warm-up / interview / hard + ML coding)
-- [ ] Behavioral / staff leadership stories page
-
-## P2 — interactive
-
-- [ ] Flashcards deck UI + seed decks (transformers, ML fund., LLM systems)
-- [ ] Mock interview mode (company × type × difficulty × duration)
-- [ ] Question bank → 150+ items, tagged (VERIFIED / REPORTED / REPRESENTATIVE)
+### P2 — interactive / completeness
 - [ ] Interview map matrix (Company × Type × Depth × AI-tools × Priority × Sources)
-
-## P3 — more companies
-
 - [ ] Harvey company page (connected recruiter Andrew Kim — active target)
-- [x] Glean, Sierra, Factory, Crusoe, DoorDash company pages
-- [x] Frontier labs: OpenAI, Anthropic, Google DeepMind, xAI
-- [x] AI infra / neocloud: CoreWeave, Lambda Labs, Together AI, Fireworks AI, Baseten, Modal, RunPod, Nebius
 - [ ] Resources/sources page (papers, blogs, courses with dates)
+- [ ] Grow question bank beyond 160 toward 200+ with REPORTED items as real
+      candidate reports come in (never fabricate VERIFIED labels)
 
-## Done
+### P3 — polish
+- [ ] "Interview Tomorrow" page (full-day plan) and "7-Day Preparation Plan"
+      (spec §17 — cram page exists; these two are not yet built)
+- [ ] Visual QA pass on mobile (drawer nav, tables, code blocks at 390px)
+- [ ] More company pages as Rui's pipeline expands (adding one = one Markdown file)
 
-- [x] 2026-10-01 — v1: shell, 30-min cram, Uber page, ML system-design framework,
-      project deep-dive framework; deployed to GitHub Pages
+## Done (2026-10-01)
+
+- [x] v1 shell: SPA, hash routing, search, dark/light, flashcards UI, mock interview UI,
+      question bank UI, progress tracking — deployed to GitHub Pages
+- [x] 30-minute cram page
+- [x] Uber page (p0, interviewing); DoorDash, Crusoe, Factory pages
+- [x] Glean, Sierra, OpenAI, Anthropic, Google DeepMind, xAI pages
+- [x] Infra: CoreWeave, Lambda Labs, Together AI, Fireworks AI, Baseten, Modal, RunPod, Nebius
+- [x] ML system-design 18-step framework; project deep-dive framework
+- [x] Transformers (deep, from-scratch); ML fundamentals; deep learning
+- [x] LLM systems (inference/training/long-context/evals)
+- [x] RAG/search/retrieval; recommendation systems
+- [x] LLM/agent system design; coding exercises (16, tested)
+- [x] Debugging exercises (13, hint/solution UI); AI-native coding; behavioral
+- [x] Question bank: 160 items, tagged; flashcards: 61
+- [x] Renderer bugfix: inline-math regex no longer swallows `$200M`-style currency
+      across lines (was eating `:::directive` blocks)

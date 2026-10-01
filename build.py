@@ -167,11 +167,13 @@ class Renderer:
             text,
             flags=re.S,
         )
+        # Inline math: single-line only (no re.S), and never treat currency
+        # like $200M / $5B / $/token as math: opening $ must not be
+        # followed by $ or a digit.
         return re.sub(
-            r"(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)",
+            r"(?<!\$)\$(?![\$\d])([^$\n]+?)(?<!\$)\$(?!\$)",
             lambda m: self._stash("IMATH", "$" + m.group(1) + "$"),
             text,
-            flags=re.S,
         )
 
     # -- directives ------------------------------------------------------
