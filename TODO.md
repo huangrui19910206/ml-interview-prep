@@ -31,9 +31,10 @@ Priority order. v1 (shipped 2026-10-01) at the bottom as done.
 
 ## P3 — more companies
 
-- [ ] Glean, Sierra, Harvey company pages
-- [ ] Frontier labs: OpenAI, Anthropic, Google DeepMind, xAI
-- [ ] AI infra / neocloud: CoreWeave, Lambda, Together AI, Fireworks AI, Baseten, Modal, RunPod, etc.
+- [ ] Harvey company page (connected recruiter Andrew Kim — active target)
+- [x] Glean, Sierra, Factory, Crusoe, DoorDash company pages
+- [x] Frontier labs: OpenAI, Anthropic, Google DeepMind, xAI
+- [x] AI infra / neocloud: CoreWeave, Lambda Labs, Together AI, Fireworks AI, Baseten, Modal, RunPod, Nebius
 - [ ] Resources/sources page (papers, blogs, courses with dates)
 
 ## Done
