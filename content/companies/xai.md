@@ -10,7 +10,7 @@ company: "xAI"
 priority: "p1"
 status: "target"
 process_sources:
-  - { label: "OFFICIAL", url: "https://www.monster.com/job-openings/senior-grok-engineer-palo-alto-ca--2f2fa17e-b4ae-48b6-b4a7f6a4f6a4f6a4f", accessed: "2026-10-01", note: "xAI job postings state the interview process: 15-min phone interview (technical) → deep dive coding challenge → meet and greet with wider team (+ take-home project / final technical screen); goal to complete within one week" }
+  - { label: "OFFICIAL", url: "", accessed: "2026-10-01", note: "xAI job postings (Senior Grok Engineer; Pantera Capital listing) print the interview process: 15-min phone interview (technical) → deep dive coding challenge → meet and greet with wider team (+ take-home project / final technical screen); goal to complete within one week. Posting URL not captured verbatim in this pass — confirm via xAI careers page" }
   - { label: "REPORTED", url: "https://github.com/landedjobs/ai-interview-guides/blob/HEAD/guides/xai.md", accessed: "2026-10-01", note: "landedjobs guide: 15-30m engineer call → 60m screen → 2-3 round virtual onsite (applied coding, system design, ML) → presentation → culture → decision 1-5 days" }
   - { label: "REPORTED", url: "https://github.com/kevin-2023-code/tech-interview-questions/blob/HEAD/companies/xai.md", accessed: "2026-10-01", note: "31-question catalog; most-reported: in-memory KV store w/ nested transactions, rate limiter (lazy refill), LRU cache, concurrency debugging, web crawler" }
 ---
