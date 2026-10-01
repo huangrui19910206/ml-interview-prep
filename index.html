@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<script>/* no-flash theme init */(function(){try{var t=localStorage.getItem('mlip.theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ML Interview Prep</title>
+<meta name="description" content="Fast, practical interview prep for senior/staff ML engineer interviews: cram sheets, company prep, system design, coding, mock interviews.">
+<link rel="stylesheet" href="assets/style.css?v=f2982e8b">
+<!-- KaTeX (math) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<!-- highlight.js theme is handled via CSS variables in style.css -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<!-- Mermaid (diagrams) -->
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<!-- highlight.js (code) -->
+<script defer src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#app">Skip to content</a>
+<header class="topbar">
+  <button id="nav-toggle" class="icon-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <a class="brand" href="#/">▚ ML Interview Prep</a>
+  <div class="search-wrap">
+    <input id="search" type="search" placeholder="Search topics…  ( / )" autocomplete="off" aria-label="Search">
+    <div id="search-results" class="search-results" hidden></div>
+  </div>
+  <nav class="top-links">
+    <a href="#/mock" title="Mock interview">🎙 Mock</a>
+    <a href="#/questions" title="Question bank">❓ Bank</a>
+    <a href="#/flashcards" title="Flashcards">🗂 Cards</a>
+  </nav>
+  <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark/light mode" title="Toggle theme">◐</button>
+</header>
+<div class="layout">
+  <aside id="sidenav" class="sidenav" aria-label="Sections">
+    <nav id="nav"></nav>
+  </aside>
+  <div id="sidenav-scrim" class="scrim" hidden></div>
+  <main id="app" class="content" tabindex="-1"></main>
+  <aside id="tocside" class="tocside" aria-label="On this page">
+    <div id="toc"></div>
+  </aside>
+</div>
+<footer class="footer">
+  <span>ML Interview Prep · static SPA · built <span id="built-at"></span></span>
+  <span class="footer-links"><a href="#/">Home</a> · <a href="#/questions">Question bank</a> · <a href="#/mock">Mock</a></span>
+</footer>
+<noscript><p style="padding:2rem">This site needs JavaScript to render content.</p></noscript>
+<script defer src="assets/app.js?v=f2982e8b"></script>
+</body>
+</html>
