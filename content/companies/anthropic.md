@@ -17,6 +17,8 @@ process_sources:
   - { label: "REPORTED", url: "https://www.interviewquery.com/guides/anthropic-software-engineer", accessed: "2026-10-06", note: "OA (90-min proctored, 4 progressive levels) → live 90-min CodeSignal screen → final loop; references contacted at multiple points in parallel with interviews" }
   - { label: "REPORTED", url: "https://medium.com/@mockingbird_71808/a-breakdown-of-anthropics-5-round-swe-loop-073723fde2ca", accessed: "2026-10-06", note: "2026-06-29: recruiter screen → 90-min OA → HM deep-dive → two-part virtual onsite on different days (part 2 only if part 1 passes); breadth across coding/SD/project ownership/ethical reasoning; AI assistance prohibited in all live rounds" }
   - { label: "REPORTED", url: "https://www.tryexponent.com/experiences/anthropic-senior-software-engineer-interview-2ffa5f", accessed: "2026-10-06", note: "Senior SWE Safeguards 2026: onsite = HM + coding + company values + SD + coding; values round run by nontechnical people 'like a therapy session' probing feelings; prep behaviorals harder than technicals; skepticism beats generic 'I love your mission'" }
+  - { label: "REPORTED", url: "https://medium.com/@hack2hire.share/what-anthropic-actually-tests-and-what-gets-candidates-rejected-2026-2726b802f250", accessed: "2026-10-06", note: "Analysis of 15 firsthand 2026 reports: coding gate is library fluency (PIL/concurrency), narrated testing scored explicitly; SD is written Google-Doc 'Prompt Playground' (no diagrams), hold your structure vs aggressive pacing; values round needs a NAMED Anthropic value + personal history + critique of Anthropic tradeoffs; project retro is 20-min candidate-driven + adversarial challenge; <24h rejection = technical fail, 2-3 days = culture/HM fail" }
+  - { label: "REPORTED", url: "https://www.glassdoor.com/Interview/Anthropic-Interview-E8109027.htm", accessed: "2026-10-06", note: "2026 SWE reports: OA is 4-stage same-problem build-up (OOP, refactors); onsite = phone screen + code screen + Coderpad + SD + presentation + ethical AI; reported questions: 'what ways do you disagree with our AI approach?', effective-altruism beliefs, 'design a chat app'; even max OA score doesn't guarantee human review" }
 ---
 
 ## TL;DR
@@ -404,6 +406,7 @@ add:
 - [ ] **image pipeline**：PIL resize/rotate → batch → 多进程 → 坏文件加固；大声报出每步输出尺寸（面试官会抠）
 - [ ] **concurrent crawler**：只爬同 hostname、去 fragment、去重 → 并发
 习惯：沟通 > 一次写对；变量命名规范；讲 tradeoff 的适用场景（"数据量很小时 linear search 可能更快"这类工程判断是 staff 加分项）。
+评分方式（2026 年 15 份一手报告分析）：**library fluency 才是真门槛**——PIL/Pillow、Python 并发原语不熟，光算法强会在 follow-up 前超时，LeetCode 刷题不直接迁移；**边写边测、边讲边验证有明确加分**——默默写出完整解的人，得分低于展示可见推理过程的未完成者。全程出声：跑测试、讲推理、验 edge case。
 
 ### System design 轮
 
@@ -411,6 +414,7 @@ add:
 - [ ] distributed search（1B docs / 1M QPS / p99 < 100ms）全流程**带数字**走一遍：shard、replica、cache 层、ranking merge、tail 处理
 - [ ] follow-up traps：hot-term skew、freshness vs. cache TTL 的 tension、hedging 成本、10× 流量先崩哪里
 - [ ] **design-doc review**：拿自己写过的设计文档红队一遍——找 unstated assumptions、缺失的 failure mode、可被 gaming 的指标
+形式注意：有所谓 "Prompt Playground" 式 SD——**书面 Google Doc 讨论，不画图、不评图**；考察打字推理的深度（requirements、schema、scaling），广度不考。面试官会 aggressively 带节奏——**守住自己的结构**，别被牵着走而丢了 requirements 和 scaling 的深度。
 
 ### Project deep-dive
 
@@ -418,6 +422,8 @@ add:
 - [ ] **"5th Layer" 故事线**：现象 → 测量 → 决策 → 影响（5 分钟版 + 15 分钟版）
 - [ ] 预演 expert 追问：为什么这个实验设计？反事实是什么？换种测量方式结论还成立吗？
 - [ ] Coupang ranking 严谨性故事：选"慢而谨慎的实验"而非"快的"的那次
+- [ ] **20 分钟 candidate-driven presentation**：全程你带节奏，不用等 prompt；之后是 adversarial challenge——专门挑你一带而过的细节反复拷问，提前给每个"略过"的点准备纵深
+- [ ] HM 可能显得 cold/disengaged——别被带偏，这是常态；但 team fit 不过硬前面白搭
 
 ### Values / culture 轮 — GATE #2
 
@@ -425,6 +431,8 @@ add:
 - [ ] 4 个故事各备 90 秒版 + 5 分钟版 + "这让我学到了什么"收尾，**讲感受不只讲逻辑**
 - [ ] 一个真实道德困境：两难是什么、你的推理过程、事后怎么看
 - [ ] 态度：诚实自省 > 打磨过的 STAR；带一点怀疑精神。据教练反馈，把这轮当标准 behavioral 背稿的人表现反而差——面试官要的是真实的自我反思和道德复杂性。
+- [ ] **点名一个具体的 Anthropic 价值**（如 intellectual honesty、mission-first），给出你亲身经历过的例子，再加一段对 Anthropic 自身 tradeoff 的批判性思考。"我在乎 responsible AI"这种放哪家都成立的答案必挂——要的是 **demonstrated 对齐，不是 stated 对齐**。
+- [ ] 预演真题："**你有哪些地方不同意我们的 AI 路线？**"、"你的 effective altruism 信念是什么？"——诚实、有论据，别和稀泥。
 - [ ] 了解：**offer 薪资不接受谈判**（Axios 报道：标准流程，no counteroffer）——这家不适用谈判策略。
 
 ### 通用资料（全流程）
@@ -433,6 +441,7 @@ add:
 - [ ] "Demystifying evals for AI agents"（Anthropic engineering blog，eval  hygiene 的标杆）
 - [ ] reference 名单提前准备好（背调可能在流程中途并行启动）
 - [ ] 慢流程心态建设：轮次间隔 2–3 周正常，全程 1–2 个月；拒信是模板不给 feedback，别内耗
+- [ ] 读信号：onsite 后**24 小时内拒 = 技术轮挂；2–3 天后才拒 = culture/HM 挂**（2026 多份报告的一致模式）——等结果时心里有数
 
 ## 30-minute checklist — before the recruiter call (Wed 10/7, 11 AM)
 
