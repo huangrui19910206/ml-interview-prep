@@ -24,210 +24,264 @@ process_sources:
 ## TL;DR
 
 **Status: OA passed 2026-10-06. Next: intro/recruiter call with Yulia
-Serhiyenia, Wed 2026-10-07 11:00–11:20 AM PT.** REPORTED 2026 shape (25-post
-1point3acres compilation, Oct 2026):
+Serhiyenia, Wed 2026-10-07 11:00–11:20 AM PT.**
 
-- **Recruiter/HR screen (~30 min) → technical phone (senior+ often SD
-  first, else practical coding) → virtual onsite 4–5 rounds (SD, coding,
-  HM, project deep-dive, values/culture)** → team match → references.
-  Your OA (build-a-system, multi-stage) already cleared the first filter.
-- **Gate #1 is the recruiter screen, not the onsite:** ~20 min of
-  why-Anthropic + AI safety deep-dive; shallow answers fail people with 10
-  years of experience [REPORTED]. Prepare this FIRST.
-- **Gate #2 is the values round:** run by nontechnical interviewers, feels
-  like a therapy session — they probe *how you felt*, not just what you
-  did. Skeptical honesty beats generic "I love your mission" [REPORTED].
-- Pace is **slow**: 2–3 weeks between rounds, 1–2 months end to end.
-  Rejections are template with no feedback.
-- OFFICIAL: **no AI assistance in any live round** —
-  [candidate-ai-guidance](https://www.anthropic.com/candidate-ai-guidance).
-  References may be contacted *mid-process*, in parallel with interviews.
+The two gates that eliminate the most qualified candidates are **not**
+technical — they're the recruiter screen (why-Anthropic + AI safety depth)
+and the values round (demonstrated, not stated, alignment). Prepare those
+first; the technical rounds reward practical engineering over LeetCode.
 
-## Company & product
-
-Anthropic: the Claude model family, known for the safety-first research
-culture — **Constitutional AI**, interpretability research, and widely-cited
-engineering writing (including the "Demystifying evals for AI agents" piece
-that adopted Sierra's τ-bench pass^k framing). The culture prizes careful
-reasoning, intellectual honesty, and safety impact alongside capability.
-
-## Role expectations
-
-Staff Software Engineer, Search (INFERRED from JD + level):
-
-- **Staff bar = scope and influence, not just depth.** Expect the HM and
-  deep-dive rounds to probe: leading a technical direction across teams,
-  setting quality bars, resolving cross-team disagreements. Your Coupang
-  tech-lead story (Search & Discovery, generative retrieval) is the anchor —
-  prepare 2–3 scope-and-impact narratives, not just technical ones.
-- **Search domain depth:** retrieval architecture, indexing pipelines,
-  ranking/re-ranking, query understanding, latency budgets, freshness vs.
-  cost tradeoffs. This is your home turf — the SD round likely lives here
-  (reported example: distributed search over 1B docs at 1M QPS).
-- **AI-adjacent fluency:** retrieval-augmented generation, evals, safety as
-  a systems concern (abuse-resistant serving, prompt-injection
-  considerations in a search stack).
-- **Values alignment:** the values round gates offers; it's about how you
-  reason under uncertainty and disagreement, not reciting principles.
-
-## Interview process
-
-OA ✅ passed 2026-10-06 (90 min, 4 progressive build-a-system levels —
-**not** LeetCode; "get it built, running, and handle edge cases" is the
-bar). All remaining rounds REPORTED BY CANDIDATES (Oct 2026 refresh).
-
-### Recruiter / HR screen (~30 min) — GATE #1
-
-**Substantive and failable.** Expect ~20 min of *why Anthropic* + AI safety
-deep-dive [REPORTED Oct 2026]. Sample questions seen in 2026:
-
-- How is Anthropic different from other AI labs, and why Anthropic *over
-  the others*?
-- What does AI safety mean to you, personally? What happens if AI is misused?
-- What's the most underrated problem in AI right now?
-- React to a recent Anthropic announcement — what's your read?
-
-Failure mode: answering *why Anthropic* shallowly. A 10-year candidate
-failed here [REPORTED]. Prepare a 2-minute, specific, slightly skeptical
-version (see the answer bank below) — generic mission-praise reads as
-unprepared.
-
-Your intro call (Yulia, 10/7, 20 min) is the opening of this stage; the
-substantive screen may be the same call or scheduled right after.
-
-### Technical phone (60–90 min)
-
-For senior+ this is **often system design first** [REPORTED Oct 2026] —
-inference/search-flavored (e.g., inference batching; distributed search).
-Otherwise practical coding in the OA spirit: parsing logs, file
-deduplication, concurrent crawler. Interviewers are quiet; it reads as
-evaluation, not collaboration.
-
-### Virtual onsite — two parts on different days (4–5 rounds)
-
-Part 2 is only scheduled if part 1 passes [REPORTED].
-
-1. **HM deep-dive** — background, scope, technical taste, team fit. At staff
-   level: org-level impact stories.
-2. **Coding × 1–2** — practical, CodeSignal-spirit. 2026 high-frequency:
-   **file deduplication**, **image processing pipeline** (resize/rotate,
-   PIL, batch, multiprocessing), **concurrent crawler** (sync first, then
-   async; visited-set thread safety). TypeScript sometimes allowed; you may
-   get **no test cases and have to fix your own environment issues**
-   [REPORTED] — practice debugging blind.
-3. **System design** — inference/search production: batching strategies, KV
-   cache, GPU memory, load shedding, idempotency. 2026 trend: **design-doc
-   review** — you're handed a doc and asked to find its holes.
-4. **Project deep-dive** — your best work under expert questioning. The
-   "5th Layer" training–serving skew writeup is strong material.
-5. **Values / culture** — GATE #2. See templates below.
-
-2026-new round types seen on SWE loops: **agentic coding** (real repo,
-Claude Code, produce a PR) and **network debugging role-play** (perf/infra).
-Prepare for the possibility, not the certainty.
-
-### Logistics and failure modes
-
-- **Pace:** 2–3 weeks between rounds is normal; 1–2 months end to end.
-  Don't idle — keep other processes warm.
-- **Feedback:** rejections are template, no feedback given. Silence ≠
-  rejection for weeks.
-- **References:** may be contacted **mid-process, in parallel** with
-  interviews — have your list ready early [REPORTED].
-- **No AI assistance in any live round** (OFFICIAL policy) — prep solo,
-  think solo.
-- **Team match** happens after the loop: passing the loop doesn't guarantee
-  a team wants you; have a crisp "what I want to build" pitch.
-
-## Why Anthropic & AI safety — answer bank
-
-This is the highest-leverage prep on the page: it's the round that fails
-the most qualified candidates, and it comes *first*.
-
-:::tldr
-Have a 2-minute why-Anthropic that is **specific, personal, and slightly
-skeptical**. Read **Anthropic's Core Views on AI safety** + the
-Constitutional AI paper summary + the last 90 days of Anthropic news before
-any screen. Shallow = fail.
+:::warn
+OFFICIAL: **no AI assistance in any live round** —
+[anthropic.com/candidate-ai-guidance](https://www.anthropic.com/candidate-ai-guidance).
+Violating it is an instant fail. Prep solo, think solo.
 :::
 
-### The 2-minute framework
+## The process at a glance
 
-1. **Personal hook (30s):** one concrete moment from your work where safety/
-   reliability *actually* cost you something — e.g., holding back a
-   generative-retrieval launch at Coupang because offline metrics hid a
-   serving skew (your 5th Layer story). Real stakes > abstract concern.
-2. **Why this lab, not others (45s):** name something *specific* —
-   Constitutional AI as a research program, the interpretability agenda,
-   the evals culture ("Demystifying evals" and broken-harness thinking).
-   Contrast without trashing others.
-3. **What you'd build (30s):** tie to the Search role — abuse-resistant
-   retrieval, evaluation rigor for RAG, measurement honesty.
-4. **Honest tension (15s):** one thing you're genuinely unsure about
-   (capability vs. safety tradeoffs, open vs. closed). Skepticism signals
-   thinking; pure praise signals rehearsal.
+OA ✅ done (90 min, 4 progressive build-a-system levels — "get it built,
+running, handle edge cases"). Everything below is REPORTED BY CANDIDATES
+(Oct 2026 refresh).
 
-### Safety questions seen in 2026 screens — talking points
+| # | Round | Format | What actually decides it |
+|---|-------|--------|--------------------------|
+| R0 | Recruiter / HR screen | 20–30 min video | **GATE #1** — why-Anthropic + AI safety, answered with depth |
+| R1 | Technical phone | 60–90 min | Senior+: usually **SD first** (search/inference); else practical coding |
+| R2 | HM deep-dive | 45–60 min | Scope & influence at staff level; team fit |
+| R3 | Coding × 1–2 | 45–60 min each | **Library fluency** (PIL, concurrency) + narrated testing |
+| R4 | System design | 50–55 min | Depth on requirements/schema/scaling; written or whiteboard |
+| R5 | Project deep-dive | 45–60 min | 20-min driven presentation + adversarial defense |
+| R6 | Values / culture | 45–60 min | **GATE #2** — demonstrated alignment, named values, real tradeoffs |
 
-- **"What does AI safety mean to you?"** — Don't define the field; define
-  *your* relationship to it. Failure modes you've touched (reward hacking
-  in ranking, eval gaming, feedback loops), plus where you think the hard
-  problems are (deployment, misuse, concentration of power).
+The onsite is split into **two parts on different days** — part 2 is only
+scheduled if part 1 passes [REPORTED]. 2026-new round types seen on some
+loops: **agentic coding** (real repo, Claude Code, produce a PR) and
+**network debugging role-play**. Possible, not certain.
+
+## Company & role in one paragraph
+
+Anthropic (Claude) — safety-first research culture: **Constitutional AI**,
+interpretability as a research *program*, and unusually good engineering
+writing (e.g. "Demystifying evals for AI agents": most agent failures are
+broken harnesses, not weak models). For **Staff SWE, Search**: the staff
+bar is **scope and influence**, not just depth — expect R2/R5 to probe
+technical direction-setting across teams, quality bars, and cross-team
+disagreements. Your Coupang tech-lead story (Search & Discovery, generative
+retrieval, multi-stage ranking) is the anchor for the whole loop.
+
+---
+
+## R0 — Recruiter / HR screen · GATE #1
+
+**Format:** 20–30 min video (your intro call with Yulia, 10/7, is the
+opening of this stage; the substantive screen may be the same call or
+scheduled right after). **What they're testing:** whether you've actually
+thought about *this* lab — ~20 min of why-Anthropic + AI safety deep-dive
+[REPORTED]. A 10-year candidate failed here for shallow answers.
+
+**How to answer — the 2-minute why-Anthropic.** Structure it in four
+beats. Below each beat is an angle from *your* background — make it yours,
+don't memorize a script:
+
+1. **Personal hook (30s)** — one moment where safety/reliability *cost*
+   you something real. Yours: holding back the Coupang generative-retrieval
+   launch when offline metrics hid a training–serving skew (your 5th Layer
+   story). "Choosing measurement honesty over shipping" is a lived value,
+   not a slogan.
+2. **Why this lab, not others (45s)** — name *specific* things:
+   Constitutional AI as a research program (RLAIF, the critique loop), the
+   interpretability agenda ("what is the model actually doing" as a
+   first-class question), the evals culture. Contrast without trashing
+   others.
+3. **What you'd build (30s)** — tie to Search: abuse-resistant retrieval,
+   eval rigor for RAG. "I'm allergic to metrics that lie."
+4. **Honest tension (15s)** — one thing you're genuinely unsure about
+   (open vs. closed, pace of deployment). Skepticism signals thinking;
+   pure praise signals rehearsal.
+
+:::collapse How to answer each safety question (2026 reported set)
+- **"What does AI safety mean to you, personally?"** — Don't define the
+  field; narrate *your contact* with it: "In ranking I've lived the mild
+  versions — reward hacking (the model games the click objective), eval
+  gaming (offline metrics that don't predict online), feedback loops
+  (ranking shapes the data it trains on). Safety at scale is those failure
+  modes with higher stakes and less reversibility." Then: where you think
+  the hard problems are — deployment, misuse, concentration of power.
 - **"How is Anthropic different from other AI labs?"** — Research-led
-  safety (Constitutional AI, interpretability as a *program* not a team),
-  public technical writing, slower/measured deployment posture. Have one
-  concrete artifact to cite (a paper or engineering post you actually read).
-- **"What happens if AI is misused?"** — Show you can reason about
-  dual-use concretely: pick one domain (e.g., search/ranking
-  manipulation, persuasion at scale) and walk through the mechanism, not
-  slogans.
+  safety (interpretability as a *program*, not a team), public technical
+  writing, measured deployment posture. Cite one artifact you actually
+  read (a paper or engineering post).
+- **"What happens if AI is misused?"** — Walk a mechanism, not slogans.
+  Your domain: search/ranking manipulation — adversaries manufacture
+  engagement signals (click farms, content farms tuned to the ranker); at
+  LLM scale, prompt-injection in indexed content and corpus poisoning.
+  "The system millions trust to tell them what's true becomes a
+  manipulation surface." Then one mitigation direction (adversarial evals,
+  provenance).
 - **"Biggest risks and benefits of advanced AI?"** — Two-sided, specific,
-  and personal: which risk worries *you* most given what you've built, and
+  personal: which risk worries *you* most given what you've built, and
   which benefit motivates your work.
-- **"React to a recent Anthropic announcement."** — Check their blog/news
-  the week of the interview. Have a take with a supporting argument and a
+- **"React to a recent Anthropic announcement."** — Skim the blog/newsroom
+  the week of the interview. Bring one take with an argument *and* a
   counter-argument.
+- **"What ways do you disagree with our AI approach?"** — Honest, with
+  reasoning. Example angle (make it yours): "I worry caution can become a
+  brand story — does the interpretability agenda cash out into deployment
+  decisions, or stay a research program while the product ships anyway? I
+  don't have the answer; that's a reason to be inside the room."
+- **"If we abandoned AI ambitions for safety and the stock went to zero,
+  how would you feel?"** (Axios-reported culture question) — There's no
+  right answer; they're testing whether you've thought about the tradeoff.
+  Honest version: "I'd be disappointed — lying otherwise would be fake —
+  but a lab that won't sacrifice revenue for safety isn't the lab I signed
+  up for. What I'd want is to understand the reasoning, not just the
+  outcome."
+:::
 
-### Mistakes that fail this round
+**Prep checklist:**
+- [ ] Read Anthropic's **Core Views on AI safety** (official site) +
+  Constitutional AI one-pager (critique loop, RLAIF, failure modes)
+- [ ] Write your 2-minute why-Anthropic (four beats above); say it out
+  loud once — specific > sweeping
+- [ ] Prepare one dual-use walkthrough (search/ranking manipulation) and
+  one recent-news take (argument + counter-argument)
+- [ ] Rehearse the equity-to-zero question in your own honest words
 
-- Generic "I love your mission / AI safety is important."
-- Knowing *zero* Anthropic-specific work (no paper, no post, no product
-  detail).
-- Treating safety as compliance rather than a technical problem.
-- Being unable to name a genuine disagreement or uncertainty.
+**Failure modes:** generic "I love your mission"; zero Anthropic-specific
+knowledge (no paper/post/product detail); treating safety as compliance;
+unable to name a genuine disagreement.
 
-## Priority topics
+---
 
-1. **Constitutional AI / alignment:** RLAIF, harmlessness–helpfulness
-   tradeoffs, red-teaming concepts.
-2. **Post-training:** RLHF, DPO, GRPO (2026-named), reward hacking.
-3. **Transformers & training:** attention, optimization, scaling laws,
-   compute estimation (FLOPs math for training runs).
-4. **Interpretability:** features, circuits — conversational fluency, not
-   implementation.
-5. **Eval design:** their engineering blog sets the bar — eval hygiene,
-   broken-harness failure modes, LLM-as-judge limits.
-6. **System design:** distributed search at 1B docs / 1M QPS (reported
-   example) — retrieval, sharding, caching.
-7. **CodeSignal-style evolution problems:** in-memory DB → scans → TTL →
-   compression; practice the *extension* pattern.
+## R1 — Technical phone
 
-## Company-specific themes
+**Format:** 60–90 min. For senior+ this is **often system design first**
+[REPORTED] — inference/search-flavored. Otherwise practical coding in the
+OA spirit (log parsing, file dedup, concurrent crawler). Interviewers tend
+to be quiet; it reads as evaluation, not collaboration.
 
-- **Safety as first-class:** not a compliance checkbox — the research culture
-  treats safety as the hard technical problem. Engage sincerely.
-- **Intellectual honesty:** the values round probes how you handle being
-  wrong and uncertain — "I don't know, here's how I'd find out" beats
-  bluffing.
-- **Writing culture:** Anthropic's engineering blog is unusually good; clear
-  technical writing is a hiring signal (your Medium piece helps).
-- **Candidate AI guidance:** they have an *official policy* on AI use in
-  interviews — read it; violating it is an instant fail.
+**What they're testing:** can you do the actual job's core work under mild
+pressure — production-flavored design or build-and-extend coding.
 
-## Likely system-design domains
+**How to handle it:**
+- If SD: open with 5 min of clarifying questions (read/write mix, scale,
+  latency budget, freshness SLA) before drawing anything. Then use the
+  R4 search framework below — the phone SD is usually a narrower slice of
+  it (e.g. "design the indexing pipeline" or "design inference batching").
+- If coding: state the plan first ("I'll walk the tree, hash in chunks so
+  I don't load whole files, then..."), then code. Narrate continuously.
 
-REPRESENTATIVE PRACTICE (not reported as asked — do not claim otherwise).
-Use the 18-step framework in [#/ml-system-design](#/ml-system-design).
+**Prep checklist:**
+- [ ] Search SD framework (R4) — be able to whiteboard the 8 steps from
+  memory
+- [ ] Inference batching numbers: batching vs. latency tradeoff, KV-cache
+  memory math (see R4 worked example)
+- [ ] Concurrent crawler: sync version → async version, thread-safe
+  visited set
+
+---
+
+## R2 — HM deep-dive
+
+**Format:** 45–60 min with the hiring manager. **What they're testing:**
+staff-level scope and influence, technical taste, team fit. Note: the HM
+can appear **cold or disengaged** — that's reported as normal, not a
+signal. Poor team fit here can block an offer regardless of earlier rounds.
+
+**How to answer — prepare 3 scope & influence stories** (not just
+technical wins). For each: situation → your call → who you had to convince
+→ what happened → what it cost:
+
+1. **Set a technical direction** — yours: the Coupang generative-retrieval
+   bet as tech lead. What the options were, why you chose it, who
+   disagreed, what happened.
+2. **Resolved a cross-team disagreement** — incentives in conflict
+   (e.g. another team optimizing for ship velocity vs. your quality bar).
+   How you reasoned, not just the outcome.
+3. **Raised a quality bar / held a launch** — the 5th Layer hold-back
+   works here too; emphasize the *organizational* courage, not just the
+   technical finding.
+
+Plus:
+- **30-second "what I want to build" pitch** — Search direction + why
+  you're the person (feeds team-match later).
+- **3 questions for the HM**: team roadmap for the next year, what
+  "great" looks like for staff on this team, the biggest risk to the
+  team's mission right now.
+
+**Prep checklist:**
+- [ ] Write the 3 stories with the beats above; 90-sec and 5-min versions
+- [ ] 30-sec pitch out loud once
+- [ ] 3 HM questions ready (genuinely curious ones — they can tell)
+
+---
+
+## R3 — Coding rounds × 1–2
+
+**Format:** 45–60 min each, live coding (Coderpad-style). 2026
+high-frequency: **file deduplication**, **image processing pipeline**,
+**concurrent crawler**. You may get **no test cases** and have to fix your
+own environment issues — practice debugging blind. TypeScript sometimes
+allowed.
+
+**What they're actually testing** (15-report 2026 analysis): **library
+fluency, not algorithms** — PIL/Pillow and Python concurrency primitives
+are the gate; pure LeetCode prep doesn't transfer. And **narrated testing
+is scored explicitly**: thinking aloud while verifying beats a silently
+completed solution.
+
+**How to work each drill** (45–60 min each, blind, no harness):
+
+:::collapse Drill 1 — File deduplication
+Say the plan first: "I'll walk the tree with os.walk, hash each file in
+chunks (don't load multi-GB files whole), map hash → paths in a dict,
+report groups with >1 path." Edge cases to call out: empty files (all
+hash equal — decide policy), "no duplicates → no output" (this exact edge
+failed a candidate who needed a hint), symlinks, permission errors.
+Then: "now concurrent" — ThreadPoolExecutor (IO-bound), thread-safe
+result collection; mention why threads not processes here, and where you'd
+switch (CPU-bound hashing at scale). Also be ready for "cpu/io related"
+follow-ups [REPORTED].
+:::
+
+:::collapse Drill 2 — Image processing pipeline
+PIL resize/rotate on a batch — **say the output dimensions out loud as
+you go** (interviewers probe this; one candidate argued a full round over
+it). Then batch loop → add multiprocessing → harden against corrupt
+files (try/except per file, log-and-continue, don't kill the batch).
+Follow-ups stack: pipeline parallelism on top of multiprocessing.
+:::
+
+:::collapse Drill 3 — Concurrent crawler
+"Given a helper that crawls a URL": BFS with a queue, same-hostname check
+via urlparse, strip fragments, dedupe via visited set. Write single-thread
+first, then convert: ThreadPoolExecutor + lock around the visited set, or
+asyncio + semaphore. Call out politeness/robots only if asked — don't
+gold-plate.
+:::
+
+**Working discipline (this is scored):** think aloud the entire time —
+"I'll do X because Y". Run tiny tests as you go and narrate results.
+When stuck, say what you'd check next. Clean names, small functions.
+
+**Prep checklist:**
+- [ ] Each drill once, timed, blind (no test harness), narrating out loud
+- [ ] PIL quick-ref: resize/rotate/convert sizes — know the API cold
+- [ ] concurrency quick-ref: ThreadPoolExecutor, locks, asyncio.Semaphore
+
+---
+
+## R4 — System design
+
+**Format:** 50–55 min. Two possible shapes: classic whiteboard, or the
+2026 "Prompt Playground" — a **written Google-Doc discussion, no diagrams
+expected or evaluated**. Either way they go **deep on one topic**
+(requirements → schema → scaling), not broad. The interviewer may drive
+pacing aggressively — **hold your own structure**; deferring to their
+rhythm is how candidates drop requirements/scaling depth.
+
+**Time allocation:** 5 min clarifying → 5 min high-level → 25 min deep
+dive (pick the hardest part) → 10 min failure modes → 5 min evals.
 
 ### The search round — 1B docs, 1M QPS, p99 < 100ms (reported example)
 
@@ -235,222 +289,171 @@ Your home turf. Walk it with arithmetic, not adjectives:
 
 1. **Scope:** read-heavy? write rate? freshness SLA (seconds vs minutes)?
    Query mix (head/torso/tail) — the tail decides the architecture.
-2. **Indexing pipeline:** crawl/ingest → parsing → tokenization → inverted
-   index build; batch vs. streaming index updates; segment merges.
+2. **Indexing pipeline:** crawl/ingest → parsing → tokenization →
+   inverted index build; batch vs. streaming updates; segment merges.
 3. **Sharding:** document sharding (scatter-gather, tail latency) vs. term
    sharding (hot-term skew); hybrid. Shard count from QPS ÷ per-shard QPS.
 4. **Replication & consistency:** N replicas for QPS; freshness lag budget
    per replica; what "stale" means to the user.
-5. **Caching layers:** query-result cache (head queries), posting-list
-   cache, ranking-feature cache; invalidation on index updates.
-6. **Retrieval → ranking:** candidate generation (BM25/ANN), then
-   multi-stage ranking; where the LLM/reranker sits and what it costs;
-   merge across shards (top-k merge, score normalization).
+5. **Caching layers:** query-result cache (head), posting-list cache,
+   ranking-feature cache; invalidation on index updates.
+6. **Retrieval → ranking:** candidate gen (BM25/ANN) → multi-stage
+   ranking; where the LLM/reranker sits and what it costs; cross-shard
+   top-k merge with score normalization.
 7. **Failure & tail:** hot shards, slow-shard hedging, graceful degradation
    (fewer stages under load), load shedding, backpressure.
-8. **Eval/observability:** relevance metrics, latency histograms, index
+8. **Evals/observability:** relevance metrics, latency histograms, index
    health, A/B infra.
 
-Follow-up traps to rehearse: hot-term skew, index-freshness vs. cache-TTL
-tension, tail-latency hedging cost, what breaks first at 10×.
+Follow-up traps: hot-term skew, freshness-vs-TTL tension, hedging cost,
+what breaks first at 10×.
 
-### Inference-flavored (2026 canonical shape)
+### Inference batching — worked numbers (2026 canonical question)
 
-"Design an inference batching system for a single GPU: up to 100 inputs per
-batch, users submit synchronously and wait." What it tests in 50–55 min:
-queueing under random arrivals, batching vs. latency tradeoff, KV-cache
-memory math, load shedding, and failure-mode reasoning — not just the happy
-path. Practice saying the latency/throughput tradeoff *with numbers*.
+"Single GPU, up to 100 inputs/batch, users submit synchronously and wait."
+What they want: queueing under random arrivals (Little's law), the
+batching↔latency tradeoff **with numbers**, KV-cache memory math, load
+shedding — not just the happy path.
+
+KV-cache intuition to have ready (70B-class, fp16): per token ≈ 2 ×
+layers × hidden × 2 bytes ≈ 2×80×8192×2 ≈ **2.6 MB/token**. 100
+concurrent sequences × 2k tokens ≈ **520 GB** — doesn't fit one GPU.
+*That's* why batching strategy, chunked prefill, and paged attention
+exist. Say this arithmetic out loud; it's the whole point of the
+question.
 
 ### Design-doc review drill (2026 trend)
 
-You're handed a doc and asked to find holes. Practice lens: unstated
-assumptions, missing failure modes, metrics that can be gamed, scaling
-cliffs, and "what would you measure first."
+You're handed a doc and asked to find holes. Lens: unstated assumptions,
+missing failure modes, gameable metrics, scaling cliffs, "what would you
+measure first." Practice on one of your own design docs.
 
-### Other domains
+**Prep checklist:**
+- [ ] Search framework: full walkthrough with numbers, out loud, 40 min
+- [ ] Batching question: queueing + KV-cache math from memory
+- [ ] Red-team one of your own design docs (5 holes minimum)
+- [ ] If written-format: practice *typed* reasoning — no diagram crutch
 
-2. Design a Constitutional-AI training pipeline: data, critique loop, eval
-   gates.
-3. Design eval infrastructure for a frontier model: harness reliability,
-   contamination controls, human eval.
-4. Design inference for Claude-scale traffic: batching, caching, cost.
-5. Design a red-teaming platform: attack generation, scoring, regression.
+Framework reference: [#/ml-system-design](#/ml-system-design).
 
-## Project deep-dive emphasis
+---
 
-- **Research presentation:** lead with the "5th Layer" — training–serving
-  skew in generative retrieval. It's exactly the kind of careful empirical
-  work Anthropic respects.
-- For MLE tracks: Coupang ranking with emphasis on measurement rigor and
-  the decisions where you chose the careful experiment over the fast one.
-- Values-round stories: a time you raised a concern others dismissed; a time
-  you changed your mind on evidence.
+## R5 — Project deep-dive
 
-Full prep: [#/project-deep-dive](#/project-deep-dive).
+**Format:** 45–60 min. Opens with a **20-minute presentation you drive
+without prompting**, then an **adversarial challenge phase** targeting
+every detail you moved past quickly. Interviewers return to the exact
+spots you glossed over — that's the test.
 
-## Recent work worth knowing
+**How to structure the 20 minutes** (use your 5th Layer story — it's
+exactly the careful empirical work they respect):
 
-1. **Candidate AI guidance** (OFFICIAL): [anthropic.com/candidate-ai-guidance](https://www.anthropic.com/candidate-ai-guidance)
-   — read before any round.
-2. **"Demystifying evals for AI agents"** (Anthropic engineering) — adopts
-   τ-bench's pass^k; know its thesis (broken harnesses, not weak models,
-   explain low scores).
-3. Check Anthropic's research blog for the last 90 days before any real
-   process — interpretability and safety agendas move fast.
+1. **Context (2 min):** the system, your role, the stakes.
+2. **Problem (3 min):** the training–serving skew — what you observed,
+   why it mattered.
+3. **Approach (5 min):** *how you measured it* — methodology is what
+   they'll attack, so give it weight.
+4. **Decision (3 min):** holding the launch — the tradeoff, who had to
+   be convinced.
+5. **Impact (3 min):** what changed (metrics, process).
+6. **Reflection (4 min):** what you'd do differently; open questions.
+   ("I don't know" + "here's how I'd find out" beats bluffing.)
 
-## Values round — story templates
+**Adversarial prep method:** list 10 details you'd normally gloss over;
+prepare 2-minute depth on each. Rehearse: "why this metric and not that
+one?", "what's the counterfactual?", "what would falsify your
+conclusion?", "would this replicate with a different measurement?"
 
-Run by **nontechnical interviewers**; they probe *how you felt*, not just
-what you did — candidates describe it as "like a therapy session"
-[REPORTED 2026]. Prepare 4 stories; tell each with the feeling included
-(frustration, doubt, relief), not just the logic. Skeptical honesty beats
-mission-praise.
+**Prep checklist:**
+- [ ] 20-min presentation timed, out loud, no slides needed
+- [ ] 10 glossed-over details → 2-min depth each
+- [ ] Second story ready (Coupang ranking rigor: the slow careful
+  experiment you chose over the fast one)
 
-- [ ] **Raised a concern others dismissed:** e.g., flagging the
-      training–serving skew risk before a launch. Beats: what you saw, who
-      disagreed and why, what you did (data? escalation?), how it felt to
-      push, what happened, what you'd do differently.
-- [ ] **Changed your mind on evidence:** a technical bet you reversed
-      (ranking approach, launch decision). Emphasize the *moment* of
-      changing your mind — what evidence tipped you, how it felt to admit
-      it, what it cost.
-- [ ] **Moral gray area / conflict:** a disagreement where both sides had
-      a point (ship velocity vs. measurement rigor; a teammate's shortcut).
-      Show how you reasoned, not just the outcome.
-- [ ] **Tough feedback received (or given):** what stung, what was true
-      in it, what changed afterward. This one is the therapy-session
-      favorite.
+Full method: [#/project-deep-dive](#/project-deep-dive).
 
-Drill: for each story, prepare the 90-second version and the 5-minute
-version, plus one "what did you learn about yourself" closer. Full
-behavioral prep: [#/behavioral](#/behavioral).
+---
 
-## Practice questions
+## R6 — Values / culture · GATE #2
 
-All REPRESENTATIVE PRACTICE — modeled on reported 2026 Anthropic patterns,
-not claimed as asked.
+**Format:** 45–60 min with **nontechnical interviewers**. Candidates
+describe it as "like a therapy session" — they probe *how you felt*, not
+just what you did. This is where most technically-passing candidates get
+eliminated [REPORTED]. Rejections landing 2–3 days after the onsite (vs.
+<24h for technical fails) point here.
 
-**Practical coding (2026 high-frequency):**
-- [ ] **File dedup drill:** walk a directory tree, hash files, report
-      duplicates. Handle the "no duplicates → no output" edge; then make
-      it concurrent. No test harness — debug blind.
-- [ ] **Image pipeline drill:** resize/rotate a batch (PIL), then add
-      multiprocessing, then harden against corrupt files. Say the output
-      dimensions out loud as you go — interviewers probe them.
-- [ ] **Concurrent crawler drill:** sync crawl of one hostname (strip
-      fragments, dedupe), then convert to async with a thread-safe visited
-      set.
-- [ ] Build an in-memory KV store; extend: filtered scans → TTL expiry →
-      compression. Keep the abstraction clean across all 4 levels (90 min).
+**What they're actually testing:** *demonstrated* alignment, not stated.
+"I care about responsible AI" fails — it would pass anywhere. They want:
+a **specifically-named Anthropic value** + your personal history with it +
+critical thinking about Anthropic's *own* tradeoffs.
 
-**System design:**
-- [ ] Distributed search: 1B docs, 1M QPS, p99 < 100ms. Shard, replicate,
-      cache, merge — with the arithmetic (use the framework above).
-- [ ] Single-GPU inference batching: 100 inputs/batch, synchronous users.
-      Queueing, latency/throughput tradeoff with numbers, KV-cache math,
-      load shedding.
-- [ ] Design-doc review: take any design doc you wrote, red-team it for
-      unstated assumptions and missing failure modes.
+**How to answer — the 4 stories.** Tell each with the feeling included
+(frustration, doubt, relief), not just the logic. 90-sec and 5-min
+versions + a "what I learned about myself" closer:
 
-**ML depth:**
-- [ ] Explain Constitutional AI: the critique loop, where it beats RLHF, its
-      failure modes.
-- [ ] Estimate training FLOPs for a 70B model on 2T tokens. Show the math;
-      then estimate the cluster and time.
-- [ ] What is GRPO, and when would you prefer it over PPO for post-training?
-- [ ] Design an eval for instruction-following that resists contamination and
-      harness bugs.
+1. **Raised a concern others dismissed** — yours: flagging the
+   training–serving skew pre-launch. Beats: what you saw, who disagreed
+   and why, what you did (data? escalation?), how it felt to push, what
+   happened, what you'd do differently.
+2. **Changed your mind on evidence** — a ranking approach you reversed.
+   Emphasize the *moment*: what evidence tipped you, how it felt to admit
+   it, what it cost.
+3. **Moral gray area** — a disagreement where both sides had a point
+   (ship velocity vs. measurement rigor; a teammate's shortcut). Show the
+   reasoning, not just the outcome.
+4. **Tough feedback** — what stung, what was true in it, what changed
+   after. The therapy-session favorite.
 
-**Values (hard gate — prepare seriously):** use the story templates above;
-add:
-- [ ] Describe a decision you made under deep uncertainty. How did you
-      reason, and what would change your mind?
-- [ ] When have you chosen the slower, more careful path over shipping fast?
+Then the values-specific layer:
+- **Name one Anthropic value** (e.g. intellectual honesty) → your
+  example → one critique of an Anthropic tradeoff (e.g. does the
+  interpretability agenda cash out into deployment decisions?).
+- **"What ways do you disagree with our AI approach?"** — see R0 guide.
+- **Effective altruism beliefs** — honest, reasoned, personal (reported
+  Glassdoor question). Don't perform; reflect.
 
-## 每轮备战资料清单
+**Prep checklist:**
+- [ ] 4 stories written with beats; both lengths rehearsed out loud
+- [ ] One named value + example + tradeoff critique, in your own words
+- [ ] Attitude check: honest self-reflection > polished STAR; a little
+  skepticism > mission-praise
 
-按轮次列出：读什么、写什么、练什么。整理自 2026 年 REPORTED 面经
-（地里 25 帖汇总、Axios 文化面报道、Exponent/Medium 实战帖），非官方流程承诺。
+Full behavioral method: [#/behavioral](#/behavioral).
 
-### Recruiter / HR screen — 明天 10/7，GATE #1
+---
 
-读：
-- [ ] Anthropic **Core Views on AI Safety**（官网，通读）
-- [ ] **Constitutional AI** 一页纸：critique loop、RLAIF、failure modes
-- [ ] 过去 90 天 Anthropic 新闻，准备 1 个带正反论据的观点
-写：
-- [ ] **2 分钟 why-Anthropic 稿**（personal hook + why this lab + 想做什么 + 一个 honest tension），说出来不背稿
-- [ ] "如果公司为安全放弃业务、股权归零，你怎么看"——先自己写一遍诚实答案（Axios 报道的文化面真题；Blind 上有候选人答"不开心但希望 ethical + 可持续"，面试官不喜欢——这题没有标准答案，考察的是你的真实推理）
-挂人点：why Anthropic 答得浅，10 年经验也挂。别背 mission statement。
+## Logistics — pace, references, rules
 
-### Technical phone（senior+ 常 SD 起手）
+- **Pace:** 2–3 weeks between rounds is normal; 1–2 months end to end.
+  Keep other processes warm; silence ≠ rejection for weeks.
+- **References:** may be contacted **mid-process, in parallel** with
+  interviews — have your list ready early.
+- **No AI assistance** in any live round (official policy).
+- **Comp:** offers are **not negotiable** (standardized process, per
+  Axios) — no counteroffer strategy applies here.
+- **Reading the signals:** rejection <24h after onsite ≈ technical round
+  failed; 2–3 days later ≈ culture/HM. Don't over-read silence before
+  that.
+- **Team match** comes after the loop — passing doesn't guarantee a team
+  wants you. Keep your "what I want to build" pitch sharp (R2).
 
-练：
-- [ ] search SD 八步框架默写一遍（本页上文）
-- [ ] inference batching 的数字：batching vs. latency tradeoff、KV cache 内存估算、load shedding
-- [ ] concurrent crawler：sync 版 → async 版，visited 集合线程安全
-习惯：面试官偏安静、偏评估；先讲思路（做什么、重点在哪、为什么选这个方案）再写码。
+**Universal reading (do before any round):**
+- [ ] [Candidate AI guidance](https://www.anthropic.com/candidate-ai-guidance)
+  (official — non-negotiable)
+- [ ] "Demystifying evals for AI agents" (Anthropic engineering blog —
+  broken harnesses > weak models)
+- [ ] Anthropic blog/newsroom, last 90 days — one take with argument +
+  counter-argument
 
-### HM deep-dive
-
-准备：
-- [ ] 2–3 个 **scope & impact** 故事：Coupang tech lead 期间定的技术方向、跨团队分歧怎么解决、质量标准怎么立
-- [ ] 30 秒"想做什么" pitch（Search 方向 + 为什么是你）
-- [ ] 反问 HM 的 3 个问题（团队 roadmap、staff 的成功标准、当前最大风险）
-
-### Coding 轮 ×1–2
-
-练（每个 45–60 分钟，**盲调、无 test case**，自己修环境问题）：
-- [ ] **file dedup**：目录树遍历 → hash → 去重报告 → "无重复则无输出"边界 → 并发版
-- [ ] **image pipeline**：PIL resize/rotate → batch → 多进程 → 坏文件加固；大声报出每步输出尺寸（面试官会抠）
-- [ ] **concurrent crawler**：只爬同 hostname、去 fragment、去重 → 并发
-习惯：沟通 > 一次写对；变量命名规范；讲 tradeoff 的适用场景（"数据量很小时 linear search 可能更快"这类工程判断是 staff 加分项）。
-评分方式（2026 年 15 份一手报告分析）：**library fluency 才是真门槛**——PIL/Pillow、Python 并发原语不熟，光算法强会在 follow-up 前超时，LeetCode 刷题不直接迁移；**边写边测、边讲边验证有明确加分**——默默写出完整解的人，得分低于展示可见推理过程的未完成者。全程出声：跑测试、讲推理、验 edge case。
-
-### System design 轮
-
-练：
-- [ ] distributed search（1B docs / 1M QPS / p99 < 100ms）全流程**带数字**走一遍：shard、replica、cache 层、ranking merge、tail 处理
-- [ ] follow-up traps：hot-term skew、freshness vs. cache TTL 的 tension、hedging 成本、10× 流量先崩哪里
-- [ ] **design-doc review**：拿自己写过的设计文档红队一遍——找 unstated assumptions、缺失的 failure mode、可被 gaming 的指标
-形式注意：有所谓 "Prompt Playground" 式 SD——**书面 Google Doc 讨论，不画图、不评图**；考察打字推理的深度（requirements、schema、scaling），广度不考。面试官会 aggressively 带节奏——**守住自己的结构**，别被牵着走而丢了 requirements 和 scaling 的深度。
-
-### Project deep-dive
-
-准备：
-- [ ] **"5th Layer" 故事线**：现象 → 测量 → 决策 → 影响（5 分钟版 + 15 分钟版）
-- [ ] 预演 expert 追问：为什么这个实验设计？反事实是什么？换种测量方式结论还成立吗？
-- [ ] Coupang ranking 严谨性故事：选"慢而谨慎的实验"而非"快的"的那次
-- [ ] **20 分钟 candidate-driven presentation**：全程你带节奏，不用等 prompt；之后是 adversarial challenge——专门挑你一带而过的细节反复拷问，提前给每个"略过"的点准备纵深
-- [ ] HM 可能显得 cold/disengaged——别被带偏，这是常态；但 team fit 不过硬前面白搭
-
-### Values / culture 轮 — GATE #2
-
-准备（用本页故事模板）：
-- [ ] 4 个故事各备 90 秒版 + 5 分钟版 + "这让我学到了什么"收尾，**讲感受不只讲逻辑**
-- [ ] 一个真实道德困境：两难是什么、你的推理过程、事后怎么看
-- [ ] 态度：诚实自省 > 打磨过的 STAR；带一点怀疑精神。据教练反馈，把这轮当标准 behavioral 背稿的人表现反而差——面试官要的是真实的自我反思和道德复杂性。
-- [ ] **点名一个具体的 Anthropic 价值**（如 intellectual honesty、mission-first），给出你亲身经历过的例子，再加一段对 Anthropic 自身 tradeoff 的批判性思考。"我在乎 responsible AI"这种放哪家都成立的答案必挂——要的是 **demonstrated 对齐，不是 stated 对齐**。
-- [ ] 预演真题："**你有哪些地方不同意我们的 AI 路线？**"、"你的 effective altruism 信念是什么？"——诚实、有论据，别和稀泥。
-- [ ] 了解：**offer 薪资不接受谈判**（Axios 报道：标准流程，no counteroffer）——这家不适用谈判策略。
-
-### 通用资料（全流程）
-
-- [ ] [candidate-ai-guidance](https://www.anthropic.com/candidate-ai-guidance)（官方 AI 使用政策，live 轮禁用 AI 辅助——必读）
-- [ ] "Demystifying evals for AI agents"（Anthropic engineering blog，eval  hygiene 的标杆）
-- [ ] reference 名单提前准备好（背调可能在流程中途并行启动）
-- [ ] 慢流程心态建设：轮次间隔 2–3 周正常，全程 1–2 个月；拒信是模板不给 feedback，别内耗
-- [ ] 读信号：onsite 后**24 小时内拒 = 技术轮挂；2–3 天后才拒 = culture/HM 挂**（2026 多份报告的一致模式）——等结果时心里有数
+---
 
 ## 30-minute checklist — before the recruiter call (Wed 10/7, 11 AM)
 
-- [ ] **2-minute why-Anthropic (10 min):** write it with the framework
-      above; say it out loud once. Specific > sweeping.
+- [ ] **2-minute why-Anthropic (10 min):** four beats (R0); say it out
+  loud once. Specific > sweeping.
 - [ ] **Safety talking points (10 min):** your personal definition, one
-      dual-use walkthrough (search/ranking manipulation), biggest risk +
-      benefit with your own angle.
-- [ ] **This week's Anthropic news (5 min):** skim the blog/newsroom; have
-      one take with an argument and a counter-argument.
-- [ ] **AI policy (5 min):** [candidate-ai-guidance](https://www.anthropic.com/candidate-ai-guidance)
-      — non-negotiable before any live round.
+  dual-use walkthrough (search/ranking manipulation), biggest risk +
+  benefit with your own angle.
+- [ ] **This week's Anthropic news (5 min):** skim the blog; one take
+  with argument + counter-argument.
+- [ ] **AI policy (5 min):** candidate-ai-guidance — read it.
