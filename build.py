@@ -291,7 +291,41 @@ class Renderer:
 def _minimal_md(text):
     """Fallback renderer if python-markdown is unavailable."""
     out, in_list, list_tag, last_li = [], False, None, None
+    in_quote, quote_buf = False, []
+
+    def flush_quote():
+        nonlocal in_quote, quote_buf
+        if not in_quote:
+            return
+        paras, cur = [], []
+        for ql in quote_buf:
+            if ql.strip():
+                cur.append(ql.strip())
+            elif cur:
+                paras.append(" ".join(cur))
+                cur = []
+        if cur:
+            paras.append(" ".join(cur))
+        if paras:
+            out.append(
+                "<blockquote>"
+                + "".join(f"<p>{_inline(p)}</p>" for p in paras)
+                + "</blockquote>"
+            )
+        in_quote, quote_buf = False, []
+
     for line in text.splitlines():
+        if line.startswith(">"):
+            content = line[1:]
+            if content[:1] == " ":
+                content = content[1:]
+            if in_list:
+                out.append(f"</{list_tag}>")
+                in_list, last_li = False, None
+            quote_buf.append(content)
+            in_quote = True
+            continue
+        flush_quote()
         if line.startswith("ZZ") and line.endswith("ZZ"):
             if in_list:
                 out.append(f"</{list_tag}>")
@@ -322,12 +356,6 @@ def _minimal_md(text):
             out.append(f"<li>{_inline(re.sub(r'^\s*\d+\.\s+', '', line))}</li>")
             last_li = len(out) - 1
             continue
-        if line.startswith(">"):
-            if in_list:
-                out.append(f"</{list_tag}>")
-                in_list, last_li = False, None
-            out.append(f"<blockquote>{_inline(line.lstrip('> '))}</blockquote>")
-            continue
         if not line.strip():
             if in_list:
                 out.append(f"</{list_tag}>")
@@ -344,6 +372,7 @@ def _minimal_md(text):
             out.append(f"</{list_tag}>")
             in_list, last_li = False, None
         out.append(f"<p>{_inline(line)}</p>")
+    flush_quote()
     if in_list:
         out.append(f"</{list_tag}>")
     return "\n".join(out)
