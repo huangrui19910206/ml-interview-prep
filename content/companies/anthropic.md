@@ -366,6 +366,74 @@ add:
       reason, and what would change your mind?
 - [ ] When have you chosen the slower, more careful path over shipping fast?
 
+## 每轮备战资料清单
+
+按轮次列出：读什么、写什么、练什么。整理自 2026 年 REPORTED 面经
+（地里 25 帖汇总、Axios 文化面报道、Exponent/Medium 实战帖），非官方流程承诺。
+
+### Recruiter / HR screen — 明天 10/7，GATE #1
+
+读：
+- [ ] Anthropic **Core Views on AI Safety**（官网，通读）
+- [ ] **Constitutional AI** 一页纸：critique loop、RLAIF、failure modes
+- [ ] 过去 90 天 Anthropic 新闻，准备 1 个带正反论据的观点
+写：
+- [ ] **2 分钟 why-Anthropic 稿**（personal hook + why this lab + 想做什么 + 一个 honest tension），说出来不背稿
+- [ ] "如果公司为安全放弃业务、股权归零，你怎么看"——先自己写一遍诚实答案（Axios 报道的文化面真题；Blind 上有候选人答"不开心但希望 ethical + 可持续"，面试官不喜欢——这题没有标准答案，考察的是你的真实推理）
+挂人点：why Anthropic 答得浅，10 年经验也挂。别背 mission statement。
+
+### Technical phone（senior+ 常 SD 起手）
+
+练：
+- [ ] search SD 八步框架默写一遍（本页上文）
+- [ ] inference batching 的数字：batching vs. latency tradeoff、KV cache 内存估算、load shedding
+- [ ] concurrent crawler：sync 版 → async 版，visited 集合线程安全
+习惯：面试官偏安静、偏评估；先讲思路（做什么、重点在哪、为什么选这个方案）再写码。
+
+### HM deep-dive
+
+准备：
+- [ ] 2–3 个 **scope & impact** 故事：Coupang tech lead 期间定的技术方向、跨团队分歧怎么解决、质量标准怎么立
+- [ ] 30 秒"想做什么" pitch（Search 方向 + 为什么是你）
+- [ ] 反问 HM 的 3 个问题（团队 roadmap、staff 的成功标准、当前最大风险）
+
+### Coding 轮 ×1–2
+
+练（每个 45–60 分钟，**盲调、无 test case**，自己修环境问题）：
+- [ ] **file dedup**：目录树遍历 → hash → 去重报告 → "无重复则无输出"边界 → 并发版
+- [ ] **image pipeline**：PIL resize/rotate → batch → 多进程 → 坏文件加固；大声报出每步输出尺寸（面试官会抠）
+- [ ] **concurrent crawler**：只爬同 hostname、去 fragment、去重 → 并发
+习惯：沟通 > 一次写对；变量命名规范；讲 tradeoff 的适用场景（"数据量很小时 linear search 可能更快"这类工程判断是 staff 加分项）。
+
+### System design 轮
+
+练：
+- [ ] distributed search（1B docs / 1M QPS / p99 < 100ms）全流程**带数字**走一遍：shard、replica、cache 层、ranking merge、tail 处理
+- [ ] follow-up traps：hot-term skew、freshness vs. cache TTL 的 tension、hedging 成本、10× 流量先崩哪里
+- [ ] **design-doc review**：拿自己写过的设计文档红队一遍——找 unstated assumptions、缺失的 failure mode、可被 gaming 的指标
+
+### Project deep-dive
+
+准备：
+- [ ] **"5th Layer" 故事线**：现象 → 测量 → 决策 → 影响（5 分钟版 + 15 分钟版）
+- [ ] 预演 expert 追问：为什么这个实验设计？反事实是什么？换种测量方式结论还成立吗？
+- [ ] Coupang ranking 严谨性故事：选"慢而谨慎的实验"而非"快的"的那次
+
+### Values / culture 轮 — GATE #2
+
+准备（用本页故事模板）：
+- [ ] 4 个故事各备 90 秒版 + 5 分钟版 + "这让我学到了什么"收尾，**讲感受不只讲逻辑**
+- [ ] 一个真实道德困境：两难是什么、你的推理过程、事后怎么看
+- [ ] 态度：诚实自省 > 打磨过的 STAR；带一点怀疑精神。据教练反馈，把这轮当标准 behavioral 背稿的人表现反而差——面试官要的是真实的自我反思和道德复杂性。
+- [ ] 了解：**offer 薪资不接受谈判**（Axios 报道：标准流程，no counteroffer）——这家不适用谈判策略。
+
+### 通用资料（全流程）
+
+- [ ] [candidate-ai-guidance](https://www.anthropic.com/candidate-ai-guidance)（官方 AI 使用政策，live 轮禁用 AI 辅助——必读）
+- [ ] "Demystifying evals for AI agents"（Anthropic engineering blog，eval  hygiene 的标杆）
+- [ ] reference 名单提前准备好（背调可能在流程中途并行启动）
+- [ ] 慢流程心态建设：轮次间隔 2–3 周正常，全程 1–2 个月；拒信是模板不给 feedback，别内耗
+
 ## 30-minute checklist — before the recruiter call (Wed 10/7, 11 AM)
 
 - [ ] **2-minute why-Anthropic (10 min):** write it with the framework
