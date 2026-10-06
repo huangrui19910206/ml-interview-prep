@@ -18,7 +18,7 @@ process_sources:
   - { label: "REPORTED", url: "https://medium.com/@mockingbird_71808/a-breakdown-of-anthropics-5-round-swe-loop-073723fde2ca", accessed: "2026-10-06", note: "2026-06-29: recruiter screen → 90-min OA → HM deep-dive → two-part virtual onsite on different days (part 2 only if part 1 passes); breadth across coding/SD/project ownership/ethical reasoning; AI assistance prohibited in all live rounds" }
   - { label: "REPORTED", url: "https://www.tryexponent.com/experiences/anthropic-senior-software-engineer-interview-2ffa5f", accessed: "2026-10-06", note: "Senior SWE Safeguards 2026: onsite = HM + coding + company values + SD + coding; values round run by nontechnical people 'like a therapy session' probing feelings; prep behaviorals harder than technicals; skepticism beats generic 'I love your mission'" }
   - { label: "REPORTED", url: "https://medium.com/@hack2hire.share/what-anthropic-actually-tests-and-what-gets-candidates-rejected-2026-2726b802f250", accessed: "2026-10-06", note: "Analysis of 15 firsthand 2026 reports: coding gate is library fluency (PIL/concurrency), narrated testing scored explicitly; SD is written Google-Doc 'Prompt Playground' (no diagrams), hold your structure vs aggressive pacing; values round needs a NAMED Anthropic value + personal history + critique of Anthropic tradeoffs; project retro is 20-min candidate-driven + adversarial challenge; <24h rejection = technical fail, 2-3 days = culture/HM fail" }
-  - { label: "OFFICIAL", url: "https://interviews.modernloop.io/o/anthropic/a/92e4eede-69eb-4c49-9994-d831e77e1a74", accessed: "2026-10-06", note: "Candidate portal (logged in): no values/fit questions or rubrics published — only the 7 guiding principles, NDA + AI-usage policy; only round scheduled is the Oct 7 recruiter screen" }
+  - { label: "OFFICIAL", url: "https://interviews.modernloop.io/o/anthropic/a/92e4eede-69eb-4c49-9994-d831e77e1a74", accessed: "2026-10-06", note: "Candidate portal (logged in): no values/fit questions or rubrics published — only the 7 guiding principles, NDA + AI-usage policy; recruiter screen rescheduled to Thu Oct 8, 11:30 AM PT" }
   - { label: "REPORTED", url: "https://github.com/schuture/anthropic-interview-notes", accessed: "2026-10-06", note: "Curated 2026 aggregation (culture README + recruiter-screen README): ~30 deduped values questions incl. RSP-change tradeoff, breakthrough-delay hypotheticals, authority pushback, persuadability, moral-revision stories" }
   - { label: "REPORTED", url: "https://www.tryexponent.com/experiences/anthropic-senior-software-engineer-interview-2ffa5f", accessed: "2026-10-06", note: "Verified firsthand SWE Safeguards debrief (Jan 2026 interview): verbatim values questions ('against your values' + feelings drill-down, feedback on mission), 'bullish on Anthropic' flagged at recruiter screen" }
   - { label: "REPORTED", url: "https://www.interviewing.io/anthropic-interview-questions", accessed: "2026-10-06", note: "2026 conversations with Anthropic engineers: neutral interviewers, 3-4 level follow-ups, rehearsed answers read as 'clean, complete, emotionally flat'; references probed on conflict/ethical friction" }
@@ -29,8 +29,10 @@ process_sources:
 
 ## TL;DR
 
-**Status: OA passed 2026-10-06. Next: intro/recruiter call with Yulia
-Serhiyenia, Wed 2026-10-07 11:00–11:20 AM PT.**
+**Status: CodeSignal pre-screen passed 2026-10-06 (a day early); Anthropic
+NDA signed and acknowledged. Next: recruiter call with Yulia Serhiyenia,
+Thu 2026-10-08 11:30–11:50 AM PT** (moved from Wed 10/7 by you; new Meet
+link on the calendar event).
 
 The two gates that eliminate the most qualified candidates are **not**
 technical — they're the recruiter screen (why-Anthropic + AI safety depth)
@@ -79,9 +81,9 @@ retrieval, multi-stage ranking) is the anchor for the whole loop.
 
 ## R0 — Recruiter / HR screen · GATE #1
 
-**Format:** 20–30 min video (your intro call with Yulia, 10/7, is the
-opening of this stage; the substantive screen may be the same call or
-scheduled right after). **What they're testing:** whether you've actually
+**Format:** 20–30 min video (your intro call with Yulia, Thu 10/8
+11:30 AM, is the opening of this stage; the substantive screen may be
+the same call or scheduled right after). **What they're testing:** whether you've actually
 thought about *this* lab — ~20 min of why-Anthropic + AI safety deep-dive
 [REPORTED]. A 10-year candidate failed here for shallow answers.
 
@@ -665,7 +667,7 @@ Full behavioral method: [#/behavioral](#/behavioral).
 
 ---
 
-## 30-minute checklist — before the recruiter call (Wed 10/7, 11 AM)
+## 30-minute checklist — before the recruiter call (Thu 10/8, 11:30 AM)
 
 - [ ] **2-minute why-Anthropic (10 min):** four beats (R0); say it out
   loud once. Specific > sweeping.
