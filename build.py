@@ -290,19 +290,19 @@ class Renderer:
 
 def _minimal_md(text):
     """Fallback renderer if python-markdown is unavailable."""
-    out, in_list, list_tag = [], False, None
+    out, in_list, list_tag, last_li = [], False, None, None
     for line in text.splitlines():
         if line.startswith("ZZ") and line.endswith("ZZ"):
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list = False
+                in_list, last_li = False, None
             out.append(line)
             continue
         m = re.match(r"^(#{1,4})\s+(.*)", line)
         if m:
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list = False
+                in_list, last_li = False, None
             out.append(f"<h{len(m.group(1))}>{_inline(m.group(2))}</h{len(m.group(1))}>")
             continue
         m = re.match(r"^(\s*)[-*]\s+(.*)", line)
@@ -311,6 +311,7 @@ def _minimal_md(text):
                 out.append("<ul>")
                 in_list, list_tag = True, "ul"
             out.append(f"<li>{_inline(m.group(2))}</li>")
+            last_li = len(out) - 1
             continue
         if re.match(r"^\s*\d+\.\s+", line):
             if not in_list or list_tag != "ol":
@@ -319,21 +320,29 @@ def _minimal_md(text):
                 out.append("<ol>")
                 in_list, list_tag = True, "ol"
             out.append(f"<li>{_inline(re.sub(r'^\s*\d+\.\s+', '', line))}</li>")
+            last_li = len(out) - 1
             continue
         if line.startswith(">"):
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list = False
+                in_list, last_li = False, None
             out.append(f"<blockquote>{_inline(line.lstrip('> '))}</blockquote>")
             continue
         if not line.strip():
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list = False
+                in_list, last_li = False, None
+            continue
+        # Indented continuation of the current list item: fold into the <li>
+        # instead of breaking out into a separate paragraph.
+        if in_list and last_li is not None and re.match(r"^\s+\S", line):
+            out[last_li] = (
+                out[last_li][: -len("</li>")] + " " + _inline(line.strip()) + "</li>"
+            )
             continue
         if in_list:
             out.append(f"</{list_tag}>")
-            in_list = False
+            in_list, last_li = False, None
         out.append(f"<p>{_inline(line)}</p>")
     if in_list:
         out.append(f"</{list_tag}>")
