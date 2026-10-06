@@ -2934,5 +2934,165 @@
       "accessed": "2026-10-01",
       "note": "Representative practice question; not an actual candidate report."
     }
+  },
+  {
+    "id": "q-anthropic-001",
+    "question": "Why Anthropic over other AI labs? Give your 2-minute version — specific, personal, slightly skeptical.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 5,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-anthropic-002",
+    "question": "What does AI safety mean to you, personally? Name a failure mode you have touched in your own work.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-anthropic-003",
+    "question": "Walk through a concrete AI misuse scenario in search/ranking: the mechanism, the blast radius, and one mitigation.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "behavioral",
+    "difficulty": "hard",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-anthropic-004",
+    "question": "Explain Constitutional AI: the critique loop, where it beats RLHF, and its failure modes.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "ml-theory",
+    "difficulty": "hard",
+    "time_min": 15,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-anthropic-005",
+    "question": "File deduplication over a directory tree: hash, report duplicates, handle the no-duplicates edge — then make it concurrent.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "coding",
+    "difficulty": "medium",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": true,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-anthropic-006",
+    "question": "Design an inference batching system for a single GPU: up to 100 inputs per batch, synchronous users. Queueing, latency/throughput tradeoff with numbers, KV-cache math.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 50,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-anthropic-007",
+    "question": "Distributed search over 1B docs at 1M QPS, p99 < 100ms. Sharding, replication, caching, ranking merge — with the arithmetic.",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "system-design",
+    "difficulty": "hard",
+    "time_min": 45,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
+  },
+  {
+    "id": "q-anthropic-008",
+    "question": "Tell me about a time you raised a technical-safety concern others dismissed. What did you do, and how did it feel?",
+    "companies": [
+      "anthropic"
+    ],
+    "category": "behavioral",
+    "difficulty": "medium",
+    "time_min": 10,
+    "frequency": "high",
+    "label": "REPRESENTATIVE PRACTICE",
+    "coding": false,
+    "answer_available": true,
+    "answer_ref": "#/anthropic",
+    "source": {
+      "url": "",
+      "accessed": "2026-10-06",
+      "note": "Representative practice modeled on 2026 reported Anthropic patterns; not an actual candidate report."
+    }
   }
 ]
