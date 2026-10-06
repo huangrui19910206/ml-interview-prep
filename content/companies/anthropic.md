@@ -18,6 +18,7 @@ process_sources:
   - { label: "REPORTED", url: "https://medium.com/@mockingbird_71808/a-breakdown-of-anthropics-5-round-swe-loop-073723fde2ca", accessed: "2026-10-06", note: "2026-06-29: recruiter screen → 90-min OA → HM deep-dive → two-part virtual onsite on different days (part 2 only if part 1 passes); breadth across coding/SD/project ownership/ethical reasoning; AI assistance prohibited in all live rounds" }
   - { label: "REPORTED", url: "https://www.tryexponent.com/experiences/anthropic-senior-software-engineer-interview-2ffa5f", accessed: "2026-10-06", note: "Senior SWE Safeguards 2026: onsite = HM + coding + company values + SD + coding; values round run by nontechnical people 'like a therapy session' probing feelings; prep behaviorals harder than technicals; skepticism beats generic 'I love your mission'" }
   - { label: "REPORTED", url: "https://medium.com/@hack2hire.share/what-anthropic-actually-tests-and-what-gets-candidates-rejected-2026-2726b802f250", accessed: "2026-10-06", note: "Analysis of 15 firsthand 2026 reports: coding gate is library fluency (PIL/concurrency), narrated testing scored explicitly; SD is written Google-Doc 'Prompt Playground' (no diagrams), hold your structure vs aggressive pacing; values round needs a NAMED Anthropic value + personal history + critique of Anthropic tradeoffs; project retro is 20-min candidate-driven + adversarial challenge; <24h rejection = technical fail, 2-3 days = culture/HM fail" }
+  - { label: "OFFICIAL", url: "https://interviews.modernloop.io/o/anthropic/a/92e4eede-69eb-4c49-9994-d831e77e1a74", accessed: "2026-10-06", note: "Candidate portal (logged in): no values/fit questions or rubrics published — only the 7 guiding principles, NDA + AI-usage policy; only round scheduled is the Oct 7 recruiter screen" }
   - { label: "REPORTED", url: "https://www.glassdoor.com/Interview/Anthropic-Interview-E8109027.htm", accessed: "2026-10-06", note: "2026 SWE reports: OA is 4-stage same-problem build-up (OOP, refactors); onsite = phone screen + code screen + Coderpad + SD + presentation + ethical AI; reported questions: 'what ways do you disagree with our AI approach?', effective-altruism beliefs, 'design a chat app'; even max OA score doesn't guarantee human review" }
 ---
 
@@ -404,10 +405,27 @@ versions + a "what I learned about myself" closer:
 4. **Tough feedback** — what stung, what was true in it, what changed
    after. The therapy-session favorite.
 
-Then the values-specific layer:
-- **Name one Anthropic value** (e.g. intellectual honesty) → your
-  example → one critique of an Anthropic tradeoff (e.g. does the
-  interpretability agenda cash out into deployment decisions?).
+Then the values-specific layer — **use the official vocabulary.** The
+candidate portal (checked 2026-10-06) publishes no values-round questions
+or rubrics, but it does publish Anthropic's **7 guiding principles** —
+these are the named values the round is built on. Name one *verbatim*,
+then your example, then one critique of an Anthropic tradeoff:
+
+| Principle (official) | Your story hook |
+|---|---|
+| **Put the mission first** | Flagging the training–serving skew pre-launch: you slowed a launch for correctness. Mission as final arbiter over ship velocity. |
+| **Do the simple thing that works** | Your empirical ranking work: the simplest approach that iterated beat the clever one. |
+| **Ignite a race to the top on safety** | Why Anthropic specifically: search/ranking manipulation as the dual-use risk you know firsthand. |
+| **Hold light and shade** | Your moral-gray-area story: holding both the upside of generative retrieval and its failure modes at once. |
+| **Be helpful, honest, and harmless** | Tough-feedback story: low-ego, direct communication, assuming good intentions. |
+| **Be good to our users** | Coupang search quality work: going above and beyond for the user as the baseline expectation. |
+| **Act for the global good** | Long-term view: decisions that maximize positive outcomes for humanity, not just the quarter. |
+
+Critique example to pair with your named value: "I admire the
+interpretability agenda — but how directly does it cash out into
+deployment decisions? I'd want to see the mechanism, not just the
+research." Skepticism with homework beats praise.
+
 - **"What ways do you disagree with our AI approach?"** — see R0 guide.
 - **Effective altruism beliefs** — honest, reasoned, personal (reported
   Glassdoor question). Don't perform; reflect.
