@@ -19,6 +19,11 @@ process_sources:
   - { label: "REPORTED", url: "https://www.tryexponent.com/experiences/anthropic-senior-software-engineer-interview-2ffa5f", accessed: "2026-10-06", note: "Senior SWE Safeguards 2026: onsite = HM + coding + company values + SD + coding; values round run by nontechnical people 'like a therapy session' probing feelings; prep behaviorals harder than technicals; skepticism beats generic 'I love your mission'" }
   - { label: "REPORTED", url: "https://medium.com/@hack2hire.share/what-anthropic-actually-tests-and-what-gets-candidates-rejected-2026-2726b802f250", accessed: "2026-10-06", note: "Analysis of 15 firsthand 2026 reports: coding gate is library fluency (PIL/concurrency), narrated testing scored explicitly; SD is written Google-Doc 'Prompt Playground' (no diagrams), hold your structure vs aggressive pacing; values round needs a NAMED Anthropic value + personal history + critique of Anthropic tradeoffs; project retro is 20-min candidate-driven + adversarial challenge; <24h rejection = technical fail, 2-3 days = culture/HM fail" }
   - { label: "OFFICIAL", url: "https://interviews.modernloop.io/o/anthropic/a/92e4eede-69eb-4c49-9994-d831e77e1a74", accessed: "2026-10-06", note: "Candidate portal (logged in): no values/fit questions or rubrics published — only the 7 guiding principles, NDA + AI-usage policy; only round scheduled is the Oct 7 recruiter screen" }
+  - { label: "REPORTED", url: "https://github.com/schuture/anthropic-interview-notes", accessed: "2026-10-06", note: "Curated 2026 aggregation (culture README + recruiter-screen README): ~30 deduped values questions incl. RSP-change tradeoff, breakthrough-delay hypotheticals, authority pushback, persuadability, moral-revision stories" }
+  - { label: "REPORTED", url: "https://www.tryexponent.com/experiences/anthropic-senior-software-engineer-interview-2ffa5f", accessed: "2026-10-06", note: "Verified firsthand SWE Safeguards debrief (Jan 2026 interview): verbatim values questions ('against your values' + feelings drill-down, feedback on mission), 'bullish on Anthropic' flagged at recruiter screen" }
+  - { label: "REPORTED", url: "https://www.interviewing.io/anthropic-interview-questions", accessed: "2026-10-06", note: "2026 conversations with Anthropic engineers: neutral interviewers, 3-4 level follow-ups, rehearsed answers read as 'clean, complete, emotionally flat'; references probed on conflict/ethical friction" }
+  - { label: "REPORTED", url: "https://www.livemint.com/news/world/mission-vs-profit-at-anthropic-a-former-employees-account-of-the-tech-firms-interview-process-11761758121433.html", accessed: "2026-10-06", note: "Axios reprint: Blind poster rejected after answering equity-to-zero hypothetical with money as headline; two ex-employees dispute the question's exact use" }
+  - { label: "REPORTED", url: "https://www.1point3acres.com/bbs/thread-1190157-1-1.html", accessed: "2026-10-06", note: "2026 summary thread: 4 dated HR-screen reports (Anthropic-vs-other-labs, past-work-vs-safety, company news, risk/benefit, underrated problem); 10-yr candidate rejected for shallow safety answers" }
   - { label: "REPORTED", url: "https://www.glassdoor.com/Interview/Anthropic-Interview-E8109027.htm", accessed: "2026-10-06", note: "2026 SWE reports: OA is 4-stage same-problem build-up (OOP, refactors); onsite = phone screen + code screen + Coderpad + SD + presentation + ethical AI; reported questions: 'what ways do you disagree with our AI approach?', effective-altruism beliefs, 'design a chat app'; even max OA score doesn't guarantee human review" }
 ---
 
@@ -383,12 +388,202 @@ just what you did. This is where most technically-passing candidates get
 eliminated [REPORTED]. Rejections landing 2–3 days after the onsite (vs.
 <24h for technical fails) point here.
 
+**The mechanic most candidates miss:** questions are "suggested rather
+than fully scripted" (wording varies), interviewers stay neutral and
+follow up 3–4 levels deep — and they will **deliberately disagree with
+you** to see whether you update for a good reason or just fold. Pleasant
+agreement always loses; changing your mind *and* holding a well-defended
+position can both be right. Rehearsed answers have a signature interviewers
+recognize: "clean, complete, emotionally flat." Genuine ones are messier —
+starting in the wrong place, self-correcting, carrying real uncertainty.
+
 **What they're actually testing:** *demonstrated* alignment, not stated.
 "I care about responsible AI" fails — it would pass anywhere. They want:
 a **specifically-named Anthropic value** + your personal history with it +
 critical thinking about Anthropic's *own* tradeoffs.
 
-**How to answer — the 4 stories.** Tell each with the feeling included
+**The 7 highest-leverage questions — answer frameworks.** Each gives the
+beats, then your talking points. Say them out loud once each.
+
+<details>
+<summary><b>1. "Tell me about a time you built something against your
+values" → "How did you feel then? How about now?"</b></summary>
+
+Beats: (1) real stakes — what, who wanted it, what resisting cost;
+(2) name the violated value in plain words; (3) concrete action (data,
+escalation, refusal) — not just feelings; (4) **the feeling layer** —
+"it felt like he wanted me to name the discomfort instead of
+rationalizing it away" [REPORTED]; say "I felt…" out loud; (5) cost +
+what you'd do differently. Avoid: trivial examples, positive spin,
+rationalizing the outcome into a win.
+
+Your angle: the ship-velocity-vs-measurement-rigor tension — pressed to
+ship a ranking change without proper measurement. What the data showed,
+who pushed and why, how you escalated with evidence, the frustration of
+being the blocker. → **Put the mission first** + **Hold light and shade**.
+</details>
+
+<details>
+<summary><b>2. "What ways do you disagree with our AI approach?"</b></summary>
+
+Beats: (1) one specific thing you buy — so the critique lands as
+engaged, not hostile; (2) ONE specific disagreement — name the
+mechanism, not a vibe (e.g. how ASL capability thresholds cash out into
+deployment decisions; the eval-to-deployment gap); (3) what your own view
+trades away; (4) what evidence would change your mind. "I agree with
+everything" reads as not having done the reading. Avoid: grievances, a
+critique you can't defend for two follow-ups.
+
+Your angle: "I buy the ASL framework — but as someone who has shipped
+ranking systems, my question is how capability thresholds cash out into
+deployment decisions. In search we learned offline evals systematically
+miss deployment failure modes" [your skew story]. "I'd want to see the
+mechanism that closes that loop, not just the research." →
+**Ignite a race to the top on safety** + **Do the simple thing that
+works**.
+</details>
+
+<details>
+<summary><b>3. "How would you feel if safety decisions sent the stock to
+zero?"</b></summary>
+
+Beats: (1) be honest — don't perform indifference to money; (2)
+separate what you can assess (was the safety call principled? what does
+it mean for your work Monday?) from what you can't (the stock);
+(3) state your ordering plainly: judge the decision by its safety
+reasoning, not its financial consequence. The documented reject move is
+making money the headline ("I would not be happy if the stock went to
+0" — interviewer visibly disliked it). Avoid: claiming you'd feel
+nothing.
+
+Your angle: "I'd want to understand the reasoning first — principled
+call on real evidence, or panic? If the reasoning holds, that's exactly
+the company I signed up for. The financial hit is real and I'd be honest
+about that — but I wouldn't want to work somewhere that reverses a
+safety call to protect the stock." → **Put the mission first**.
+</details>
+
+<details>
+<summary><b>4. "Tell me about a time you raised a concern that slowed or
+blocked a launch" / "…you argued against shipping"</b></summary>
+
+Beats: (1) what you saw — the data, precisely; (2) steelman the other
+side (why they wanted to ship); (3) your escalation path, with evidence;
+(4) what it cost — timeline, social capital ("one that cost nothing
+proves nothing"); (5) how it felt to be the blocker; (6) outcome + what
+you'd do differently. Avoid: flawless-hero framing; skipping the other
+side's case.
+
+Your angle: the training–serving skew flagged pre-launch — your
+centerpiece story. The skew you measured, why the team wanted to ship
+anyway, how you brought data not just worry, the delay it caused, the
+discomfort of slowing a launch everyone wanted. → **Put the mission
+first** + **Ignite a race to the top on safety**.
+</details>
+
+<details>
+<summary><b>5. "Why Anthropic, specifically — not another lab?"</b></summary>
+
+Beats: (1) one specific thing about their work you hold an opinion on
+(not "the mission matters"); (2) a piece of your history showing the
+interest predates the interview; (3) forward: what you want to build
+here and why only here. "I'm bullish on Anthropic" got flagged at a
+recruiter screen as not good enough. Avoid: anything that would work at
+any frontier lab.
+
+Your angle: "What pulled me is that safety is the organizing principle,
+not a constraint bolted on after — **Ignite a race to the top on
+safety** as the actual job description. In generative retrieval I kept
+hitting the gap between offline evals and deployment reality; I want to
+work where closing that gap *is* the mission. And **Do the simple thing
+that works** matches how I actually build — empirical iteration over
+clever architectures." History anchor: the skew story as the moment you
+realized measurement rigor is a safety practice.
+</details>
+
+<details>
+<summary><b>6. "What would make you want to leave Anthropic?"</b></summary>
+
+Beats: (1) ONE concrete condition — a specific mission reversal (e.g.
+shipping a capability your own evals flagged as unsafe, to hit a revenue
+target); (2) why that line and not another — connect it to the value you
+joined for; (3) calm tone, not ultimatum energy. Avoid: "if things got
+bad"; petty grievances; sounding like you'd hop at the first
+disagreement.
+
+Your angle: "If I saw us ship something our own safety work said wasn't
+ready — because a competitor shipped first. I joined for **Put the
+mission first**; if the final arbiter stopped being the mission, I'd have
+to go." This also inoculates you against the race-dynamics follow-ups.
+</details>
+
+<details>
+<summary><b>7. "Breakthrough with unquantified risk — delay? What if a
+competitor ships anyway?"</b></summary>
+
+Beats: (1) state decision CRITERIA before the verdict: reversibility of
+harm, visibility of failure modes, whether a narrower release captures
+the benefit; (2) apply them; (3) on the race follow-up: separate "is
+slowing down the right call" from "does it change what competitors do" —
+a correct safety practice doesn't stop being correct because it fails
+industry-wide. Distinguish "behind on a competitive metric" from "ceding
+the field to less careful actors." Avoid: absolutism ("always delay") or
+flip-flopping as facts change without naming what moved you.
+
+Your angle: search launch discipline — staged rollouts, holdback groups,
+kill criteria. "In ranking we never shipped without a kill criterion and
+a way to see the failure. Same here: name the redline, ship narrowly
+inside it, invest the 'lost' time in the eval that lets us ship
+confidently." → **Hold light and shade** + **Do the simple thing that
+works**.
+</details>
+
+**More reported questions** (bank — know your one-line take for each):
+
+- *Motivation:* "Which of Anthropic's values resonates with you — with
+  a concrete example of when you **acted** on it, not merely admired
+  it?"; "Why does AI safety matter to you personally?"; "How does your
+  past work relate to AI safety?"; "Comment on recent company news";
+  "What's an underrated AI problem?"; "Biggest risks and benefits of
+  advanced AI" (one-sided answers fail — that's **Hold light and shade**
+  in miniature)
+- *Critical engagement:* "Do you have any feedback on Anthropic's
+  mission?"; "What does Anthropic get wrong about AI safety?"; "Which
+  part of the RSP would you change — and what would that trade away?"
+  (only works if you've actually read it); "Which risk do you take most
+  seriously, and what evidence would change your view?"
+- *Hypotheticals:* "Caught between a commercial deadline and a safety
+  concern — how do you decide?"; "Assigned to a project you believe is
+  unsafe — concrete process?"; "Balance helpfulness vs harmlessness in
+  launch criteria?"; deployment sim: model giving overconfident wrong
+  answers in high-risk contexts — delay? guardrails? disclose?
+- *Stories:* "A time you did something that conflicted with your
+  values"; "A time you disagreed with someone with authority over you
+  and pushed back"; "A time someone persuaded you to change a
+  genuinely-held position — what evidence moved you?"; "A mistake where
+  you were the one who was wrong"; "A moral dilemma — two obligations
+  pulling apart, what you knowingly gave up"; "A working relationship
+  that broke down, and how you repaired it"; "Most personally
+  transformative experience"; EA beliefs (honest, reasoned, personal —
+  don't perform)
+
+**Failure modes — what got real candidates rejected:**
+
+- The equity-to-zero hypothetical answered with money as the headline
+  ("I would not be happy if the stock went to 0") — interviewer
+  visibly disliked it [REPORTED, via Axios].
+- 10 years of experience, rejected at the **recruiter screen** for
+  generic AI-safety answers ("safety 答得浅") — the values filter fires
+  before any technical round [1point3acres].
+- "I'm bullish on Anthropic" at the recruiter screen — flagged as not
+  good enough [Exponent].
+- Four pre-packaged STAR stories shoehorned into whatever gets asked —
+  "the fastest way to fail" [firsthand PM report].
+- Professional values that would pass at any company ("I care about
+  responsible AI", "I value technical rigor") — consistent fail pattern
+  across 15 reports.
+
+**Your 4 core stories.** Tell each with the feeling included
 (frustration, doubt, relief), not just the logic. 90-sec and 5-min
 versions + a "what I learned about myself" closer:
 
@@ -432,7 +627,12 @@ research." Skepticism with homework beats praise.
 
 **Prep checklist:**
 - [ ] 4 stories written with beats; both lengths rehearsed out loud
+- [ ] 7 frameworks above: say each answer out loud once, feelings
+  included — no clean flat STAR recitations
 - [ ] One named value + example + tradeoff critique, in your own words
+- [ ] RSP skimmed (one thing you'd keep, one you'd change + its cost)
+- [ ] Disagreement drill: for each of your 7 answers, argue the other
+  side for 60 seconds — interviewers will
 - [ ] Attitude check: honest self-reflection > polished STAR; a little
   skepticism > mission-praise
 
