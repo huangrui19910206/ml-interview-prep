@@ -81,83 +81,150 @@ retrieval, multi-stage ranking) is the anchor for the whole loop.
 
 ## R0 — Recruiter / HR screen · GATE #1
 
-**Format:** 20–30 min video (your intro call with Yulia, Thu 10/8
-11:30 AM, is the opening of this stage; the substantive screen may be
-the same call or scheduled right after). **What they're testing:** whether you've actually
-thought about *this* lab — ~20 min of why-Anthropic + AI safety deep-dive
-[REPORTED]. A 10-year candidate failed here for shallow answers.
+**Format:** usually 30 min (some reports 15–20), phone or video, with a
+recruiter — not an engineer. Your call with Yulia is Thu 10/8, 11:30 AM
+PT. **It is not only logistics**: ~20 min of why-Anthropic + AI safety
+deep-dive [REPORTED, incl. a Sept-2026 aggregation of Apr–Sep 2026
+loops]. A 10-year candidate was rejected here for generic safety
+answers. Results in 1–3 days.
 
-**How to answer — the 2-minute why-Anthropic.** Structure it in four
-beats. Below each beat is an angle from *your* background — make it yours,
-don't memorize a script:
+**Typical flow:** (1) motivation + safety questions; (2) your background
+and the project most relevant to the role; (3) logistics — work
+authorization, timeline, other processes, sometimes level. She may close
+by outlining the next rounds.
 
-1. **Personal hook (30s)** — one moment where safety/reliability *cost*
-   you something real. Yours: holding back the Coupang generative-retrieval
-   launch when offline metrics hid a training–serving skew (your 5th Layer
-   story). "Choosing measurement honesty over shipping" is a lived value,
-   not a slogan.
-2. **Why this lab, not others (45s)** — name *specific* things:
-   Constitutional AI as a research program (RLAIF, the critique loop), the
-   interpretability agenda ("what is the model actually doing" as a
-   first-class question), the evals culture. Contrast without trashing
-   others.
-3. **What you'd build (30s)** — tie to Search: abuse-resistant retrieval,
-   eval rigor for RAG. "I'm allergic to metrics that lie."
-4. **Honest tension (15s)** — one thing you're genuinely unsure about
-   (open vs. closed, pace of deployment). Skepticism signals thinking;
-   pure praise signals rehearsal.
+**What she's deciding:** can this person talk about *this lab* with
+specificity and depth, or is it generic frontier-lab enthusiasm? The
+screen filters for demonstrated prior thought, not rehearsed lines.
+"I'm bullish on Anthropic" was flagged at a recruiter screen as not good
+enough [REPORTED].
 
-:::collapse How to answer each safety question (2026 reported set)
-- **"What does AI safety mean to you, personally?"** — Don't define the
-  field; narrate *your contact* with it: "In ranking I've lived the mild
-  versions — reward hacking (the model games the click objective), eval
-  gaming (offline metrics that don't predict online), feedback loops
-  (ranking shapes the data it trains on). Safety at scale is those failure
-  modes with higher stakes and less reversibility." Then: where you think
-  the hard problems are — deployment, misuse, concentration of power.
-- **"How is Anthropic different from other AI labs?"** — Research-led
-  safety (interpretability as a *program*, not a team), public technical
-  writing, measured deployment posture. Cite one artifact you actually
-  read (a paper or engineering post).
-- **"What happens if AI is misused?"** — Walk a mechanism, not slogans.
-  Your domain: search/ranking manipulation — adversaries manufacture
-  engagement signals (click farms, content farms tuned to the ranker); at
-  LLM scale, prompt-injection in indexed content and corpus poisoning.
-  "The system millions trust to tell them what's true becomes a
-  manipulation surface." Then one mitigation direction (adversarial evals,
-  provenance).
-- **"Biggest risks and benefits of advanced AI?"** — Two-sided, specific,
-  personal: which risk worries *you* most given what you've built, and
-  which benefit motivates your work.
-- **"React to a recent Anthropic announcement."** — Skim the blog/newsroom
-  the week of the interview. Bring one take with an argument *and* a
-  counter-argument.
-- **"What ways do you disagree with our AI approach?"** — Honest, with
-  reasoning. Example angle (make it yours): "I worry caution can become a
-  brand story — does the interpretability agenda cash out into deployment
-  decisions, or stay a research program while the product ships anyway? I
-  don't have the answer; that's a reason to be inside the room."
-- **"If we abandoned AI ambitions for safety and the stock went to zero,
-  how would you feel?"** (Axios-reported culture question) — There's no
-  right answer; they're testing whether you've thought about the tradeoff.
-  Honest version: "I'd be disappointed — lying otherwise would be fake —
-  but a lab that won't sacrifice revenue for safety isn't the lab I signed
-  up for. What I'd want is to understand the reasoning, not just the
-  outcome."
-:::
+### The 2026 question set — and what "deep" sounds like
+
+Each question below: the trap (shallow answer), then the shape of a good
+one. All angles use *your* background — rewrite in your own words.
+
+- **"Why Anthropic rather than another lab?"** — Trap: "the mission."
+  Good: name specific artifacts (Constitutional AI's critique loop,
+  the interpretability program, the evals writing) + what each made you
+  think. See the worked 2-minute script below.
+- **"Why now?"** — Trap: "I'm ready for a new challenge." Good: a real
+  inflection — you've spent years on the mild versions of these problems
+  (reward hacking in ranking, eval gaming, feedback loops) and want to
+  work where they're the central problem, not a side constraint. Tie it
+  to a moment, not a mood.
+- **"What does AI safety mean to you, personally?"** — Trap: defining
+  the field. Good: narrate *your contact* with it — "In ranking I've
+  lived the mild versions: the model games the click objective, offline
+  metrics don't predict online, ranking shapes the data it trains on.
+  Safety at scale is those failure modes with higher stakes and less
+  reversibility."
+- **"How is Anthropic different from other labs?"** — Trap: vibes.
+  Good: research-led safety (interpretability as a *program*), public
+  technical writing, measured deployment posture. Cite one thing you
+  actually read.
+- **"How could AI be misused?"** — Trap: slogans. Good: walk a
+  mechanism from your domain — adversaries manufacture engagement
+  signals (click farms, content farms tuned to the ranker); at LLM
+  scale, prompt-injection in indexed content and corpus poisoning. "The
+  system millions trust to tell them what's true becomes a manipulation
+  surface." Then one mitigation direction.
+- **"What's an AI problem you think is underrated?"** — Trap: a
+  headline problem. Good: pick something you have standing to name —
+  yours: the eval-to-deployment gap (offline metrics systematically
+  missing deployment failure modes; your 5th Layer story is the
+  exhibit). Underrated because everyone measures, few measure honestly.
+- **"What do you think of recent Anthropic news / the Responsible
+  Scaling Policy?"** — Trap: "I haven't followed closely." Good: skim
+  the blog/newsroom the week of the call; bring one take with an
+  argument *and* a counter-argument. For the RSP: one thing you'd keep,
+  one you'd change — and what the change trades away (only works if
+  you've actually read it).
+- **"What ways do you disagree with our AI approach?"** — Trap: "I
+  agree with everything" (reads as not having done the reading) or a
+  grievance. Good: one specific, defensible critique — e.g. "I buy the
+  ASL framework, but as someone who has shipped ranking systems, my
+  question is how capability thresholds cash out into deployment
+  decisions. I'd want to see the mechanism that closes the loop, not
+  just the research." Then: what evidence would change your mind.
+- **"If we abandoned AI ambitions for safety and the stock went to
+  zero, how would you feel?"** — Trap: money as the headline (a
+  documented reject). Good: be honest — "I'd be disappointed, lying
+  otherwise would be fake — but a lab that won't sacrifice revenue for
+  safety isn't the lab I signed up for. What I'd want is to understand
+  the reasoning, not just the outcome."
+
+### Worked 2-minute why-Anthropic (in your voice — adapt, don't memorize)
+
+> "The honest version starts with a launch I held back. We were about
+> to ship a generative-retrieval change at Coupang and my measurements
+> showed a training–serving skew the offline metrics were hiding. I
+> slowed the launch. That was the moment I realized measurement honesty
+> isn't a nice-to-have — it's the whole game, and in ranking I've lived
+> the mild versions of the safety problems: reward hacking, eval gaming,
+> feedback loops where ranking shapes its own training data.
+>
+> What pulled me to Anthropic specifically is that safety is the
+> organizing principle, not a constraint bolted on after. The
+> interpretability agenda — asking what the model is actually doing as a
+> first-class question — and the evals culture, like the 'Demystifying
+> evals' piece arguing most agent failures are broken harnesses, not weak
+> models. That's the world I already live in; I want to work where
+> closing the eval-to-deployment gap *is* the mission.
+>
+> What I'd build here is search-side: abuse-resistant retrieval, eval
+> rigor for RAG. I'm allergic to metrics that lie.
+>
+> And the honest tension: I worry caution can become a brand story. Does
+> the interpretability program cash out into deployment decisions, or
+> stay a research program while the product ships anyway? I don't have
+> the answer — that's a reason to be inside the room."
+
+### Your 60-second background pitch (for "walk me through yourself")
+
+Senior Staff MLE, Search Ranking at Coupang (2023–now), tech lead for
+Search & Discovery — query rewriting, retrieval, multi-stage ranking,
+LLM-powered product discovery. Before that: Meta Staff MLE (Feed
+recommendation), Pinterest Senior MLE / tech lead (Search & Discover),
+AWS, MetLife. NYU master's, SJTU bachelor's. Anchor every answer to the
+Coupang tech-lead story — it's the spine of the whole loop.
+
+### Questions to ask Yulia (recruiter-specific)
+
+- What's the interview loop from here — tech phone format, onsite
+  structure, timeline between rounds? (Expect 1–2 months total; 2–3
+  weeks between rounds is normal.)
+- Which team(s) is this Staff SWE Search role for, and what does the
+  team-match process look like after the loop?
+- How is the staff level scoped for this role — what does "great"
+  look like in the first year?
+- Anything in my background you'd like me to go deeper on in the tech
+  phone?
+
+**Logistics she'll cover:** work authorization (you're a green-card
+holder — no sponsorship needed), start timeline, other processes you're
+in. Keep comp answers to "I'd love to understand the range first."
 
 **Prep checklist:**
-- [ ] Read Anthropic's **Core Views on AI safety** (official site) +
-  Constitutional AI one-pager (critique loop, RLAIF, failure modes)
-- [ ] Write your 2-minute why-Anthropic (four beats above); say it out
-  loud once — specific > sweeping
-- [ ] Prepare one dual-use walkthrough (search/ranking manipulation) and
-  one recent-news take (argument + counter-argument)
-- [ ] Rehearse the equity-to-zero question in your own honest words
+- [ ] Read Anthropic's **Core Views on AI safety** + Constitutional AI
+  one-pager (critique loop, RLAIF, failure modes); skim the RSP (one
+  keep, one change + its cost)
+- [ ] Say the 2-minute why-Anthropic out loud once — specific >
+  sweeping; no clean flat recitation
+- [ ] One-line takes ready: underrated problem (eval-to-deployment
+  gap), one recent-news take (argument + counter-argument), one genuine
+  disagreement
+- [ ] 60-sec background pitch out loud once; "why now" in your own
+  words
+- [ ] Re-read [candidate-ai-guidance](https://www.anthropic.com/candidate-ai-guidance)
+  (official — no AI assistance in any live round)
 
-**Failure modes:** generic "I love your mission"; zero Anthropic-specific
-knowledge (no paper/post/product detail); treating safety as compliance;
-unable to name a genuine disagreement.
+**Failure modes:** generic "I love your mission"; zero
+Anthropic-specific knowledge (no paper/post/product detail); "I'm
+bullish on Anthropic" with nothing behind it; treating safety as
+compliance; unable to name a genuine disagreement; flat rehearsed
+delivery (interviewers report recognizing "clean, complete, emotionally
+flat" answers).
 
 ---
 
