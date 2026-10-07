@@ -203,7 +203,9 @@ class Renderer:
                 f'<input type="checkbox" class="task-cb" data-page="{self.slug}" '
                 f'data-task="{self.task_idx}"{" checked" if checked else ""}>'
             )
-            return f"- {box} "
+            # Stash the raw HTML so the markdown pass (and _inline escaping
+            # in the fallback renderer) can't mangle it; restored in render().
+            return f"- {self._stash('TASKCB', box)} "
 
         return re.sub(r"^(\s*)-\s+\[([ xX])\]\s+", sub, text, flags=re.M)
 
@@ -239,6 +241,7 @@ class Renderer:
             lambda v: self._collapse(v[0], v[1]),
         )
         restore("MERMAID", lambda v: f'<div class="mermaid">{v}</div>')
+        restore("TASKCB", lambda v: v)
         restore("DMATH", lambda v: v)
         restore("IMATH", lambda v: v)
         restore(
