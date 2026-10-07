@@ -291,6 +291,36 @@ class Renderer:
         return re.sub(r"<h([23])>(.*?)</h\1>", sub, html, flags=re.S)
 
 
+def _split_row(line):
+    s = line.strip()
+    if s.startswith("|"):
+        s = s[1:]
+    if s.endswith("|"):
+        s = s[:-1]
+    return [c.strip() for c in s.split("|")]
+
+
+def _parse_align(delim, n):
+    aligns = []
+    for c in _split_row(delim)[:n]:
+        c = c.strip()
+        if c.startswith(":") and c.endswith(":") and len(c) > 1:
+            aligns.append("center")
+        elif c.endswith(":"):
+            aligns.append("right")
+        elif c.startswith(":"):
+            aligns.append("left")
+        else:
+            aligns.append(None)
+    while len(aligns) < n:
+        aligns.append(None)
+    return aligns
+
+
+def _align_attr(a):
+    return f' style="text-align:{a}"' if a else ""
+
+
 def _minimal_md(text):
     """Fallback renderer if python-markdown is unavailable."""
     out, in_list, list_tag, last_li = [], False, None, None
@@ -317,7 +347,11 @@ def _minimal_md(text):
             )
         in_quote, quote_buf = False, []
 
-    for line in text.splitlines():
+    lines = text.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        i += 1
         if line.startswith(">"):
             content = line[1:]
             if content[:1] == " ":
@@ -329,6 +363,49 @@ def _minimal_md(text):
             in_quote = True
             continue
         flush_quote()
+        # Pipe tables: header row + delimiter row, then body rows.
+        if (
+            re.match(r"^\s*\|.*\|\s*$", line)
+            and line.count("|") >= 2
+            and i < len(lines)
+            and "-" in lines[i]
+            and re.match(r"^\s*\|?[\s:|\-]+\|?\s*$", lines[i])
+        ):
+            delim = lines[i]
+            i += 1
+            headers = _split_row(line)
+            aligns = _parse_align(delim, len(headers))
+            if in_list:
+                out.append(f"</{list_tag}>")
+                in_list, last_li = False, None
+            out.append("<table>")
+            out.append(
+                "<thead><tr>"
+                + "".join(
+                    f"<th{_align_attr(a)}>{_inline(h)}</th>"
+                    for h, a in zip(headers, aligns)
+                )
+                + "</tr></thead>"
+            )
+            out.append("<tbody>")
+            while (
+                i < len(lines)
+                and re.match(r"^\s*\|.*\|\s*$", lines[i])
+                and lines[i].count("|") >= 2
+            ):
+                cells = _split_row(lines[i])
+                i += 1
+                cells += [""] * (len(headers) - len(cells))
+                out.append(
+                    "<tr>"
+                    + "".join(
+                        f"<td{_align_attr(a)}>{_inline(c)}</td>"
+                        for c, a in zip(cells, aligns)
+                    )
+                    + "</tr>"
+                )
+            out.append("</tbody></table>")
+            continue
         if line.startswith("ZZ") and line.endswith("ZZ"):
             if in_list:
                 out.append(f"</{list_tag}>")
