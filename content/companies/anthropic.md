@@ -474,9 +474,8 @@ critical thinking about Anthropic's *own* tradeoffs.
 **The 7 highest-leverage questions — answer frameworks.** Each gives the
 beats, then your talking points. Say them out loud once each.
 
-<details>
-<summary><b>1. "Tell me about a time you built something against your
-values" → "How did you feel then? How about now?"</b></summary>
+:::collapse 1. "Tell me about a time you built something against your values" → "How did you feel then? How about now?"
+
 
 Beats: (1) real stakes — what, who wanted it, what resisting cost;
 (2) name the violated value in plain words; (3) concrete action (data,
@@ -490,10 +489,11 @@ Your angle: the ship-velocity-vs-measurement-rigor tension — pressed to
 ship a ranking change without proper measurement. What the data showed,
 who pushed and why, how you escalated with evidence, the frustration of
 being the blocker. → **Put the mission first** + **Hold light and shade**.
-</details>
+:::
 
-<details>
-<summary><b>2. "What ways do you disagree with our AI approach?"</b></summary>
+
+:::collapse 2. "What ways do you disagree with our AI approach?"
+
 
 Beats: (1) one specific thing you buy — so the critique lands as
 engaged, not hostile; (2) ONE specific disagreement — name the
@@ -510,11 +510,11 @@ miss deployment failure modes" [your skew story]. "I'd want to see the
 mechanism that closes that loop, not just the research." →
 **Ignite a race to the top on safety** + **Do the simple thing that
 works**.
-</details>
+:::
 
-<details>
-<summary><b>3. "How would you feel if safety decisions sent the stock to
-zero?"</b></summary>
+
+:::collapse 3. "How would you feel if safety decisions sent the stock to zero?"
+
 
 Beats: (1) be honest — don't perform indifference to money; (2)
 separate what you can assess (was the safety call principled? what does
@@ -530,11 +530,11 @@ call on real evidence, or panic? If the reasoning holds, that's exactly
 the company I signed up for. The financial hit is real and I'd be honest
 about that — but I wouldn't want to work somewhere that reverses a
 safety call to protect the stock." → **Put the mission first**.
-</details>
+:::
 
-<details>
-<summary><b>4. "Tell me about a time you raised a concern that slowed or
-blocked a launch" / "…you argued against shipping"</b></summary>
+
+:::collapse 4. "Tell me about a time you raised a concern that slowed or blocked a launch" / "…you argued against shipping"
+
 
 Beats: (1) what you saw — the data, precisely; (2) steelman the other
 side (why they wanted to ship); (3) your escalation path, with evidence;
@@ -548,10 +548,11 @@ centerpiece story. The skew you measured, why the team wanted to ship
 anyway, how you brought data not just worry, the delay it caused, the
 discomfort of slowing a launch everyone wanted. → **Put the mission
 first** + **Ignite a race to the top on safety**.
-</details>
+:::
 
-<details>
-<summary><b>5. "Why Anthropic, specifically — not another lab?"</b></summary>
+
+:::collapse 5. "Why Anthropic, specifically — not another lab?"
+
 
 Beats: (1) one specific thing about their work you hold an opinion on
 (not "the mission matters"); (2) a piece of your history showing the
@@ -568,10 +569,11 @@ work where closing that gap *is* the mission. And **Do the simple thing
 that works** matches how I actually build — empirical iteration over
 clever architectures." History anchor: the skew story as the moment you
 realized measurement rigor is a safety practice.
-</details>
+:::
 
-<details>
-<summary><b>6. "What would make you want to leave Anthropic?"</b></summary>
+
+:::collapse 6. "What would make you want to leave Anthropic?"
+
 
 Beats: (1) ONE concrete condition — a specific mission reversal (e.g.
 shipping a capability your own evals flagged as unsafe, to hit a revenue
@@ -584,11 +586,11 @@ Your angle: "If I saw us ship something our own safety work said wasn't
 ready — because a competitor shipped first. I joined for **Put the
 mission first**; if the final arbiter stopped being the mission, I'd have
 to go." This also inoculates you against the race-dynamics follow-ups.
-</details>
+:::
 
-<details>
-<summary><b>7. "Breakthrough with unquantified risk — delay? What if a
-competitor ships anyway?"</b></summary>
+
+:::collapse 7. "Breakthrough with unquantified risk — delay? What if a competitor ships anyway?"
+
 
 Beats: (1) state decision CRITERIA before the verdict: reversibility of
 harm, visibility of failure modes, whether a narrower release captures
@@ -605,7 +607,8 @@ a way to see the failure. Same here: name the redline, ship narrowly
 inside it, invest the 'lost' time in the eval that lets us ship
 confidently." → **Hold light and shade** + **Do the simple thing that
 works**.
-</details>
+:::
+
 
 **More reported questions** (bank — know your one-line take for each):
 

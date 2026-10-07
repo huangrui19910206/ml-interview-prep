@@ -160,6 +160,19 @@ class Renderer:
             text,
         )
 
+    def _protect_currency(self, text):
+        # $0.02/turn, $29K/day, $3B, $15 per ... — not math. Runs before
+        # _protect_math so the math pattern can allow a digit after the
+        # opening $ (needed for $2\pi$, $10^{-6}$). A $digits run is
+        # currency only with an explicit unit (/turn, K/M/B), a /$ pair,
+        # or a terminating space/punctuation/end — never when followed by
+        # math continuations like \, ^, _, { or a closing $.
+        return re.sub(
+            r"\$[0-9][0-9,.]*(?:/[a-zA-Z]+|[KMB]\b|/(?=\$)|(?=[\s.,;:!?\"')\]]|$))",
+            lambda m: self._stash("CUR", m.group(0)),
+            text,
+        )
+
     def _protect_math(self, text):
         text = re.sub(
             r"\$\$(.+?)\$\$",
@@ -167,11 +180,10 @@ class Renderer:
             text,
             flags=re.S,
         )
-        # Inline math: single-line only (no re.S), and never treat currency
-        # like $200M / $5B / $/token as math: opening $ must not be
-        # followed by $ or a digit.
+        # Inline math: single-line only (no re.S). Currency is already
+        # stashed above, so a digit may follow the opening $ ($2\pi$).
         return re.sub(
-            r"(?<!\$)\$(?![\$\d])([^$\n]+?)(?<!\$)\$(?!\$)",
+            r"(?<!\$)\$(?!\$)([^$\n]+?)(?<!\$)\$(?!\$)",
             lambda m: self._stash("IMATH", "$" + m.group(1) + "$"),
             text,
         )
@@ -213,6 +225,7 @@ class Renderer:
     def render(self, text, inner=False):
         text = self._protect_fences(text)
         text = self._protect_inline_code(text)
+        text = self._protect_currency(text)
         text = self._protect_math(text)
         text = self._extract_directives(text)
         text = self._rewrite_task_lists(text)
@@ -244,6 +257,7 @@ class Renderer:
         restore("TASKCB", lambda v: v)
         restore("DMATH", lambda v: v)
         restore("IMATH", lambda v: v)
+        restore("CUR", lambda v: v)
         restore(
             "CODE",
             lambda v: re.sub(
@@ -323,8 +337,24 @@ def _align_attr(a):
 
 def _minimal_md(text):
     """Fallback renderer if python-markdown is unavailable."""
-    out, in_list, list_tag, last_li = [], False, None, None
+    out, in_list, list_tag = [], False, None
     in_quote, quote_buf = False, []
+    para_buf = []
+    li_buf = None
+
+    def flush_para():
+        nonlocal para_buf
+        if para_buf:
+            out.append(f"<p>{_inline(' '.join(para_buf))}</p>")
+            para_buf = []
+
+    def flush_li():
+        # Emit the buffered list item, joining its source lines first so
+        # inline markup (bold/italic/links) can span the item's lines.
+        nonlocal li_buf
+        if li_buf is not None:
+            out.append(f"<li>{_inline(' '.join(li_buf))}</li>")
+            li_buf = None
 
     def flush_quote():
         nonlocal in_quote, quote_buf
@@ -356,9 +386,11 @@ def _minimal_md(text):
             content = line[1:]
             if content[:1] == " ":
                 content = content[1:]
+            flush_para()
+            flush_li()
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list, last_li = False, None
+                in_list = False
             quote_buf.append(content)
             in_quote = True
             continue
@@ -373,11 +405,13 @@ def _minimal_md(text):
         ):
             delim = lines[i]
             i += 1
+            flush_para()
+            flush_li()
             headers = _split_row(line)
             aligns = _parse_align(delim, len(headers))
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list, last_li = False, None
+                in_list = False
             out.append("<table>")
             out.append(
                 "<thead><tr>"
@@ -407,51 +441,73 @@ def _minimal_md(text):
             out.append("</tbody></table>")
             continue
         if line.startswith("ZZ") and line.endswith("ZZ"):
+            flush_para()
+            flush_li()
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list, last_li = False, None
+                in_list = False
             out.append(line)
             continue
         m = re.match(r"^(#{1,4})\s+(.*)", line)
         if m:
+            flush_para()
+            flush_li()
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list, last_li = False, None
+                in_list = False
             out.append(f"<h{len(m.group(1))}>{_inline(m.group(2))}</h{len(m.group(1))}>")
+            continue
+        # Horizontal rule
+        if re.match(r"^\s*(-{3,}|\*{3,}|_{3,})\s*$", line):
+            flush_para()
+            flush_li()
+            if in_list:
+                out.append(f"</{list_tag}>")
+                in_list = False
+            out.append("<hr>")
             continue
         m = re.match(r"^(\s*)[-*]\s+(.*)", line)
         if m:
+            flush_para()
+            flush_li()
             if not in_list:
                 out.append("<ul>")
                 in_list, list_tag = True, "ul"
-            out.append(f"<li>{_inline(m.group(2))}</li>")
-            last_li = len(out) - 1
+            li_buf = [m.group(2).strip()]
             continue
         if re.match(r"^\s*\d+\.\s+", line):
+            flush_para()
+            flush_li()
             if not in_list or list_tag != "ol":
                 if in_list:
                     out.append(f"</{list_tag}>")
                 out.append("<ol>")
                 in_list, list_tag = True, "ol"
-            out.append(f"<li>{_inline(re.sub(r'^\s*\d+\.\s+', '', line))}</li>")
-            last_li = len(out) - 1
+            li_buf = [re.sub(r'^\s*\d+\.\s+', '', line).strip()]
+            # NOTE: ol reuses the ul <li> emission via flush_li; nested
+            # ol-inside-ul edge is not present in our content.
             continue
         if not line.strip():
+            flush_para()
+            flush_li()
             if in_list:
                 out.append(f"</{list_tag}>")
-                in_list, last_li = False, None
+                in_list = False
             continue
-        # Indented continuation of the current list item: fold into the <li>
-        # instead of breaking out into a separate paragraph.
-        if in_list and last_li is not None and re.match(r"^\s+\S", line):
-            out[last_li] = (
-                out[last_li][: -len("</li>")] + " " + _inline(line.strip()) + "</li>"
-            )
+        # Indented continuation of the current list item: buffer it; the
+        # whole item is inline-processed once at flush time.
+        if in_list and li_buf is not None and re.match(r"^\s+\S", line):
+            li_buf.append(line.strip())
             continue
         if in_list:
+            flush_li()
             out.append(f"</{list_tag}>")
-            in_list, last_li = False, None
-        out.append(f"<p>{_inline(line)}</p>")
+            in_list = False
+        # Plain text: accumulate into the current paragraph so inline markup
+        # (bold/italic/links) can span source lines; flushed at block ends.
+        para_buf.append(line.strip())
+    flush_para()
+    flush_li()
     flush_quote()
     if in_list:
         out.append(f"</{list_tag}>")

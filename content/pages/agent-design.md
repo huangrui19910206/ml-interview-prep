@@ -462,11 +462,11 @@ loop budget as a billing guardrail; tool output delimited as untrusted data.
   operational data, user-confirmed wins for preferences; surface the conflict
 >  "Design a **coding agent**." Architecture below — emphasize the
   edit→test→verify loop and the sandbox.
-- **"Design a **customer-support agent**."** Emphasize semantic caching,
+- **"Design a \1."** Emphasize semantic caching,
   escalation to humans, grounded answers with citations.
-- **"Design a **deep-research agent**."** Emphasize plan-and-execute,
+- **"Design a \1."** Emphasize plan-and-execute,
   parallel fan-out, source triangulation, long-running jobs.
-- **"Design a **cross-enterprise-app agent** (works across Salesforce, Jira,
+- **"Design a \1 (works across Salesforce, Jira,
   Gmail...)."** Emphasize per-app permission scopes, OAuth token handling,
   idempotency across systems, audit trails.
 :::
