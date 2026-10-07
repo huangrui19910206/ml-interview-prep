@@ -5,7 +5,7 @@ section: "fundamentals"
 nav_order: 1
 nav_label: "ML Fundamentals"
 tags: ["loss-functions", "optimization", "regularization", "normalization", "metrics", "ranking", "interview-prep"]
-updated: "2026-10-01"
+updated: "2026-10-07"
 ---
 
 ## TL;DR
@@ -614,57 +614,321 @@ dX = dz @ W.T          # propagate to earlier layers
 
 ## Metrics
 
-### Classification metrics
+### Classification metrics: the confusion matrix and friends
 
 :::tldr
-Accuracy lies under class imbalance and cost asymmetry. Precision/recall/F1
-describe the confusion matrix; ROC-AUC measures ranking quality of scores
-across thresholds; PR-AUC is the honest metric for rare positives; calibration
-measures whether predicted probabilities mean what they say.
+Every classification metric is arithmetic on four counts — TP, FP, FN, TN.
+Precision = "of the alarms I raised, how many were real"; recall = "of the
+real cases, how many did I catch." F1 is their harmonic mean. Accuracy is the
+one metric you should distrust on sight whenever classes are imbalanced.
 :::
 
-**30-second answer:** Precision = TP/(TP+FP) (of predicted positives, how
-many right); Recall = TP/(TP+FN) (of actual positives, how many found); F1 =
-harmonic mean. ROC-AUC = $P(\text{score}(+) > \text{score}(-))$ over random
-pairs — threshold-independent ranking quality. PR-AUC integrates
-precision-recall — use it when positives are rare (ROC-AUC looks deceptively
-good). Calibration: does "70% confident" happen 70% of the time (reliability
-diagrams, ECE)?
+**30-second answer:** Draw the 2×2: rows are *actual* (positive/negative),
+columns are *predicted*. TP = predicted positive and right; FP = predicted
+positive and wrong (false alarm); FN = predicted negative and wrong (miss);
+TN = predicted negative and right. Then:
+$$\text{Precision} = \tfrac{TP}{TP+FP}, \qquad \text{Recall} = \tfrac{TP}{TP+FN}$$
+Precision answers "how trustworthy are my positive predictions";
+recall answers "how complete is my coverage of the positives."
 
-**Interview-depth:** **Accuracy paradox:** 99% negatives → a constant
-classifier scores 99% accuracy and is useless. **F1 vs. business cost:** F1
-weights precision/recall equally, but fraud detection wants recall (missing
-fraud is expensive) while ad targeting wants precision (irrelevant ads burn
-trust) — the metric must encode the cost matrix, and the *threshold* is a
-business decision, not an ML one. **ROC-AUC's blind spot:** it's dominated by
-high-score regions and insensitive to the top of the ranked list — for
-recommendation/search you need position-aware metrics (below). **Calibration
-matters when** probabilities feed downstream decisions (bidding, thresholding,
-combining models) — CE-trained models are typically overconfident; fix with
-temperature scaling or isotonic regression on a held-out set.
+**The worked example you should be able to do live:** 1,000 transactions, 10
+are fraud (1% positive rate). Your model flags 20 as fraud and catches 8 of
+the 10. So TP=8, FP=12, FN=2, TN=978. Precision = 8/20 = **40%** (3 of every 5
+alarms are false). Recall = 8/10 = **80%** (caught most fraud). Accuracy =
+986/1000 = **98.6%** — looks excellent, tells you nothing: a model that flags
+*nothing* scores 99%. This is the accuracy paradox, and interviewers use it
+as a shibboleth — if you quote accuracy on imbalanced data unprompted, you
+fail the question.
+
+**Interview-depth — the precision/recall tradeoff:** they're joined at the
+threshold. Lower the decision threshold → more positives predicted → recall
+goes up, precision goes down (more false alarms). Raise it → the reverse.
+There is no free lunch; the *operating point* is a business decision about
+relative costs. **Spam filter** (false positive = legit email hidden):
+precision matters, a missed spam (FN) is cheap. **Fraud / cancer screening**
+(false negative = disaster): recall matters, false alarms are cheap to review.
+**F1** $= 2PR/(P+R)$ is the harmonic mean — it punishes extreme imbalance
+between the two (P=1.0, R=0.1 gives F1≈0.18, not 0.55), which is why it's the
+default single number when you need *both* but have no cost model. **F-beta**
+generalizes: $F_\beta = (1+\beta^2)PR/(\beta^2 P + R)$; $\beta=2$ weights
+recall 2×, $\beta=0.5$ weights precision 2×. If the interviewer names
+asymmetric costs, name $F_\beta$, don't just say "F1."
+
+**Specificity and friends:** Specificity = TN/(TN+FP) = 1 − FPR — the
+true-negative rate; clinicians love it, ML interviews rarely need it beyond
+the definition. Balanced accuracy = (recall + specificity)/2 — a quick fix
+for accuracy under imbalance.
 
 **Math:**
-$$\text{Prec} = \tfrac{TP}{TP+FP}, \quad \text{Rec} = \tfrac{TP}{TP+FN},
-\quad F_1 = \tfrac{2PR}{P+R}, \quad \text{AUC} = P(s_+ > s_-)$$
+$$F_1 = \frac{2}{\frac{1}{P}+\frac{1}{R}} = \frac{2TP}{2TP+FP+FN}$$
+
+**Code:**
+```python
+def prf(tp, fp, fn):
+    p = tp / (tp + fp) if tp + fp else 0.0
+    r = tp / (tp + fn) if tp + fn else 0.0
+    f1 = 2*p*r/(p+r) if p+r else 0.0
+    return p, r, f1
+# fraud example: prf(8, 12, 2) -> (0.40, 0.80, 0.533)
+```
 
 **Follow-ups:**
-- "Your AUC is 0.95 but the product is bad — why?" → AUC is threshold-free
-  and pair-based; the operating threshold may sit in a bad spot, the positive
-  rate may be tiny (PR-AUC tells the truth), or the pairs that matter
-  (top-K) aren't the pairs AUC weights.
-- "How do you pick a threshold?" → maximize expected utility: threshold where
-  marginal precision equals the cost ratio; or constrain one metric
-  (recall ≥ 0.9) and maximize the other. Never default to 0.5 without saying
-  why.
-- "Micro vs macro averaging?" → micro aggregates counts (dominated by frequent
-  classes); macro averages per-class metrics (every class counts equally).
-  Report both when classes are imbalanced.
+- "Precision 90%, recall 30% — good model?" → "For what?" If false alarms are
+  expensive (ad targeting, email), that's a fine operating point; if misses
+  are expensive, it's terrible. Then ask about the positive rate — with 1%
+  positives, 90% precision is genuinely strong.
+- "Why harmonic mean, not arithmetic?" → the harmonic mean is dominated by
+  the smaller value, so gaming one metric while tanking the other scores
+  badly. Arithmetic mean would let P=1.0, R=0.01 look respectable.
+- "Your precision dropped after launch — diagnose." → label shift (positive
+  rate changed), threshold drift, feature staleness, or an upstream change
+  flooding you with easy negatives. Check the confusion matrix *counts*, not
+  just the ratios.
 
 **Mistakes:**
-- Reporting accuracy on imbalanced data.
-- Tuning the threshold on the test set — threshold is a hyperparameter, tune
-  on validation.
-- Confusing a well-ranked model (high AUC) with a well-calibrated one.
+- Quoting accuracy on imbalanced data without mentioning the base rate.
+- Tuning the threshold on the test set — the threshold is a hyperparameter;
+  tune it on validation, report on test.
+- Comparing F1 across datasets with different positive rates — F1 depends on
+  prevalence; it's not comparable across different base rates.
+
+### Precision-recall curves and PR-AUC
+
+:::tldr
+A PR curve sweeps the decision threshold and plots precision vs. recall —
+it shows the *entire tradeoff*, not one operating point. PR-AUC (average
+precision) summarizes it. For rare positives it's the honest metric: its
+random baseline is the positive rate itself, so a bad model can't hide.
+:::
+
+**30-second answer:** Sort examples by score, sweep the threshold from strict
+to lax, and at each step record (recall, precision). Plot precision (y) vs.
+recall (x). The area under it — PR-AUC, usually computed as *average
+precision* (AP, the precision at each threshold weighted by the recall gain)
+— is a threshold-free summary. A random classifier scores PR-AUC ≈ positive
+rate (e.g., 0.01 for 1% fraud), so unlike ROC-AUC there's no deceptive 0.5
+floor to hide behind.
+
+**Interview-depth — reading the curve:** the curve starts at the
+highest-threshold point (low recall, usually high precision) and ends at
+recall = 1 (precision = positive rate — you've flagged everything). A good
+model's curve hugs the top-right: high precision *maintained* as recall
+grows. The shape tells you where the model struggles: a sharp early drop
+means the top-scoring positives are polluted with false alarms — your best
+bets aren't trustworthy. **Why AP not just AUC of the curve:** the standard
+computation (average precision = $\sum_k P(k)\,\Delta R(k)$) weights precision
+by actual recall gains, which handles the curve's sawtooth interpolation
+correctly; naive trapezoidal integration overstates it.
+
+**Why PR beats ROC on imbalanced data:** ROC plots TPR vs. FPR, and
+FPR = FP/(FP+TN) — with 99% negatives, the TN term swamps everything, so
+thousands of false alarms barely move FPR. ROC-AUC 0.95 can coexist with
+precision of 10%. The PR curve has no TN term — every false alarm directly
+hurts precision. Rule of thumb: if the positive class is rare *and* it's the
+class you care about, PR-AUC is the primary metric; ROC-AUC is the secondary.
+
+**Math:**
+$$\text{AP} = \sum_{k} P(k)\,\Delta R(k), \qquad
+\text{random baseline} = \frac{\#\text{positives}}{\#\text{total}}$$
+
+**Code (PR curve sweep, numpy):**
+```python
+def pr_curve(y_true, scores):
+    order = np.argsort(-scores)          # strict -> lax threshold
+    y = np.asarray(y_true)[order]
+    tp = np.cumsum(y); fp = np.cumsum(1 - y)
+    precision = tp / (tp + fp)
+    recall = tp / tp[-1]
+    ap = np.sum(precision[1:] * np.diff(recall))  # average precision
+    return recall, precision, ap
+```
+
+**Follow-ups:**
+- "PR-AUC 0.6 on 1% positives — good?" → enormously better than the 0.01
+  baseline — 60× random. Always interpret PR-AUC *relative to prevalence*.
+- "When is ROC-AUC the better choice?" → balanced classes, or when both
+  classes' ranking quality matters symmetrically (e.g., general classifier
+  benchmarking). Also ROC-AUC has nicer statistical properties (it's a
+  proper ranking probability, $P(s_+ > s_-)$).
+- "Davis & Goadrich?" → the 2006 result interviewers sometimes name-drop: a
+  model dominates in ROC space iff it dominates in PR space — but PR space
+  *magnifies* differences in the high-precision region that ROC compresses.
+  Say that and move on.
+
+**Mistakes:**
+- Reporting PR-AUC without the positive rate — 0.6 means opposite things at
+  1% vs. 40% prevalence.
+- Using ROC-AUC as the *only* metric for fraud/disease/rare-event problems.
+- Interpolating the PR curve linearly between points (optimistic); use the
+  standard AP computation.
+
+### Threshold selection: turning scores into decisions
+
+:::tldr
+The model outputs scores; the *product* needs decisions. The threshold is
+chosen from costs, not from the model: pick the point on the PR/ROC curve
+that maximizes expected utility, or the best precision subject to a recall
+floor the business sets. 0.5 is a default, not a decision.
+:::
+
+**30-second answer:** Three legitimate ways: **(1)** cost-based — threshold
+where marginal precision equals the cost ratio
+$\tfrac{\text{cost(FP)}}{\text{cost(FN)}}$; **(2)** constraint-based — "recall
+≥ 0.9" (compliance/fraud), then maximize precision; **(3)** F1-max — the
+threshold maximizing F1 on validation, the defensible default with no cost
+model. All tuned on validation, never test.
+
+**Interview-depth:** the cost-based rule falls out of expected utility: flag
+when $P(\text{pos}\mid x) \cdot \text{cost(FN)} > (1-P) \cdot
+\text{cost(FP)}$. Note this needs *calibrated* probabilities — an
+uncalibrated model's "0.7" isn't 70%, so cost-based thresholding on raw
+scores misfires (see calibration below). In practice most teams use the
+constraint form because businesses state floors ("catch 95% of fraud"),
+not cost ratios. **Revisit cadence:** thresholds decay — retune on a schedule
+or when the positive rate drifts; a threshold tuned on last quarter's
+traffic is a silent regression.
+
+**Follow-ups:**
+- "Why not just use 0.5?" → 0.5 is optimal only for balanced classes with
+  symmetric costs — roughly never in production. It's the absence of a
+  decision disguised as one.
+- "Threshold for a ranking model?" → rankers usually don't threshold for
+  ordering, but the *retrieval* stage does (score cutoff for candidate
+  generation) — tuned on Recall@K, not precision.
+
+### Regression metrics: MAE, RMSE, R²
+
+:::tldr
+MAE = average absolute miss (robust, speaks in the unit of the target);
+RMSE = square-root of average squared miss (punishes big errors, same units);
+R² = fraction of variance explained (1 = perfect, 0 = "just predict the
+mean"). Pick by how the business prices errors: linearly → MAE,
+superlinearly → RMSE.
+:::
+
+**30-second answer:** For targets $y$ and predictions $\hat y$:
+$$\text{MAE} = \tfrac{1}{n}\sum|y-\hat y|, \quad
+\text{RMSE} = \sqrt{\tfrac{1}{n}\sum(y-\hat y)^2}, \quad
+R^2 = 1 - \tfrac{\sum(y-\hat y)^2}{\sum(y-\bar y)^2}$$
+MAE's minimizer is the conditional *median*; MSE/RMSE's is the conditional
+*mean* — so MAE shrugs off outliers while RMSE chases them.
+
+**Interview-depth — choosing:** **MAE** when every unit of error costs the
+same (ETA minutes, price dollars) and you don't want a few wild outliers
+driving the model — it's robust and directly interpretable ("off by $12 on
+average"). **RMSE** when large errors are disproportionately bad (a 60-minute
+ETA miss ruins the delivery, six 10-minute misses don't) — the squaring makes
+the optimizer care about the tail. **R²** for communicating fit quality to
+non-technical stakeholders ("explains 83% of the variance"), and as a
+scale-free comparator — but it can be *negative* (worse than predicting the
+mean) and it rewards fitting the bulk while hiding tail behavior, so never
+use it alone. **MAPE** (mean absolute *percentage* error) looks intuitive but
+is asymmetric (penalizes over-prediction more) and explodes near zero
+targets — mention it only to say why you avoid it.
+
+**Follow-ups:**
+- "RMSE went down but the product got worse?" → the model traded many small
+  errors for a few catastrophic ones, or the error distribution shifted
+  (check MAE alongside — if MAE rose while RMSE fell, the tail got worse).
+  Report both, always.
+- "R² of 0.99 — celebrate?" → check for leakage first: near-perfect R² on a
+  real problem usually means the target (or a proxy) leaked into the
+  features. Also check it's computed out-of-sample.
+- "Why does minimizing MSE give the mean?" → $\arg\min_c \mathbb{E}[(y-c)^2]
+  = \mathbb{E}[y]$; for MAE, $\arg\min_c \mathbb{E}|y-c|$ = median. One-line
+  derivation each — worth having cold.
+
+**Mistakes:**
+- Reporting RMSE without units/context — "RMSE 4.2" is meaningless until
+  you know the target's scale; pair it with MAE or a naive baseline.
+- Using MAPE with zero/near-zero targets.
+- Forgetting R² needs a *held-out* set — in-sample R² always flatters.
+
+### Calibration: do the probabilities mean what they say?
+
+:::tldr
+A model can rank perfectly (AUC 1.0) while its probabilities are garbage
+(everything scored 0.51/0.49). Calibration — "of the times I said 70%, did
+it happen 70% of the time" — is what makes scores usable for thresholding,
+bidding, and combining models. Measure with reliability diagrams / ECE;
+fix with temperature scaling or isotonic regression on held-out data.
+:::
+
+**30-second answer:** Bin predictions by confidence (0.6–0.7, 0.7–0.8, …),
+plot mean predicted probability vs. actual positive rate per bin — that's the
+reliability diagram; perfect calibration is the diagonal. ECE (expected
+calibration error) = average absolute gap, weighted by bin size. CE-trained
+deep nets are systematically *overconfident*; temperature scaling (divide
+logits by $T>1$, tuned on validation) is the one-parameter fix that keeps
+accuracy identical.
+
+**Interview-depth:** **Ranking ≠ calibration:** AUC only cares about order,
+so a model can separate classes perfectly yet output unusable probabilities.
+**When it matters:** anywhere a probability feeds a decision — ad bidding
+(bid = pCTR × value), cost-based thresholding (above), model blending,
+fraud review prioritization. **When it doesn't:** pure ranking products
+(search order) where only relative scores matter. **Isotonic regression**
+(non-parametric, more flexible) vs. **Platt/temperature scaling**
+(parametric, less data-hungry): use temperature when you have little
+calibration data, isotonic when you have plenty. Always fit on held-out data
+— calibrating on train is self-deception.
+
+**Follow-ups:**
+- "High AUC but bad business metric — calibration?" → it's on the checklist:
+  if downstream thresholds/bids were set assuming calibrated scores, an
+  overconfident model systematically overbids/over-flags.
+- "Does label smoothing help calibration?" → yes — it caps overconfidence
+  during training, a rare case where a training trick directly improves
+  calibration.
+
+### Choosing metrics: the decision table
+
+:::tldr
+The metric is a business decision disguised as math: match it to what the
+product *does* with the output and what failure costs. When in doubt, report
+a pair (one threshold-free, one at the operating point) — never a single
+number without its context.
+:::
+
+| Situation | Reach for | Avoid |
+|---|---|---|
+| Balanced binary classification | Accuracy, F1, ROC-AUC | — |
+| Rare positives you must catch (fraud, disease) | PR-AUC, recall at fixed precision | Accuracy, ROC-AUC alone |
+| False alarms expensive (spam, ads) | Precision at fixed recall, PR-AUC | Recall alone |
+| Search / feed ranking | NDCG@K (K = viewport) | Accuracy, AUC |
+| Candidate retrieval (two-tower) | Recall@K, K large (100–1000) | NDCG@10 |
+| One right answer (Q&A, navigational) | MRR | MAP/NDCG |
+| Regression, errors cost linearly | MAE | RMSE (outlier-driven) |
+| Regression, big misses costly | RMSE (+ MAE alongside) | R² alone |
+| Scores feed bids/thresholds/blends | ECE / calibration + a ranking metric | AUC alone |
+| Multi-class, balanced | Accuracy, macro-F1 | — |
+| Multi-class, imbalanced | Macro-F1, per-class PR | Accuracy, micro-F1 alone |
+
+**The interview answer pattern:** "I'd pick *X* because the product does *Y*
+with the output and a false *Z* costs *W*; I'd also track *X′* as a guardrail
+because *X* is blind to *V*." Concrete: "PR-AUC as primary because fraud is
+1% and misses cost 100× false alarms; recall-at-95%-precision as the
+operating metric the business signs off on; calibration (ECE) as guardrail
+because scores feed the review-queue prioritizer." That sentence structure —
+metric, product reason, cost reason, guardrail — is what "how do you choose
+metrics" is really testing.
+
+**Follow-ups:**
+- "One metric to rule them all?" → there isn't one; anyone selling a single
+  metric is selling Goodhart's law. Report a small suite: one threshold-free,
+  one at the operating point, one guardrail.
+- "Offline metric improved, online didn't — ?" → the offline/online gap
+  checklist from ranking metrics: label staleness, position/selection bias,
+  head/tail skew, novelty effects, or the gain is within noise (check
+  significance, not just the point estimate).
+
+**Mistakes:**
+- Letting the metric choose the product instead of the reverse ("our AUC
+  went up" while the business metric flatlines).
+- Single-metric reporting without the operating context (threshold, K,
+  prevalence, grade distribution).
+- Changing the metric mid-project to make results look better — pick it from
+  the product requirements *before* modeling, and write down why.
 
 ### Ranking metrics — NDCG, MAP, MRR, Recall@K
 
@@ -825,6 +1089,11 @@ $$\mathbb{E}[(y - \hat f(x))^2] = \underbrace{(f(x)-\mathbb{E}\hat f)^2}_{\text{
   exponential and the discount logarithmic.
 - [ ] Given a confusion matrix with 1% positives, compute precision, recall,
   F1, and explain why accuracy is misleading — out loud, in 60 seconds.
+- [ ] Sketch a PR curve from 5 scored examples by hand; mark where the random
+  baseline sits and explain why PR-AUC beats ROC-AUC at 1% prevalence.
+- [ ] "Fraud team, 1% positives, a miss costs 100x a false alarm" — name your
+  primary metric, operating-point metric, and guardrail, each with one
+  sentence of justification (use the decision-table pattern).
 - [ ] Whiteboard pairwise (RankNet) loss and explain when you'd switch to
   LambdaRank-style $|\Delta\text{NDCG}|$ weighting.
 - [ ] Diagnose: train NDCG 0.81, val NDCG 0.62, both flat with more data.
