@@ -1024,6 +1024,108 @@ def ndcg(ranked_rels, k):
 
 ---
 
+### Metric tradeoffs by use case: five worked scenarios
+
+:::tldr
+Every metric choice trades what you reward against what you go blind to.
+The interview-ready move for any scenario: name the primary metric, say what
+it rewards, name its blind spot, and pair it with a guardrail metric that
+covers the blind spot. One metric never survives contact with the product.
+:::
+
+**1. Fraud detection — 0.1% positives, a miss costs 100× a false alarm.**
+Candidates: ROC-AUC, PR-AUC, recall@95%-precision, F2.
+- **ROC-AUC** rewards overall ranking across all thresholds. Blind to the
+  operating region: 0.97 AUC can coexist with 5% precision at the threshold
+  you'd actually ship, because FPR's TN denominator swallows false alarms.
+- **PR-AUC** rewards holding precision while catching more fraud — honest
+  under imbalance. Blind to the exact operating point: two models with equal
+  PR-AUC can need very different thresholds to be usable.
+- **recall@fixed-precision** rewards the business contract ("catch 90% of
+  fraud without growing the review queue"). Blind to everything outside that
+  point — and gameable by nudging the threshold.
+- **Pick:** PR-AUC for model selection (threshold-free), recall@95%-precision
+  as the launch gate the business signs off on. **Guardrail:** review-queue
+  precision drift week-over-week — catches prior/label shift that static
+  metrics miss.
+
+**2. Search ranking — graded relevance, users rarely scroll past 10.**
+Candidates: NDCG@10, NDCG@100, MAP, MRR, Recall@1000.
+- **NDCG@10** rewards the best docs in the visible viewport, grade-weighted.
+  Blind to tail coverage: a model can ace @10 by memorizing head queries
+  while the tail rots.
+- **Recall@1000 / NDCG@100** rewards coverage for downstream stages. Blind to
+  user-visible quality: optimizing @1000 can promote clickbaity
+  near-relevant docs.
+- The deeper tradeoff is **cross-stage**: the retrieval stage must optimize
+  Recall@K with large K because the ranker reorders anyway; the ranking stage
+  optimizes NDCG@K with K = viewport. Optimizing retrieval on NDCG@10
+  starves the ranker of candidates it could have ordered well — the most
+  common stage-metric mismatch in production search.
+- **Pick:** NDCG@10 primary for the ranker, Recall@1000 guardrail for
+  retrieval. **Slice both by head/torso/tail** — aggregate NDCG hides tail
+  regressions behind head wins.
+
+**3. Spam filter — a false positive (legit mail in spam) is the catastrophe.**
+Candidates: precision@90%-recall, F0.5, PR-AUC, accuracy.
+- **Accuracy** rewards nothing: 99.9% legit mail means "flag nothing" scores
+  99.9%. Mention it only to dismiss it.
+- **precision@fixed-recall** rewards the actual user pain (inbox cleanliness
+  at an acceptable catch rate). Blind to recall collapse: 99.99% precision
+  is trivial if you catch almost nothing.
+- **F0.5** (β=0.5) rewards precision-weighted balance in a single number for
+  model selection. Blind to the absolute operating point the product ships.
+- **Pick:** F0.5 or PR-AUC for selection, precision@90%-recall as the ship
+  gate. **Guardrail:** FP rate on a held-out sample of *important* mail —
+  false positives aren't uniform; one missed job offer outweighs ten missed
+  newsletters, so weight the eval set accordingly.
+
+**4. ETA / price regression — most errors small, a few catastrophic.**
+Candidates: MAE, RMSE, MAPE, R².
+- **MAE** rewards typical-case accuracy and shrugs off outliers. Blind to the
+  tail: usually off by 2 min but sometimes 60 looks great on MAE — and loses
+  customers.
+- **RMSE** rewards tail discipline; the squaring forces the optimizer to care
+  about big misses. Blind to interpretability under skew: one bad segment can
+  dominate the number while the typical experience is fine.
+- The tradeoff *is* the business's error cost curve: linear cost → MAE;
+  superlinear (one 60-min miss loses the customer, six 10-min misses don't)
+  → RMSE.
+- **Pick:** optimize RMSE, always report MAE alongside. If MAE improves while
+  RMSE worsens, your tail is rotting — that divergence is the guardrail.
+  Never MAPE near zero targets (asymmetric, explodes).
+
+**5. Multi-class, imbalanced — e.g., ticket routing over 50 categories.**
+Candidates: accuracy, micro-F1, macro-F1, per-class PR.
+- **Accuracy / micro-F1** rewards head-class performance — dominated by
+  frequent classes. A model ignoring 40 rare categories can still score 90%.
+- **Macro-F1** rewards every class equally — punishes ignoring the tail.
+  Blind to business importance: not all rare classes matter equally.
+- **Pick:** macro-F1 for selection (forces tail coverage), per-class
+  precision/recall table for the launch review so stakeholders see *which*
+  classes fail. **Guardrail:** worst-class recall — the min, not the mean, is
+  what users in that segment actually experience.
+
+**The meta-pattern — say this verbatim in the interview:** "No single metric
+survives contact with the product. I pick a primary metric matching the
+decision the product makes, a threshold-free metric for model selection, and
+a guardrail for what the primary is blind to — and I re-derive the choice
+whenever the cost structure changes." Then one line of Goodhart's law: once
+the team bonuses on NDCG@10, expect rank-10 gaming — which is exactly why the
+guardrail exists.
+
+**Mistakes:**
+- Using one metric for both model selection and launch gating. Selection
+  wants threshold-free (PR-AUC, NDCG); gating wants the operating point
+  (recall@precision, NDCG@10 at the ship threshold). Different jobs, different
+  metrics.
+- Copying the metric from a paper benchmark instead of deriving it from the
+  product's cost structure.
+- Averaging metrics across segments with wildly different base rates without
+  slicing — the aggregate will lie to you.
+
+---
+
 ## Bias, variance, and overfitting
 
 :::tldr
@@ -1094,6 +1196,10 @@ $$\mathbb{E}[(y - \hat f(x))^2] = \underbrace{(f(x)-\mathbb{E}\hat f)^2}_{\text{
 - [ ] "Fraud team, 1% positives, a miss costs 100x a false alarm" — name your
   primary metric, operating-point metric, and guardrail, each with one
   sentence of justification (use the decision-table pattern).
+- [ ] 60 seconds each, out loud: primary + guardrail metrics for (a) fraud at
+  0.1% positives, (b) a spam filter where false positives are catastrophic,
+  (c) ETA regression with occasional catastrophic misses. Name what each
+  primary metric is blind to.
 - [ ] Whiteboard pairwise (RankNet) loss and explain when you'd switch to
   LambdaRank-style $|\Delta\text{NDCG}|$ weighting.
 - [ ] Diagnose: train NDCG 0.81, val NDCG 0.62, both flat with more data.
