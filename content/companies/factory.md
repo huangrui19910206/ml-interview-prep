@@ -4,13 +4,14 @@ slug: "factory"
 section: "companies"
 nav_order: 40
 nav_label: "Factory"
-tags: ["agents", "ai-coding", "system-design", "deep-dive", "interviewing", "behavioral"]
-updated: "2026-10-01"
+tags: ["agents", "ai-coding", "system-design", "deep-dive", "interviewing", "behavioral", "debugging"]
+updated: "2026-10-11"
 company: "Factory"
 priority: "p0"
 status: "interviewing"
 process_sources:
-  - { label: "INFERRED", url: "", accessed: "2026-10-01", note: "No public interview-process info found for Factory (factory.ai). Rui's intro call was 2026-09-30 with Gabriel Remar; next rounds relayed as debug + AI coding. Sierra's official AI-native interview format (sierra.ai/blog/the-ai-native-interview) used as LIKELY analogue — same category (AI coding agents), similar evaluation philosophy" }
+  - { label: "CONFIRMED", url: "", accessed: "2026-10-11", note: "Gabe Remar email 2026-10-11 1:59 PM PT (Cc cathy.nghieu@factory.ai): next round is a 45-min debugging interview — Python or JS (candidate's choice), NO AI assistance, HackerRank with the interviewer sending the link at the start; graded on technical skills, communication, collaboration. Rui to share next-2-weeks availability via Ashby link" }
+  - { label: "INFERRED", url: "", accessed: "2026-10-01", note: "No public interview-process info found for Factory (factory.ai). Rui's intro call was 2026-09-30 with Gabriel Remar; next rounds relayed as debug + AI coding. Sierra's official AI-native interview format (sierra.ai/blog/the-ai-native-interview) used as LIKELY analogue for the possible later AI-coding round — same category (AI coding agents), similar evaluation philosophy" }
   - { label: "OFFICIAL", url: "https://sierra.ai/blog/the-ai-native-interview", accessed: "2026-10-01", note: "Analogue only (not Factory's process): Sierra's AI-native onsite = Plan → Build (2h, any AI tools) → Review; debugging interview (improve a draft PR with coding agents); agency and judgment as the graded traits" }
   - { label: "REPORTED", url: "https://techfundingnews.com/factory-jumps-to-5b-in-5-months-with-200m-for-its-ai-droids/", accessed: "2026-10-01", note: "Factory raised $200M at $5B (Sept 2026, per WSJ via TFN); Droids #1 on Terminal-Bench; Factory Router cuts token spend >60%; customers include NVIDIA, Adobe, EY, MongoDB" }
 ---
@@ -23,22 +24,23 @@ What you know:
 
 - **Intro call done:** 2026-09-30 with Gabriel Remar. Relayed intel: headcount
   ~40/200, ~$1M in options, 5-day SFO RTO.
-- **Next rounds (relayed by recruiter): debug + AI coding.**
-- **LIKELY format** (analogue: Sierra's official AI-native interview, same
-  category): a **debugging round** (review/improve a draft PR in a medium-sized
-  codebase *with* coding agents) and an **AI coding/build round** (2-hour build
-  with any AI tools, then demo + debate technical choices). Graded traits in
-  the analogue: **agency** (pivot when stuck) and **judgment** (scoping,
-  tradeoffs).
+- **Next round — CONFIRMED 2026-10-11 by Gabe Remar:** a **45-min debugging
+  interview**: Python or JS (your choice), **NO AI assistance**, HackerRank
+  with the interviewer sending the link at the start. Graded on **technical
+  skills, communication, collaboration**. Gabe asked you to share your
+  next-2-weeks availability via the Ashby link.
+- This contradicts the earlier Sierra-analogue assumption (agents *available*
+  in the debug round) — the analogue now applies only to the possible later
+  AI-coding round. Prep accordingly: this round is raw debugging, no tools.
 - The company's bet — "Droids" autonomous coding agents for the enterprise,
   $200M at $5B (Sept 2026) — means they are hiring people who are **fluent
   with agents and opinionated about how software gets built**.
 
 :::warn
-Factory's actual process is unverified. The debug + AI-coding shape comes from
-your recruiter relay; the detailed format below is a LIKELY analogue from
-Sierra's published AI-native interview. Confirm the format with Gabe before
-each round.
+Factory's actual process is unverified. The **45-min no-AI HackerRank debug
+format is CONFIRMED by Gabe Remar's 2026-10-11 email** (details below). The
+detailed format for any later AI-coding round is still a LIKELY analogue from
+Sierra's published AI-native interview — confirm it with Gabe if it comes up.
 :::
 
 ## Company & product
@@ -65,9 +67,10 @@ MLE at Factory, INFERRED from the product and the relayed rounds:
 - **Agent fluency as a first-class skill:** you will be evaluated *working
   with* coding agents, not just writing code. Steering, verifying, and
   debugging agent output is the job.
-- **Debugging judgment:** the debug round tests whether you can take a draft
-  PR / buggy system and improve it with agents — triage, root-cause, and
-  knowing when to trust vs. verify the agent.
+- **Debugging judgment (CONFIRMED round, no AI):** the 45-min HackerRank debug
+  round tests raw debugging — triage, root-cause, verification, narrated out
+  loud. Agent assistance is explicitly off; "knowing when to trust vs. verify
+  the agent" is a company-fit theme, not this round's graded skill.
 - **Systems thinking about the SDLC:** Droids span testing, review, docs,
   deployment, incident response — expect breadth across the development
   lifecycle, not just model code.
@@ -87,32 +90,44 @@ world) with unusual authority for an MLE candidate.
 Covered: headcount ~40/200, ~$1M options, 5-day SFO RTO. Next: debug + AI
 coding rounds.
 
-### Upcoming — Debug round [LIKELY, format from Sierra analogue]
+### Upcoming — Debug round [CONFIRMED 2026-10-11, Gabe Remar email]
 
-Sierra's published debugging interview (the closest verified analogue):
-**review and improve a draft PR in a medium-sized codebase, with coding agents
-available** [OFFICIAL — Sierra's format, used here as analogue]. If Factory's
-version rhymes:
+**Format:** 45 minutes on HackerRank (the interviewer sends the link at the
+start). **Python or JS — your choice. NO AI assistance.** Graded on:
+**technical skills, communication, collaboration**.
 
-- You'll get a repo + a draft PR (or a buggy feature) and agent tooling.
-- Graded on: triage speed, root-cause reasoning, quality of the improvement,
-  and **how you use the agent** (delegation vs. abdication).
-- Prep: practice a 90-min session — clone an unfamiliar repo, run its tests,
-  fix a real bug *with* Claude Code/Cursor, narrate your verification steps.
+What this means for prep:
 
-### Upcoming — AI coding / build round [LIKELY, format from Sierra analogue]
+- **This is a raw-debugging round, not an agent-fluency round.** The rubric is
+  classical: read buggy code fast, locate the bug, fix it, verify. The
+  think-aloud methodology in [#/debugging](#/debugging) is exactly the graded
+  skill — reproduce → isolate → hypothesize → verify, narrated out loud.
+  (Note: the 13 broken programs on that page are ML-focused; the round is
+  general Python/JS debugging, so also drill everyday gotchas: off-by-ones,
+  aliasing/mutation, async/await races, closure capture, edge-case inputs.)
+- **Language choice: pick Python** — it's your daily language and where your
+  debugging is fastest. JS only if a round's problems turn out DOM/async-heavy
+  and you genuinely prefer it. Decide *before* the round so there's no
+  mid-interview waffling.
+- **Collaboration is graded:** HackerRank debug rounds often have the
+  interviewer watching silently or asking follow-ups. Treat them as a pair —
+  narrate hypotheses, ask clarifying questions, verify fixes by running the
+  tests, don't shotgun-change three things at once.
+- **Communication is graded:** state the symptom precisely, name the
+  hypothesis class before testing it, and say the root cause out loud after
+  the fix (the interviewer's signal that you actually understood, not just
+  pattern-matched).
 
-Sierra's AI-native onsite = **Plan** (ideate the product in your domain) →
-**Build** (2 hours, any AI tools, interviewer steps out) → **Review** (demo,
-then debate product flows and technical choices: data model, abstractions,
-extensibility, path to production, how AI was used) [OFFICIAL — Sierra's
-format, analogue]. Graded: **agency** (pivot when stuck) and **judgment**
-(scoping) [OFFICIAL — Sierra's rubric, analogue].
+### Possible — AI coding / build round [previously relayed, format UNCONFIRMED]
 
-If Factory's version rhymes, expect: a scoped build task, 1–2 hours with full
-agent tooling, then a review where they debate your *choices* — data model,
-abstractions, what you'd do with a week. The review is where seniority shows:
-anyone can generate code; few can defend the architecture.
+The original relay was "debug + AI coding"; the debug round is now confirmed
+in the format above. If an AI-coding round follows, the Sierra AI-native
+onsite remains the best verified analogue: **Plan** (ideate the product in
+your domain) → **Build** (2 hours, any AI tools, interviewer steps out) →
+**Review** (demo, then debate product flows and technical choices: data
+model, abstractions, extensibility, path to production, how AI was used)
+[OFFICIAL — Sierra's format, analogue]. Graded: **agency** (pivot when stuck)
+and **judgment** (scoping) [OFFICIAL — Sierra's rubric, analogue].
 
 ### Possible — HM / values [INFERRED]
 
@@ -121,21 +136,27 @@ hypergrowth environment, 5-day RTO alignment.
 
 ## Priority topics
 
-1. **Coding-agent fluency:** prompting, steering, verifying, and debugging
-   agent output — practice *with* the tools, on screen, narrating.
-2. **Debugging methodology:** reproduce → isolate → hypothesize → fix →
-   regression-test; reading unfamiliar codebases fast.
-3. **Agent evaluation:** reliability metrics (pass^k-style thinking — see the
+1. **No-AI debugging methodology (THIS ROUND):** reproduce → isolate →
+   hypothesize → fix → regression-test, all narrated out loud. Reading
+   unfamiliar codebases fast. HackerRank-style reps in **Python** (your daily
+   language), time-boxed 20–30 min per bug.
+2. **Communication + collaboration (graded in this round):** state symptoms
+   precisely, name hypothesis classes before testing, say the root cause out
+   loud after the fix; treat the interviewer as a pair, not an audience.
+3. **Coding-agent fluency (company fit + possible later AI-coding round):**
+   prompting, steering, verifying, and debugging agent output. NOT usable in
+   the confirmed debug round — don't practice with tools for *this* one.
+4. **Agent evaluation:** reliability metrics (pass^k-style thinking — see the
    Sierra page), Terminal-Bench-style evals, measuring "Agent Effectiveness"
    (their product term — have an opinion on what it should measure).
-4. **LLM systems:** inference economics ($/token — Factory Router's whole pitch
+5. **LLM systems:** inference economics ($/token — Factory Router's whole pitch
    is cutting token spend 60%), model routing, eval harnesses.
-5. **SDLC breadth:** testing, code review, CI/CD, incident response, docs —
+6. **SDLC breadth:** testing, code review, CI/CD, incident response, docs —
    the Droids surface area; be conversant in all of it.
-6. **Enterprise deployment:** on-prem/air-gapped constraints, security review
+7. **Enterprise deployment:** on-prem/air-gapped constraints, security review
    posture, model-agnostic architecture (why it matters when Claude is down —
    Grinberg's own sales pitch).
-7. **System design (likely):** agent orchestration, tool-use architectures,
+8. **System design (possible later):** agent orchestration, tool-use architectures,
    eval pipelines.
 
 ## Company-specific themes
@@ -192,19 +213,28 @@ Full prep: [#/project-deep-dive](#/project-deep-dive).
 
 ## Practice questions
 
-All REPRESENTATIVE PRACTICE — inferred from the relayed rounds and the
-AI-native interview analogue, not claimed as asked.
+All REPRESENTATIVE PRACTICE for the confirmed debug round — inferred from the
+format, not claimed as asked. **Do these WITHOUT AI tools**, mirroring the
+round's no-AI rule.
 
-**Debug round prep (do these hands-on, with an agent, narrating):**
-- [ ] Clone an unfamiliar mid-size repo. Get tests green, find and fix a real
-      bug with Claude Code/Cursor — time-boxed 90 min, narrate every
-      verification step.
-- [ ] Given a draft PR with a subtle concurrency bug: write the review
-      comments you'd leave, then implement the fix with agent assistance.
-- [ ] An agent-generated refactor broke 12 tests. Triage: which failures are
-      real regressions vs. brittle tests? Decide what to keep.
+**Debug round prep (Python, no AI, time-boxed, narrating out loud):**
+- [ ] HackerRank-style rep: a buggy function + failing tests. 25 min, no AI.
+      Narrate: symptom → isolation plan → hypothesis class → cheapest
+      discriminating test → fix → re-run. Then say the root cause in one
+      sentence.
+- [ ] Bug with a silent wrong answer (not a crash): e.g. an off-by-one in a
+      sliding window or an aliasing bug where a list is mutated in place.
+      These are the ones that separate signal from noise — catch the bug by
+      *reading*, then confirm with a minimal repro.
+- [ ] Pair-debugging rep: debug while someone (or a voice note to yourself)
+      asks follow-ups — practice answering "why do you think that?" without
+      breaking your line of thought. This is the collaboration rubric.
+- [ ] Work through the [#/debugging](#/debugging) methodology section and
+      answer one broken program out loud end-to-end, as if the interviewer is
+      watching. (The programs there are ML-flavored; the *narrated method* is
+      what transfers.)
 
-**AI coding / build prep:**
+**AI coding / build prep (possible later round, analogue only):**
 - [ ] 2-hour build: a small eval harness for a coding agent (run tasks, score
       outcomes, report pass^k-style reliability). Then defend: data model,
       abstractions, path to production.
@@ -223,13 +253,13 @@ AI-native interview analogue, not claimed as asked.
 
 ## 30-minute checklist
 
-- [ ] **Confirm format (5 min):** ask Gabe what the debug and AI-coding rounds
-      actually look like (repo provided? which agent tools? time-box?).
-- [ ] **Agent reps (15 min):** one timed 60-min fix-a-bug-with-Claude-Code
-      session, narrating verification out loud — the single highest-leverage
-      prep for both relayed rounds.
-- [ ] **Opinions (10 min):** write 3 sentences each on: agent effectiveness
+- [ ] **Language lock (2 min):** decide Python vs JS now — recommend Python
+      (your daily language). No mid-round switching.
+- [ ] **No-AI debug reps (20 min):** two time-boxed HackerRank-style bug fixes
+      in Python, narrating out loud — methodology + communication in one rep.
+      This is the single highest-leverage prep for the confirmed round.
+- [ ] **Opinions (8 min):** write 3 sentences each on: agent effectiveness
       measurement, model-agnostic routing, what "agent-native development"
-      changes about eng orgs.
-- [ ] Skim the Sierra page in this repo — its AI-native format is your best
-      verified window into how these rounds are graded.
+      changes about eng orgs — for the possible AI-coding/deep-dive rounds.
+- [ ] Skim the Sierra page in this repo — its AI-native format remains your
+      best verified window into how a *later* AI-coding round would be graded.

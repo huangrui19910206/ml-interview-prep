@@ -29,10 +29,11 @@ process_sources:
 
 ## TL;DR
 
-**Status: CodeSignal pre-screen passed 2026-10-06 (a day early); Anthropic
-NDA signed and acknowledged. Next: recruiter call with Yulia Serhiyenia,
-Thu 2026-10-08 11:30–11:50 AM PT** (moved from Wed 10/7 by you; new Meet
-link on the calendar event).
+**Status: CodeSignal pre-screen passed 2026-10-06; Anthropic
+NDA signed and acknowledged; recruiter screen with Yulia Serhiyenia
+passed 2026-10-10. Next: two 55-min technical rounds (System Design +
+Coding) via ModernLoop — scheduling paused at your request 2026-10-10;
+resume when ready.**
 
 The two gates that eliminate the most qualified candidates are **not**
 technical — they're the recruiter screen (why-Anthropic + AI safety depth)
