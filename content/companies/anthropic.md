@@ -359,6 +359,16 @@ rhythm is how candidates drop requirements/scaling depth.
 **Time allocation:** 5 min clarifying → 5 min high-level → 25 min deep
 dive (pick the hardest part) → 10 min failure modes → 5 min evals.
 
+**Sequencing & flavor (1point3acres 2026 compilation, 25 posts):** for
+senior+ candidates the first technical round is usually this SD round,
+and reported topics skew **inference / model-download flavored** rather
+than classic "design a social app" — the compiler's prep line:
+"inference 生产化一套：batching 策略、KV cache、GPU memory、load
+shedding、限流、幂等；现在流行 doc review." No verbatim traditional
+design prompt surfaced in the public reports, and flavors likely vary by
+team — so prepare BOTH tracks below: the search walkthrough (your home
+turf) and the inference-serving set.
+
 ### The search round — 1B docs, 1M QPS, p99 < 100ms (reported example)
 
 Your home turf. Walk it with arithmetic, not adjectives:
