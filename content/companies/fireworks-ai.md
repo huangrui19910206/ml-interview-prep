@@ -38,6 +38,11 @@ Standing context: TOBY X. (Talent Partner @ Fireworks, ex-Meta AI/ML) is
 your existing LinkedIn connection — intro message sent and verified
 2026-09-30, awaiting reply.
 
+**Update 2026-10-17:** the actual AMLE take-home (agentic RAG over 10-Ks,
+assigned by Ravi Buddharaju 2026-10-13, due Oct 20) is built — 8/10 correct,
+10/10 routing on the public dev set. The next round walks the code; full
+walkthrough prep is on its own page: [Fireworks Take-Home Walk](#/fireworks-takehome).
+
 ## Company & product
 
 Fireworks AI: fast inference APIs for open models, built by ex-Meta PyTorch
