@@ -336,12 +336,114 @@ asyncio + semaphore. Call out politeness/robots only if asked — don't
 gold-plate.
 :::
 
+### Reconstructed question bank (2026-10-18 — rebuilt from fragments)
+
+*How to read this: each item is reconstructed from multiple fragmentary
+面经 plus published solutions. Credibility tags: [FIRST-HAND] a named
+candidate debrief exists · [MULTI] several independent sources ·
+[SINGLE] one source, treat as directional. Where forum/web answers were
+checked, the verdict is marked.*
+
+:::collapse Drill 4 — Stack-trace profiler reconstruction [FIRST-HAND · MULTI]
+**Reconstructed prompt:** A sampling profiler captures the call stack
+(root → currently executing function) once per tick. Convert the snapshot
+sequence into discrete trace events `(start_time, end_time, function)`:
+t0 `[main]`, t1 `[main, foo]`, t2 `[main, foo, bar]`, t3 `[main, foo]`,
+t4 `[main]`, t5 `[]` → events `(0,5,main) (1,4,foo) (2,3,bar)`. A Senior
+SWE candidate (SF, Jan 2025) confirms this exact screen, Colab-based,
+with an interviewer-added edge case mid-round.
+**Solution skeleton (verified correct):** keep an active stack of
+`(name, start_time)`. Per snapshot, compute the **longest common prefix**
+with the active stack; pop frames past the prefix and emit their events
+ending at the current time; push the new suffix starting now. Recursion
+works naturally (frames compared by name at each depth). If input doesn't
+end with `[]`, append one to close everything. End events at the same
+timestamp emit inside-out, starts outside-in — say so. O(n·depth).
+**Follow-ups reported:** (1) **Denoise** — a frame visible for a single
+sample is sampling noise: commit a stack transition only after the same
+new stack appears in 2 consecutive samples, but timestamp it at first
+sight; if the old stack returns first, discard. (2) **Streaming** — class
+with state; `flush()` returns only newly completed events, never closes
+still-active frames. (3) **Multi-thread** — independent stack per thread,
+events carry thread id; key frames by `(depth, name)` so same-named
+functions at different depths don't collide.
+**Pitfalls:** emitting events for shared-prefix frames; closing active
+functions on flush; treating single-sample frames as real.
+:::
+
+:::collapse Drill 5 — Longest-match tokenizer [MULTI]
+**Reconstructed prompt:** Given a vocabulary, tokenize input by greedy
+longest match; handle overlapping tokens; validate prefixes; fall back to
+an unknown token when nothing matches.
+**Solution skeleton (verified standard):** build a **trie** of the vocab.
+At each position, walk the trie as far as it goes and take the LONGEST
+complete token seen; if no complete token starts here, emit `[UNK]` and
+advance one character. O(n · L), L = longest token.
+**The discussion that scores:** greedy longest-match is NOT globally
+optimal segmentation — no backtracking, by design (speed/simplicity);
+know when that bites. Trap: a trie walk that dies mid-token must not emit
+a shorter prefix unless that prefix is itself a complete token.
+:::
+
+:::collapse Drill 6 — Distributed mode / median / sort [SINGLE framing · family MULTI]
+**Reconstructed prompt:** ~10 nodes, a `send`/`recv` API; compute the
+global mode (variants: median, full sort) minimizing network transfer.
+Exact framing is single-source; the *family* is corroborated by multiple
+2026 syntheses, and a sibling OA problem ("worker mode tracker" — merge
+per-worker frequencies, support worker REMOVAL) is fully described.
+**My model answer (from first principles — no published solution
+exists):** Mode — each node sends its local frequency map, never raw
+data: transfer is O(distinct values); exact mode needs full count maps in
+the worst case, say so and offer bounded top-k only as an approximation.
+Median — don't ship data: binary-search the value range, each round
+nodes return a single count of values below the probe (O(log range)
+rounds of tiny messages). Sort — sample sort: local sort → sample pivots
+→ range-partition exchange → local merge. **If workers can leave, keep
+PER-WORKER frequency maps** so a departure is a subtraction, not a
+recompute — that is the crux of the sibling problem.
+**Graded axis:** total bytes + round count, and why "gather everything to
+one node" is the naive baseline to beat.
+:::
+
+:::collapse Drill 7 — In-memory DB, live variant [FIRST-HAND]
+**Why it's here:** your live Coding is on CodeSignal, and Anthropic's
+pool reportedly holds ~10 progressive-build problems. A first-hand Senior
+report (Apr 2026) describes a variant that DIFFERS from the famous OA:
+L1 `set` **increments** an existing field (not replace); L2 top-N by
+modification count, ties alphabetical; L3 record **locking** (a flag, not
+threads — locked records ignore plain set/delete; deleting a locked
+record does NOT release the lock); L4 `undo` restores the record —
+fields, values AND modification count — to its state at lock time
+(snapshot at lock acquisition), plus `logout` releasing a caller's locks.
+**Discipline from the same report:** implement easy ops first, **run the
+tests constantly (runs are unlimited and don't affect score)**, don't
+over-engineer. If you get the canonical version instead: L1 SET/GET/
+DELETE → L2 sorted SCAN/prefix → L3 TTL (half-open interval
+`[t, t+ttl)` — the classic off-by-one) → L4 backup/compression varies.
+:::
+
+**Answer-check notes （评论/网传答案验真）:**
+- Crawler "mark visited at ENQUEUE, not at fetch" — **correct**; marking
+  at fetch is the classic duplicate-fetch race.
+- Profiler LCP diffing — **correct**, corroborated by two independent
+  worked solutions; the denoise threshold is 2 consecutive samples.
+- Dedup three-stage funnel (size → first-block hash → full hash) —
+  **correct** standard; the failure mode people report is hashing whole
+  files up front.
+- Image pipeline: the graded follow-up is justifying **multiprocessing
+  vs multithreading** out loud (pixel work is CPU-bound; PIL only
+  partially releases the GIL) — and per-image **instruction files** define
+  the ordered transform list; apply in file order, isolate per-image
+  failures.
+
 **Working discipline (this is scored):** think aloud the entire time —
 "I'll do X because Y". Run tiny tests as you go and narrate results.
 When stuck, say what you'd check next. Clean names, small functions.
 
 **Prep checklist:**
 - [ ] Each drill once, timed, blind (no test harness), narrating out loud
+- [ ] Profiler drill: LCP walk + denoise/streaming variants from memory
+- [ ] Tokenizer + distributed median: state the approach + transfer math cold
 - [ ] PIL quick-ref: resize/rotate/convert sizes — know the API cold
 - [ ] concurrency quick-ref: ThreadPoolExecutor, locks, asyncio.Semaphore
 
@@ -394,6 +496,15 @@ Your home turf. Walk it with arithmetic, not adjectives:
 Follow-up traps: hot-term skew, freshness-vs-TTL tension, hedging cost,
 what breaks first at 10×.
 
+**Hybrid-search variant (reported):** combine keyword retrieval with
+semantic similarity — top-k over 10M+ docs in <50 ms. The candidate's
+reported weak point was LSH details (hash-family choice, banding) —
+if you reach for LSH, know it cold or choose HNSW/IVF and defend the
+tradeoff. The graded discussion: **score normalization across the two
+signals and tuning the fusion weight (alpha)** — your Coupang fusion
+experience is the direct answer — plus how you would *evaluate* quality
+offline/online before touching alpha.
+
 ### Inference batching — worked numbers (2026 canonical question)
 
 "Single GPU, up to 100 inputs/batch, users submit synchronously and wait."
@@ -408,15 +519,67 @@ concurrent sequences × 2k tokens ≈ **520 GB** — doesn't fit one GPU.
 exist. Say this arithmetic out loud; it's the whole point of the
 question.
 
+**Fixed-contract variant (reported, with the math done):** the batch
+call takes **up to 50 inputs, always returns in 200 ms**, traffic is
+**2,000 rps**. One GPU serves 50 ÷ 0.2 = **250 rps → 8 GPUs is the
+floor**; if batches average half-full you need **16** — "the batcher
+decides which number you get." Flush rule: fire at 50 queued OR a short
+timeout (10–50 ms), whichever first; at low traffic the timeout *is* the
+latency lever. Failure: GPU dies mid-batch → retry (idempotency keys) or
+fail fast; bound the queue and shed load (429s, free tier first) instead
+of letting latency grow unbounded. Scale-out: route to least-loaded
+healthy worker (heartbeats + in-flight counts), separate queues per
+model/priority, never let bulk traffic starve interactive.
+
+### Model download — distribute a checkpoint to a fleet (reported)
+
+"One source holds a checkpoint of **hundreds of GB**; every host needs a
+copy, fast; each link has fixed bandwidth; **some hosts will fail
+mid-rollout**." Work the derivation out loud — it earns more than naming
+BitTorrent in minute one:
+
+- **Lower bound:** every host receives the whole file. Practice numbers:
+  400 GB checkpoint, 10 Gbps links (1.25 GB/s), 200 hosts → 400 ÷ 1.25 =
+  **320 s**.
+- **Naive pull:** 200 copies through the source's one link = **~64,000 s
+  (≈18 h)**.
+- **Binary tree:** each host forwards a full copy to two children →
+  ~640 s/level × ~7 levels ≈ **75 min**.
+- **Chunked swarm:** split into chunks; each host forwards each chunk the
+  moment it lands → every link works at once → approaches the **320 s
+  bound**.
+
+Follow-ups: per-chunk hashes (integrity); rarest-first chunk choice;
+recovery with no central coordinator (peers advertise held chunks);
+**readiness gate — route traffic only to hosts that loaded AND verified
+the right version**, plus rollback. (Scale varies by telling — hundreds
+vs thousands of hosts; the math structure is identical.)
+
 ### Design-doc review drill (2026 trend)
 
 You're handed a doc and asked to find holes. Lens: unstated assumptions,
 missing failure modes, gameable metrics, scaling cliffs, "what would you
 measure first." Practice on one of your own design docs.
 
+**Method (from candidate reports; the doc is reportedly an LLM
+inference-server design — your batching prep doubles as ammo):** review
+it like a senior engineer in a real comment thread. (1) Skim in order:
+goals & non-goals → alternatives considered → scale & cost → failure
+modes → rollout & rollback → observability → security → migration.
+(2) **Rank the risks and lead with the one that hurts most** — don't
+recite findings in document order. (3) **Name what is missing — the doc
+is incomplete on purpose.** (4) Offer an alternative with a concrete
+tradeoff for each major hole. (5) Notice what the author already
+handled, and **critique inside any pinned constraint** (e.g. fixed
+batching, no autoscaling) instead of relitigating it. A first-hand Staff
+report: after the critique it "becomes a typical deep dive on failure
+handling and overload protection" — so have your failure-mode material
+ready to go one level deeper than your comments.
+
 **Prep checklist:**
 - [ ] Search framework: full walkthrough with numbers, out loud, 40 min
 - [ ] Batching question: queueing + KV-cache math from memory
+- [ ] Model download: reproduce the 320 s-bound derivation cold
 - [ ] Red-team one of your own design docs (5 holes minimum)
 - [ ] If written-format: practice *typed* reasoning — no diagram crutch
 
