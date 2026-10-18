@@ -471,6 +471,16 @@ design prompt surfaced in the public reports, and flavors likely vary by
 team — so prepare BOTH tracks below: the search walkthrough (your home
 turf) and the inference-serving set.
 
+**Spanner claim — resolved (2026-10-18, source thread fully read):** the
+"Anthropic 面经 often discuss designing Spanner" line traces to one
+infra-track candidate's secondhand summary ("很多都是聊spanner的设计，
+message queue的tradeoff，多线程"). It is NOT a verified Anthropic
+question — but it names the classic infra-SD trio (distributed storage à
+la Spanner, message-queue tradeoffs, multithreading) that infra-flavored
+variants draw on. Don't over-invest; be able to talk sharding +
+consistency (TrueTime-style commit wait vs. alternatives) for 5 minutes
+if pushed.
+
 ### The search round — 1B docs, 1M QPS, p99 < 100ms (reported example)
 
 Your home turf. Walk it with arithmetic, not adjectives:
