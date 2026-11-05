@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-04 — Applied Intuition prep page
+
+- Added `content/companies/applied-intuition.md` (coding round Fri 2026-11-06,
+  10:15 AM PT, Martin Meinke, CoderPad/Python): official rubric from
+  applied.co/technical-interview + engineering-blog no-AI screen format;
+  reported signature question (transactional KV store, 1point3acres Aug 2026)
+  with delta-stack reference implementation and drill protocol; ML PyTorch
+  debugging variant; reported practical-problem set; 45-min pacing table;
+  night-before/morning checklist. Gated resource page (interview157) noted
+  as not read (401).
+
 ## 2026-10-01 — full curriculum deployed (evening)
 
 **Live:** https://huangrui19910206.github.io/ml-interview-prep/
