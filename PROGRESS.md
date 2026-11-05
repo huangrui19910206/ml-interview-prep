@@ -1,5 +1,25 @@
 # Progress
 
+## 2026-11-04 — Harvey page: 1point3acres recheck + reschedule
+
+- Coding round rescheduled: Mon 2026-11-09 10:00 AM PT, Kevin Ko
+  (was Tue Nov 3 / Nick Howlett). Page retitled; TL;DR, drill heading
+  and morning checklist updated to Nov 9.
+- 1point3acres recheck (Rui rule: 面经提前查、一亩三分地第一来源):
+  canonical "Spreadsheet / Formula Engine" problem page — SWE+MLE,
+  medium, frequency Very high, last asked 2026-10-27, phone-screen +
+  onsite-coding, 18 related discussions; experience index shows
+  spreadsheet screens reported 2026-10-27 / 10-26 / 10-23 / 09-25.
+  BBS thread-1181256 (2026-06-25, Pass) confirms the part structure
+  (Part 1 literals via hashmap; Part 2 formulas + invalid-input /
+  cyclic-dependency validation, topological sort explicitly expected)
+  and that the poster passed without finishing. AceOffer 50-report
+  aggregate (updated Nov 2026): spreadsheet took over from Apr 2026
+  (~16 reports vs ~19 highlighting earlier); new AI-assisted onsite
+  coding round reported since late summer 2026 — added to Later
+  rounds. InterviewQuery / Glassdoor recheck: no new Harvey-specific
+  detail. Verdict: 2026-10-29 conclusions unchanged.
+
 ## 2026-11-04 — Sequen prep page
 
 - Added `content/companies/sequen.md` (engineering interview Fri 2026-11-06,
