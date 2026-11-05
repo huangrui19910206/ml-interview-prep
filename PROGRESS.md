@@ -1,5 +1,17 @@
 # Progress
 
+## 2026-11-04 — Sequen prep page
+
+- Added `content/companies/sequen.md` (engineering interview Fri 2026-11-06,
+  13:00–13:30 PT, Ethan Benjamin, Google Meet; coordinator Stephen Armanios).
+  面经 verdict: NONE — searched 1point3acres first, then InterviewQuery /
+  Glassdoor / Blind / levels.fyi, then open web (2026-11-04); zero candidate
+  reports, no public interviewer profile. Page is inference-labelled:
+  company/product brief (LEMs, in-session re-ranking, sub-20ms, $6M seed →
+  $16M Series A → Series B announced), 30-minute playbook, six inferred
+  topic areas mapped to Rui's Coupang ammunition, questions for Ethan,
+  two-interview-day Friday checklist (Applied coding 10:15 AM same day).
+
 ## 2026-11-04 — Applied Intuition prep page
 
 - Added `content/companies/applied-intuition.md` (coding round Fri 2026-11-06,
