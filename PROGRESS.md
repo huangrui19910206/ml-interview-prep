@@ -1,5 +1,30 @@
 # Progress
 
+## 2026-11-20 — Google / YouTube prep page (Phase 1, Fri Dec 11)
+
+- Added `content/companies/google-youtube.md` — Staff Applied ML SWE,
+  Recommendations, YouTube (San Bruno). Phase 1 CONFIRMED for Fri
+  Dec 11, 2026 (virtual): Interview 1 13:00–13:45 PT, Interview 2
+  14:30–15:30 PT; coordinator Sobha Hamsitha Kalavakolanu, recruiter
+  Kyle Richey. GHA passed Sep 10, 2026; NDA signed Nov 17.
+- Round-type mapping NOT stated in the scheduling email — page labels
+  it INFERRED from durations (45m ≈ Technical Leadership, 60m ≈ ML
+  Recommendations Architecture, per earlier process intel) and
+  prepares both orders plus a project-deep-dive fallback.
+- 面经： 1point3acres searched first (standing rule) — verdict NONE
+  readable: 2025 Google ML database entries are login-gated, snippets
+  show no YouTube/Staff content. Page therefore grounds on Google's
+  own papers (Covington 2016, Yi 2019, Zhao 2019) + InterviewQuery
+  (loop not uniform; ML domain = resume-project drill), DataInterview
+  follow-up clusters + L6 differentiators, Hello Interview / GitGood
+  L6 scope bar, InterviewLegend 2026 G&L prompt ordering, FastPrep
+  21-loop aggregate — all labeled OFFICIAL / REPORTED / INFERRED.
+- Design core: two-tower retrieval + logQ, pre-ranking cascade,
+  MMoE multitask ranking, weighted-logistic expected watch time,
+  Zhao shallow-tower position-bias fix, Example Age freshness,
+  dual A/B framework (session engagement vs 7-day return).
+- Prep-page link added to both Dec 11 calendar events.
+
 ## 2026-11-04 — Harvey page: 1point3acres recheck + reschedule
 
 - Coding round rescheduled: Mon 2026-11-09 10:00 AM PT, Kevin Ko
